@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import Title from "./title";
 import Logo from "./logo";
-
+import SearchField from "./search";
 const HeaderDiv = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -47,6 +47,7 @@ function Header(props) {
         className={props.className}
       />
       <Title size={props.size} />
+      <SearchField />
     </HeaderDiv>
   );
 }

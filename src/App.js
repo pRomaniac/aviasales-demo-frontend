@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import React, { Component } from "react";
 import logo from "./img/logo.svg";
 /*import "./App.css"; */
@@ -5,14 +6,18 @@ import "normalize.css";
 
 import Header from "./header";
 const props = {
-title : {
-  size: "tablet",
-  src: logo,
-  className: "classImg",
-  alt: "first",
-  imgtitle: "aviasales"
-}
+  title: {
+    size: "mobile",
+    src: logo,
+    className: "classImg",
+    alt: "first",
+    imgtitle: "aviasales"
+  }
 };
+
+const Container = styled.div`
+  font-family: "Roboto", sans-serif;
+`;
 
 class App extends Component {
   render() {
@@ -28,13 +33,15 @@ class App extends Component {
       </div>
     ); */
     return (
-      <Header
-        size={props.title.size}
-        src={props.title.src}
-        imgtitle={props.title.imgtitle}
-        alt={props.title.alt}
-        className={props.title.className}
-      />
+      <Container>
+        <Header
+          size={props.title.size}
+          src={props.title.src}
+          imgtitle={props.title.imgtitle}
+          alt={props.title.alt}
+          className={props.title.className}
+        />
+      </Container>
     );
   }
 }
