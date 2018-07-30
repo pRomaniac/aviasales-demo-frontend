@@ -47,7 +47,7 @@ function Header(props) {
         className={props.className}
       />
       <Title size={props.size} />
-      <SearchField />
+      <SearchField size={props.size} />
     </HeaderDiv>
   );
 }

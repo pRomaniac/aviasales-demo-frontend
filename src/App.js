@@ -19,7 +19,24 @@ const Container = styled.div`
   font-family: "Roboto", sans-serif;
 `;
 
-class App extends Component {
+class App extends React.Component {
+  state = {
+    sizing: ["mobile", "tablet", "desktop"]
+  };
+
+  componentDidMount() {
+    console.log(this.state.sizing);
+    this.setState({ sizing: "mobile" });
+    /*       if (document.body.clientWidth >= 768) then { this.setState({sizing.tablet})};
+      if (document.body.clientWidth >= 1440) then setState({sizing:"desktop"}); */
+
+    //THIS IS NULL
+  }
+
+  //  this.setState{sizing[1]};
+  /*
+
+ */
   render() {
     /*     return (
       <div className="App">
@@ -33,9 +50,9 @@ class App extends Component {
       </div>
     ); */
     return (
-      <Container>
+      <Container className={"Contaner"}>
         <Header
-          size={props.title.size}
+          size={this.state.sizing}
           src={props.title.src}
           imgtitle={props.title.imgtitle}
           alt={props.title.alt}
