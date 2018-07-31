@@ -16,23 +16,21 @@ const HeaderDiv = styled.div`
     #02abdb 33.81%,
     #196ebd 122.26%
   );
+
   ${props =>
     props.size === "mobile" &&
     css`
-      width: 320px;
-      min-width: 320px;
+      padding-bottom: 88px;
     `};
   ${props =>
     props.size === "tablet" &&
     css`
-      width: 768px;
-      min-width: 768px;
+      padding-bottom: 122px;
     `};
   ${props =>
     props.size === "desktop" &&
     css`
-      width: 1440px;
-      min-width: 1440px;
+      padding-bottom: 254px;
     `};
 `;
 

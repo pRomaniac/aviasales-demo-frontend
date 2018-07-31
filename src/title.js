@@ -46,6 +46,7 @@ const TitleH2 = styled.h2`
   line-height: normal;
   font-size: 20px;
   text-align: center;
+  padding-bottom: 40px;
   color: #ffffff;
   ${props =>
     props.size === "desktop" &&

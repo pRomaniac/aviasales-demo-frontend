@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import React, { Component } from "react";
+import React from "react";
 import logo from "./img/logo.svg";
 /*import "./App.css"; */
 import "normalize.css";
+//import { ReactElementResize } from "react-element-resize";
 
 import Header from "./header";
 const props = {
@@ -25,18 +26,21 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.state.sizing);
-    this.setState({ sizing: "mobile" });
-    /*       if (document.body.clientWidth >= 768) then { this.setState({sizing.tablet})};
-      if (document.body.clientWidth >= 1440) then setState({sizing:"desktop"}); */
+    /*     console.log(this.state.sizing); */
+    console.log(document.body.clientWidth);
 
-    //THIS IS NULL
+    window.addEventListener("resize", this.ContainerResize(this));
+  }
+  ContainerResize() {
+    this.setState({ sizing: "mobile" });
+    if (document.body.clientWidth >= 768) {
+      this.setState({ sizing: "tablet" });
+    }
+    if (document.body.clientWidth >= 1440) {
+      this.setState({ sizing: "desktop" });
+    }
   }
 
-  //  this.setState{sizing[1]};
-  /*
-
- */
   render() {
     /*     return (
       <div className="App">
@@ -49,6 +53,7 @@ class App extends React.Component {
         </p>
       </div>
     ); */
+
     return (
       <Container className={"Contaner"}>
         <Header

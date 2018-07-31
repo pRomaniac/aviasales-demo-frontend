@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const SearchFieldContainer = styled.div`
+const SearchFieldContainer = styled.form`
   margin-left: auto;
   margin-right: auto;
   /*
@@ -30,6 +30,21 @@ const SearchFieldRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  ${props =>
+    props.size === "mobile" &&
+    css`
+      margin: 6px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      margin: 8px;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      margin: 96px;
+    `};
 `;
 
 const SearchFieldInputDiv = styled.div`
@@ -81,35 +96,35 @@ const SearchFieldInputDiv = styled.div`
     props.size === "tablet" &&
     props.searchtype === "Departure" &&
     css`
-      flex-basis: 50%;
+      flex-basis: 41.66%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "Destination" &&
     css`
-      flex-basis: 50%;
+      flex-basis: 41.66%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "DateFrom" &&
     css`
-      flex-basis: 25%;
+      flex-basis: 20.83%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "DateTo" &&
     css`
-      flex-basis: 25%;
+      flex-basis: 20.83%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "Quantity" &&
     css`
-      flex-basis: 50%;
+      flex-basis: 41.66%;
     `};
   ${(
     props //desktop state
@@ -117,35 +132,35 @@ const SearchFieldInputDiv = styled.div`
     props.size === "desktop" &&
     props.searchtype === "Departure" &&
     css`
-      flex-basis: 25%;
+      flex-basis: 18.1%;
     `};
 
   ${props =>
     props.size === "desktop" &&
     props.searchtype === "Destination" &&
     css`
-      flex-basis: 25%;
+      flex-basis: 18.1%;
     `};
 
   ${props =>
     props.size === "desktop" &&
     props.searchtype === "DateFrom" &&
     css`
-      flex-basis: 12.5%;
+      flex-basis: 14.5%;
     `};
 
   ${props =>
     props.size === "desktop" &&
     props.searchtype === "DateTo" &&
     css`
-      flex-basis: 12.5%;
+      flex-basis: 14.5%;
     `};
 
   ${props =>
     props.size === "desktop" &&
     props.searchtype === "Quantity" &&
     css`
-      flex-basis: 25%;
+      flex-basis: 18.1%;
     `};
 `;
 
@@ -282,6 +297,35 @@ const SearchInput = styled.input`
     Quantity: {}
   }
 ]; */
+const SearchButtonDiv = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  width: 308px;
+`;
+
+const SearchButton = styled.button`
+  width: 308px;
+  background: #ff9241;
+  border-radius: 4px;
+  ${props =>
+    props.size === "mobile" &&
+    css`
+      margin-top: 16px;
+      height: 56px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      margin-top: 32px;
+      height: 64px;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      margin-top: 48px;
+      height: 64px;
+    `};
+`;
 
 const SearchFields = [
   "Departure",
@@ -294,7 +338,7 @@ const SearchFields = [
 function SearchField(props) {
   return (
     <SearchFieldContainer size={props.size}>
-      <SearchFieldRow>
+      <SearchFieldRow size={props.size}>
         {SearchFields.map(number => (
           <SearchFieldInputDiv
             key={number.toString()}
@@ -311,6 +355,9 @@ function SearchField(props) {
           </SearchFieldInputDiv>
         ))}
       </SearchFieldRow>
+      <SearchButtonDiv size={props.size}>
+        <SearchButton size={props.size} />
+      </SearchButtonDiv>
     </SearchFieldContainer>
   );
 }
