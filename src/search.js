@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
+import aero from "./img/aero.svg";
+import arrows from "./arrow.svg";
 const SearchFieldContainer = styled.form`
   margin-left: auto;
   margin-right: auto;
@@ -304,9 +305,18 @@ const SearchButtonDiv = styled.div`
 `;
 
 const SearchButton = styled.button`
+  box-sizing: border-box;
   width: 308px;
   background: #ff9241;
   border-radius: 4px;
+  border: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 24px;
+  color: #ffffff;
+
   ${props =>
     props.size === "mobile" &&
     css`
@@ -327,6 +337,25 @@ const SearchButton = styled.button`
     `};
 `;
 
+const AeroImg = styled.img`
+  vertical-align: middle;
+  ${props =>
+    props.size === "mobile" &&
+    css`
+      margin-left: 16px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      margin-left: 24px;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      margin-left: 24px;
+    `};
+`;
+
 const SearchFields = [
   "Departure",
   "Destination",
@@ -334,6 +363,32 @@ const SearchFields = [
   "DateTo",
   "Quantity"
 ];
+
+const SearchFieldDecor = styled.div`
+
+  display: flex;
+  /* width: 100%; */
+  margin-top: -38px;
+  z-index: 2;
+  margin-bottom: 19px;
+
+  justify-content: space-between;
+`;
+
+const SearchFieldInputDivText = styled.div`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 16px;
+  margin-left: 16px;
+  /* text-align: center; */
+  color: #4a4a4a;
+`;
+
+const SearchFieldInputDivImg = styled.img`
+  margin-right: 16px;
+`;
 
 function SearchField(props) {
   return (
@@ -345,18 +400,24 @@ function SearchField(props) {
             size={props.size}
             searchtype={number.toString()}
           >
-            <SearchInputWrapper>
+            <SearchInputWrapper className={number.toString() + " " + props.size} >
               <SearchInput
                 className={number.toString() + " " + props.size}
                 size={props.size}
                 searchtype={number.toString()}
               />
+              <SearchFieldDecor className={number.toString() + " " + props.size}>
+                <SearchFieldInputDivText className={number.toString() + " " + props.size}>Москва</SearchFieldInputDivText>
+                <SearchFieldInputDivImg className={number.toString() + " " + props.size} src={arrows} />
+              </SearchFieldDecor>
             </SearchInputWrapper>
           </SearchFieldInputDiv>
         ))}
       </SearchFieldRow>
       <SearchButtonDiv size={props.size}>
-        <SearchButton size={props.size} />
+        <SearchButton size={props.size}>
+          Найти билеты <AeroImg src={aero} size={props.size} />
+        </SearchButton>
       </SearchButtonDiv>
     </SearchFieldContainer>
   );
