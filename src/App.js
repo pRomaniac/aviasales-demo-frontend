@@ -29,7 +29,7 @@ class App extends React.Component {
     /*     console.log(this.state.sizing); */
     console.log(document.body.clientWidth);
 
-    window.addEventListener("resize", this.ContainerResize(this));
+    window.addEventListener("resize", this.ContainerResize.bind(this));
   }
   ContainerResize() {
     this.setState({ sizing: "mobile" });
@@ -39,6 +39,9 @@ class App extends React.Component {
     if (document.body.clientWidth >= 1440) {
       this.setState({ sizing: "desktop" });
     }
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 
   render() {

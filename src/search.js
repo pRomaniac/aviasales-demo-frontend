@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import aero from "./img/aero.svg";
 import arrows from "./arrow.svg";
+
 const SearchFieldContainer = styled.form`
   margin-left: auto;
   margin-right: auto;
@@ -365,7 +366,6 @@ const SearchFields = [
 ];
 
 const SearchFieldDecor = styled.div`
-
   display: flex;
   /* width: 100%; */
   margin-top: -38px;
@@ -400,15 +400,26 @@ function SearchField(props) {
             size={props.size}
             searchtype={number.toString()}
           >
-            <SearchInputWrapper className={number.toString() + " " + props.size} >
+            <SearchInputWrapper
+              className={number.toString() + " " + props.size}
+            >
               <SearchInput
                 className={number.toString() + " " + props.size}
                 size={props.size}
                 searchtype={number.toString()}
               />
-              <SearchFieldDecor className={number.toString() + " " + props.size}>
-                <SearchFieldInputDivText className={number.toString() + " " + props.size}>Москва</SearchFieldInputDivText>
-                <SearchFieldInputDivImg className={number.toString() + " " + props.size} src={arrows} />
+              <SearchFieldDecor
+                className={number.toString() + " " + props.size}
+              >
+                <SearchFieldInputDivText
+                  className={number.toString() + " " + props.size}
+                >
+                  Москва
+                </SearchFieldInputDivText>
+                <SearchFieldInputDivImg
+                  className={number.toString() + " " + props.size}
+                  src={arrows}
+                />
               </SearchFieldDecor>
             </SearchInputWrapper>
           </SearchFieldInputDiv>
