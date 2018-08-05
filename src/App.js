@@ -25,12 +25,6 @@ class App extends React.Component {
     sizing: ["mobile", "tablet", "desktop"]
   };
 
-  componentDidMount() {
-    /*     console.log(this.state.sizing); */
-    console.log(document.body.clientWidth);
-
-    window.addEventListener("resize", this.ContainerResize.bind(this));
-  }
   ContainerResize() {
     this.setState({ sizing: "mobile" });
     if (document.body.clientWidth >= 768) {
@@ -39,8 +33,16 @@ class App extends React.Component {
     if (document.body.clientWidth >= 1440) {
       this.setState({ sizing: "desktop" });
     }
+    //console.log(document.body.clientWidth);
+  }
+  componentDidMount() {
+    /*     console.log(this.state.sizing); */
+    //console.log(document.body.clientWidth);
+    window.addEventListener("load", this.ContainerResize.bind(this));
+    window.addEventListener("resize", this.ContainerResize.bind(this));
   }
   componentWillUnmount() {
+    window.removeEventListener("load", this.updateDimensions.bind(this));
     window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 
