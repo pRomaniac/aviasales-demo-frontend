@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import Title from "./title";
 import Logo from "./logo";
 import SearchField from "./search";
+
 const HeaderDiv = styled.div`
   margin-left: auto;
   margin-right: auto;

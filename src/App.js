@@ -5,7 +5,9 @@ import logo from "./img/logo.svg";
 import "normalize.css";
 //import { ReactElementResize } from "react-element-resize";
 
-import Header from "./header";
+import Header from "./Header/header";
+import TopDestinations from "./topDestinations/TopDestinations";
+
 const props = {
   title: {
     size: "mobile",
@@ -17,7 +19,7 @@ const props = {
 };
 
 const Container = styled.div`
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
 `;
 
 class App extends React.Component {
@@ -68,6 +70,7 @@ class App extends React.Component {
           alt={props.title.alt}
           className={props.title.className}
         />
+        <TopDestinations size={this.state.sizing} />
       </Container>
     );
   }
