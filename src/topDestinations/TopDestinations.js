@@ -4,6 +4,8 @@ import styled /* , { css }  */ from "styled-components";
 import Compas from "./Compas";
 import PopDestinations from "./PopularDestinations";
 import CategoriesDestinations from "./Navigations";
+import TopDestinationsCards from "./TopDestinationsCards";
+
 const TopDestinationsDiv = styled.div`
   background: #f8fcff;
 `;
@@ -14,6 +16,7 @@ function TopDestinations(props) {
       <Compas size={props.size} />
       <PopDestinations size={props.size} />
       <CategoriesDestinations size={props.size} />
+      <TopDestinationsCards size={props.size} />
     </TopDestinationsDiv>
   );
 }

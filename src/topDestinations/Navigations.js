@@ -54,7 +54,6 @@ const NavCategDiv = styled.div`
     css`
       flex-basis: 8.33%;
     `};
-    
 `;
 
 const NavCategLink = styled.a`
