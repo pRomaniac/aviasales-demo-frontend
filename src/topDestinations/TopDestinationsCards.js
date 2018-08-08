@@ -162,7 +162,8 @@ const CardContainer = styled.div`
   ${props =>
     props.size === "desktop" &&
     css`
-      margin: 96px;
+      margin-left: 96px;
+      margin-right: 96px;
     `};
 `;
 
