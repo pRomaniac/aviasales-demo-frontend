@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+//import Router from "react-router";
 import AnyWhere from "../img/AnyWhere.svg";
 import SunAndBeach from "../img/SunAndBeach.svg";
 import CultureAndHistory from "../img/CultureAndHistory.svg";
@@ -34,12 +35,11 @@ const NavigatorPoints = [
 ];
 
 const NavCategDiv = styled.div`
-    ${props =>
+  ${"" /*     ${props =>
       props.Clicked === true &&
       css`
         border-bottom: 1px #5c5c5c solid;
-      `};}
-  ${props =>
+      `};} */} ${props =>
     props.size === "mobile" &&
     css`
       flex-basis: 33%;
@@ -60,11 +60,16 @@ const NavCategLink = styled.a`
   text-decoration: none;
 `;
 
+function NavCategLinkPath(path) {
+  if (window.location.pathname.includes(path)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 const NavImg = styled.img`
   margin: auto;
   display: block;
-  width: 48px;
-  height: 48px;
 `;
 const NavTxt = styled.p`
   display: block;
@@ -81,66 +86,104 @@ const NavTxt = styled.p`
     props.Clicked === true &&
     css`
       color: #5c5c5c;
-      border-bottom: 1px 00ace2 solid;
+      border-bottom: 1px solid #00ace2;
     `};}
 `;
 
 function NavImgCateg(props) {
-  console.log(props.Categ);
   if (props.Categ === "AnyWhere") {
-    return <NavImg src={AnyWhere} Clicked={true} />;
+    return <NavImg src={AnyWhere} Clicked={NavCategLinkPath(props.Categ)} />;
   } else if (props.Categ === "SunAndBeach") {
-    return <NavImg src={SunAndBeach} Clicked={false} />;
+    return <NavImg src={SunAndBeach} Clicked={NavCategLinkPath(props.Categ)} />;
   } else if (props.Categ === "ShoppingAndCity") {
-    return <NavImg src={ShoppingAndCity} Clicked={false} />;
+    return (
+      <NavImg src={ShoppingAndCity} Clicked={NavCategLinkPath(props.Categ)} />
+    );
   } else if (props.Categ === "CultureAndHistory") {
-    return <NavImg src={CultureAndHistory} Clicked={false} />;
+    return (
+      <NavImg src={CultureAndHistory} Clicked={NavCategLinkPath(props.Categ)} />
+    );
   } else if (props.Categ === "NightLife") {
-    return <NavImg src={NightLife} Clicked={false} />;
+    return <NavImg src={NightLife} Clicked={NavCategLinkPath(props.Categ)} />;
   } else if (props.Categ === "VacationWithChildren") {
-    return <NavImg src={VacationWithChildren} Clicked={false} />;
+    return (
+      <NavImg
+        src={VacationWithChildren}
+        Clicked={NavCategLinkPath(props.Categ)}
+      />
+    );
   } else return "";
 }
 
 function NavTxtCateg(props) {
-  console.log(props.Categ);
   if (props.Categ === "AnyWhere") {
-    return <NavTxt children="Куда угодно" Clicked={true} />;
+    return (
+      <NavTxt children="Куда угодно" Clicked={NavCategLinkPath(props.Categ)} />
+    );
   } else if (props.Categ === "SunAndBeach") {
-    return <NavTxt children="Солнце и море" Clicked={false} />;
+    return (
+      <NavTxt
+        children="Солнце и море"
+        Clicked={NavCategLinkPath(props.Categ)}
+      />
+    );
   } else if (props.Categ === "ShoppingAndCity") {
-    return <NavTxt children="Шоппинг, город" Clicked={false} />;
+    return (
+      <NavTxt
+        children="Шоппинг, город"
+        Clicked={NavCategLinkPath(props.Categ)}
+      />
+    );
   } else if (props.Categ === "CultureAndHistory") {
-    return <NavTxt children="Культура, история" Clicked={false} />;
+    return (
+      <NavTxt
+        children="Культура, история"
+        Clicked={NavCategLinkPath(props.Categ)}
+      />
+    );
   } else if (props.Categ === "NightLife") {
-    return <NavTxt children="Ночная жизнь" Clicked={false} />;
+    return (
+      <NavTxt children="Ночная жизнь" Clicked={NavCategLinkPath(props.Categ)} />
+    );
   } else if (props.Categ === "VacationWithChildren") {
-    return <NavTxt children="Отдых с детьми" Clicked={false} />;
+    return (
+      <NavTxt
+        children="Отдых с детьми"
+        Clicked={NavCategLinkPath(props.Categ)}
+      />
+    );
   } else return "";
 }
 
 function NavCateg(props) {
-  console.log(props.Categ);
   if (props.Categ === "AnyWhere") {
     return (
       <NavCategDiv
         size={props.size}
         Categ={props.Categ}
         className={props.Categ}
-        Clicked={true}
+        path={props.Categ}
+        Clicked={NavCategLinkPath(props.Categ)}
       >
-        <NavCategLink href={props.Categ} size={props.size} Clicked={true}>
+        <NavCategLink
+          href={props.Categ}
+          size={props.size}
+          path={props.Categ}
+          Clicked={NavCategLinkPath(props.Categ)}
+        >
           <NavImgCateg
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
-            Clicked={props.Clicked}
+            path={props.Categ}
+            Clicked={NavCategLinkPath(props.Categ)}
           />
           <NavTxtCateg
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
-            Clicked={props.Clicked}
+            path={props.Categ}
+            Clicked={NavCategLinkPath(props.Categ)}
           >
             {props.children}
           </NavTxtCateg>
@@ -153,20 +196,28 @@ function NavCateg(props) {
         size={props.size}
         Categ={props.Categ}
         className={props.Categ}
-        Clicked={false}
+        path={props.Categ}
+        Clicked={NavCategLinkPath(props.Categ)}
       >
-        <NavCategLink href={props.Categ} size={props.size} Clicked={false}>
+        <NavCategLink
+          href={props.Categ}
+          size={props.size}
+          path={props.Categ}
+          Clicked={NavCategLinkPath(props.Categ)}
+        >
           <NavImgCateg
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
-            Clicked={props.Clicked}
+            path={props.Categ}
+            Clicked={NavCategLinkPath(props.Categ)}
           />
           <NavTxtCateg
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
-            Clicked={props.Clicked}
+            path={props.Categ}
+            Clicked={NavCategLinkPath(props.Categ)}
           >
             {props.children}
           </NavTxtCateg>
@@ -185,6 +236,8 @@ function NavigatorCategories(props) {
             size={props.size}
             key={Number.toString()}
             Categ={Number.toString()}
+            /*            path={Number.toString()}
+            Clicked={NavCategLinkPath(props.Categ)}*/
           />
         ))}
       </NavigatorRow>

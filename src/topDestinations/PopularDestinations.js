@@ -29,7 +29,6 @@ const PopDest = styled.div`
     `};
 `;
 const DepartureCity = "Москва";
-console.log(DepartureCity);
 
 const DepartureCityDiv = styled.a`
   color: #00ace2;
