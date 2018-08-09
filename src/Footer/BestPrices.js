@@ -1,6 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import calend_icon from "../img/Calend_icon.svg";
+import flag_ru from "../img/ru_flag.svg";
+import flag_am from "../img/flag-am.svg";
+import flag_md from "../img/flag-md.svg";
 
 const BestPrices = [
   {
@@ -71,6 +74,10 @@ const BestPrices = [
         MinPrice: "10800"
       },
       {
+        Departure: "из Краснодара",
+        MinPrice: "11741"
+      },
+      {
         Departure: "из Сургута",
         MinPrice: "16277"
       },
@@ -82,12 +89,21 @@ const BestPrices = [
   }
 ];
 
+function TopDestCardStringPrice(val) {
+  return val.replace(/(\d)(?=(\d{3})+(\D|$))/g, "$1 ");
+}
+
 function WithoutNull(val) {
   if (val) {
     return val;
   } else return "";
 }
 
+function WithoutNullComments(val) {
+  if (val) {
+    return "(" + val + ")";
+  } else return "";
+}
 const BestPricesDiv = styled.div``;
 
 const Calend = styled.div`
@@ -141,26 +157,187 @@ const CalendHeader = styled.h2`
 
 const HeaderText = "Лучшие цены на авиабилеты за последний месяц";
 
-const DepartCity = styled.div``;
+const DepartCity = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  ${props =>
+    props.size === "mobile" &&
+    css`
+      margin-left: 6px;
+      margin-right: 6px;
+      flex-wrap: wrap;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      justify-content: space-between;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      justify-content: space-between;
+    `};
+`;
 
-const DestCity = styled.div``;
+const DepartCityWrapper = styled.div`
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  ${props =>
+    props.size === "mobile" &&
+    css`
+      margin-left: 6px;
+      margin-right: 6px;
+      flex-wrap: wrap;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      margin-left: 72px;
+      margin-right: 72px;
+      flex-wrap: wrap;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      justify-content: center;
+    `};
+`;
+
+const DestCity = styled.div`
+      padding-left: 35px;
+      padding-right: 35px;
+ ${props =>
+   props.size === "mobile" &&
+   css`
+     padding-left: 0px;
+     padding-right: 0px;
+     padding-top: 24px;
+     padding-bottom: 24px;
+     flex-basis: 100%;
+   `};
+  ${props =>
+    props.size === "tablet" &&
+    css`
+      padding-left: 0px;
+      padding-right: 0px;
+
+      padding-top: 24px;
+      padding-bottom: 24px;
+      flex-basis: 100%;
+    `};*
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      padding-left: 35px;
+      padding-right: 35px;
+      flex-basis: 24%;
+    `};
+
+      ${props =>
+        props.size === "desktop" &&
+        !props.islast &&
+        css`
+          border-right: 1px dashed #afbec6;
+        `};
+        ${props =>
+          !(props.size === "desktop") &&
+          !props.islast &&
+          css`
+            border-bottom: 1px dashed #afbec6;
+          `};
+`;
 
 function BestPricesCardDeptEnum(props) {
   {
     //{DestCards.map(number => CityDiv(number, props))}
-    return BestPrices.map(Depart => BestPricesCardEnum(props, Depart));
+    return (
+      <DepartCityWrapper size={props.size} className="DepartCityWrapper">
+        {BestPrices.map(Depart => BestPricesCardEnum(props, Depart))}
+      </DepartCityWrapper>
+    );
   }
 }
 
+const IconImg = styled.img`
+  display: inline;
+`;
+
+function CountryFlag(props) {
+  var icon = "";
+  switch (props.country) {
+    case "Крым":
+      icon = flag_ru;
+      break;
+    case "Армения":
+      icon = flag_am;
+      break;
+    case "Молдавия":
+      icon = flag_md;
+      break;
+  }
+
+  if (icon === "") {
+    return "";
+  } else return <IconImg src={icon} size={props.size} />;
+}
+
+const DepartWrapper = styled.div`
+  display: flex;
+`;
+
+const DepartCityDiv = styled.div`
+  display: block;
+`;
+
+const DepartCityTextDiv = styled.div`
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 32px;
+  font-size: 22px;
+
+  color: #5b5b5c;
+`;
+
+const DepartCountryDiv = styled.div`
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 12px;
+
+  color: #a0b0b9;
+`;
+
 function BestPricesCardEnum(props, number) {
+  var islast = false;
+  if (BestPrices[BestPrices.length - 1].Destination === number.Destination) {
+    islast = true;
+  }
+
   {
     return (
-      <DestCity key={number.Destination}>
-        {WithoutNull(number.Destination) +
-          "  " +
-          WithoutNull(number.Comment) +
-          " " +
-          WithoutNull(number.Country)}
+      <DestCity
+        className="DestCity"
+        key={number.Destination}
+        size={props.size}
+        islast={islast}
+      >
+        <DepartWrapper size={props.size}>
+          <CountryFlag country={number.Country} />
+          <DepartCityDiv>
+            <DepartCityTextDiv>
+              {WithoutNull(number.Destination) +
+                "  " +
+                WithoutNullComments(number.Comment)}
+            </DepartCityTextDiv>
+            <DepartCountryDiv>{WithoutNull(number.Country)}</DepartCountryDiv>
+          </DepartCityDiv>
+        </DepartWrapper>
         {number.Prices.map(Depart => DeptCard(props, Depart))}
       </DestCity>
     );
@@ -170,10 +347,28 @@ function BestPricesCardEnum(props, number) {
   }
 }
 
+const DepartCityName = styled.div`
+  display: inline;
+`;
+const DepartCityPrice = styled.div`
+  display: inline;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 16px;
+
+  color: #00bae8;
+`;
 function DeptCard(props, number) {
   return (
-    <DepartCity key={number.Departure}>
-      {WithoutNull(number.Departure) + " " + WithoutNull(number.MinPrice)}
+    <DepartCity className="DepartCity" key={number.Departure} size={props.size}>
+      <DepartCityName size={props.size}>
+        {WithoutNull(number.Departure)}
+      </DepartCityName>
+      <DepartCityPrice size={props.size}>
+        {TopDestCardStringPrice(WithoutNull(number.MinPrice)) + " ₽"}
+      </DepartCityPrice>
     </DepartCity>
   );
 }

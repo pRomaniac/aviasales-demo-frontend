@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import imgsize from "image-size";
 //import Router from "react-router";
 import AnyWhere from "../img/AnyWhere.svg";
 import SunAndBeach from "../img/SunAndBeach.svg";
@@ -7,6 +8,8 @@ import CultureAndHistory from "../img/CultureAndHistory.svg";
 import ShoppingAndCity from "../img/ShoppingAndCity.svg";
 import NightLife from "../img/NightLife.svg";
 import VacationWithChildren from "../img/VacationWithChildren.svg";
+
+var awidth;
 
 const NavigatorContainer = styled.div`
   margin-left: auto;
@@ -35,6 +38,7 @@ const NavigatorPoints = [
 ];
 
 const NavCategDiv = styled.div`
+  max-width: 56px;
   ${"" /*     ${props =>
       props.Clicked === true &&
       css`
@@ -43,16 +47,22 @@ const NavCategDiv = styled.div`
     props.size === "mobile" &&
     css`
       flex-basis: 33%;
+      margin-left: 20px;
+      margin-right: 20px;
     `};
   ${props =>
     props.size === "tablet" &&
     css`
       flex-basis: 14.33%;
+      margin-left: 28px;
+      margin-right: 28px;
     `};
   ${props =>
     props.size === "desktop" &&
     css`
       flex-basis: 8.33%;
+      margin-left: 28px;
+      margin-right: 28px;
     `};
 `;
 
@@ -90,12 +100,49 @@ const NavTxt = styled.p`
     `};}
 `;
 
+function widthget(src) {
+  const Img = new Image();
+  Img.src = AnyWhere.toString();
+  if (src === "AnyWhere") {
+    const Img = new Image();
+    Img.src = AnyWhere.toString();
+    awidth = Img.width;
+  } else if (src === "SunAndBeach") {
+    const Img = new Image();
+    Img.src = SunAndBeach.toString();
+    awidth = Img.width;
+  } else if (src === "ShoppingAndCity") {
+    const Img = new Image();
+    Img.src = ShoppingAndCity.toString();
+    awidth = Img.width;
+  } else if (src === "CultureAndHistory") {
+    const Img = new Image();
+    Img.src = CultureAndHistory.toString();
+    awidth = Img.width;
+    awidth = Img.width;
+  } else if (src === "NightLife") {
+    const Img = new Image();
+    Img.src = NightLife.toString();
+    awidth = Img.width;
+  } else if (src === "VacationWithChildren") {
+    const Img = new Image();
+    Img.src = VacationWithChildren.toString();
+    awidth = Img.width;
+  } else {
+    awidth = 0;
+  }
+  return awidth;
+}
+
 function NavImgCateg(props) {
   if (props.Categ === "AnyWhere") {
+    awidth = AnyWhere.clientWidth;
     return <NavImg src={AnyWhere} Clicked={NavCategLinkPath(props.Categ)} />;
   } else if (props.Categ === "SunAndBeach") {
+    awidth = SunAndBeach.clientWidth;
     return <NavImg src={SunAndBeach} Clicked={NavCategLinkPath(props.Categ)} />;
   } else if (props.Categ === "ShoppingAndCity") {
+    awidth = ShoppingAndCity.clientWidth;
     return (
       <NavImg src={ShoppingAndCity} Clicked={NavCategLinkPath(props.Categ)} />
     );
@@ -137,7 +184,7 @@ function NavTxtCateg(props) {
   } else if (props.Categ === "CultureAndHistory") {
     return (
       <NavTxt
-        children="Культура, история"
+        children="Культура и история"
         Clicked={NavCategLinkPath(props.Categ)}
       />
     );
@@ -159,6 +206,7 @@ function NavCateg(props) {
   if (props.Categ === "AnyWhere") {
     return (
       <NavCategDiv
+        width={props.awidth}
         size={props.size}
         Categ={props.Categ}
         className={props.Categ}
@@ -166,12 +214,14 @@ function NavCateg(props) {
         Clicked={NavCategLinkPath(props.Categ)}
       >
         <NavCategLink
+          width={props.awidth}
           href={props.Categ}
           size={props.size}
           path={props.Categ}
           Clicked={NavCategLinkPath(props.Categ)}
         >
           <NavImgCateg
+            width={props.awidth}
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
@@ -179,6 +229,7 @@ function NavCateg(props) {
             Clicked={NavCategLinkPath(props.Categ)}
           />
           <NavTxtCateg
+            width={props.awidth}
             size={props.size}
             Categ={props.Categ}
             className={props.Categ}
@@ -232,6 +283,7 @@ function NavigatorCategories(props) {
       <NavigatorRow size={props.size}>
         {NavigatorPoints.map(Number => (
           <NavCateg
+            width={widthget(Number.toString())}
             className={Number.toString()}
             size={props.size}
             key={Number.toString()}

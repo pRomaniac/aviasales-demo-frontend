@@ -7,7 +7,7 @@ import "normalize.css";
 
 import Header from "./Header/header";
 import TopDestinations from "./topDestinations/TopDestinations";
-import BestPrices from "./Footer/BestPrices";
+import Footer from "./Footer/Footer";
 const props = {
   title: {
     size: "mobile",
@@ -71,7 +71,7 @@ class App extends React.Component {
           className={props.title.className}
         />
         <TopDestinations size={this.state.sizing} />
-        <BestPrices size={this.state.sizing} />
+        <Footer size={this.state.sizing} />
       </Container>
     );
   }

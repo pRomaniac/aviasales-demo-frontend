@@ -195,14 +195,15 @@ const CityNameTexts = styled.div`
   flex-wrap: wrap;
   margin-top: 12px;
   padding-right: 16px;
+  padding-left: 16px;
   justify-content: space-between;
 
   ${props =>
     !(props.size === "mobile") &&
     css`
       width: 100%;
-      padding-right: 24px;
-      ${"" /* padding-left: 24px; */};
+      padding-right: 16px;
+      padding-left: 16px;
     `};
 `;
 
