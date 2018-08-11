@@ -11,6 +11,7 @@ import Reklam from "./Reklam/AllReklam";
 import Blogs from "./MiniBlogs/Blogs";
 import PhonesReklam from "./MiniBlogs/MobileReklam";
 import SiteMap from "./MiniBlogs/Listings";
+import Footer from "./Footer/Footer";
 const props = {
   title: {
     size: "mobile",
@@ -78,6 +79,7 @@ class App extends React.Component {
         <Blogs size={this.state.sizing} />
         <PhonesReklam size={this.state.sizing} />
         <SiteMap size={this.state.sizing} />
+        <Footer size={this.state.sizing} />
       </Container>
     );
   }
