@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import imgsize from "image-size";
 //import Router from "react-router";
 import AnyWhere from "../img/AnyWhere.svg";
 import SunAndBeach from "../img/SunAndBeach.svg";

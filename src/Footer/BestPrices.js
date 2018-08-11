@@ -250,14 +250,12 @@ const DestCity = styled.div`
 `;
 
 function BestPricesCardDeptEnum(props) {
-  {
-    //{DestCards.map(number => CityDiv(number, props))}
-    return (
-      <DepartCityWrapper size={props.size} className="DepartCityWrapper">
-        {BestPrices.map(Depart => BestPricesCardEnum(props, Depart))}
-      </DepartCityWrapper>
-    );
-  }
+  //{DestCards.map(number => CityDiv(number, props))}
+  return (
+    <DepartCityWrapper size={props.size} className="DepartCityWrapper">
+      {BestPrices.map(Depart => BestPricesCardEnum(props, Depart))}
+    </DepartCityWrapper>
+  );
 }
 
 const IconImg = styled.img`
@@ -265,7 +263,7 @@ const IconImg = styled.img`
 `;
 
 function CountryFlag(props) {
-  var icon = "";
+  var icon;
   switch (props.country) {
     case "Крым":
       icon = flag_ru;
@@ -276,6 +274,8 @@ function CountryFlag(props) {
     case "Молдавия":
       icon = flag_md;
       break;
+    default:
+      icon = "";
   }
 
   if (icon === "") {
@@ -319,32 +319,30 @@ function BestPricesCardEnum(props, number) {
     islast = true;
   }
 
-  {
-    return (
-      <DestCity
-        className="DestCity"
-        key={number.Destination}
-        size={props.size}
-        islast={islast}
-      >
-        <DepartWrapper size={props.size}>
-          <CountryFlag country={number.Country} />
-          <DepartCityDiv>
-            <DepartCityTextDiv>
-              {WithoutNull(number.Destination) +
-                "  " +
-                WithoutNullComments(number.Comment)}
-            </DepartCityTextDiv>
-            <DepartCountryDiv>{WithoutNull(number.Country)}</DepartCountryDiv>
-          </DepartCityDiv>
-        </DepartWrapper>
-        {number.Prices.map(Depart => DeptCard(props, Depart))}
-      </DestCity>
-    );
-    //DebugConsole(number.Destination);
-    //number.Prices.map(Depart => DebugConsole(Depart.Departure));
-    //return "";
-  }
+  return (
+    <DestCity
+      className="DestCity"
+      key={number.Destination}
+      size={props.size}
+      islast={islast}
+    >
+      <DepartWrapper size={props.size}>
+        <CountryFlag country={number.Country} />
+        <DepartCityDiv>
+          <DepartCityTextDiv>
+            {WithoutNull(number.Destination) +
+              "  " +
+              WithoutNullComments(number.Comment)}
+          </DepartCityTextDiv>
+          <DepartCountryDiv>{WithoutNull(number.Country)}</DepartCountryDiv>
+        </DepartCityDiv>
+      </DepartWrapper>
+      {number.Prices.map(Depart => DeptCard(props, Depart))}
+    </DestCity>
+  );
+  //DebugConsole(number.Destination);
+  //number.Prices.map(Depart => DebugConsole(Depart.Departure));
+  //return "";
 }
 
 const DepartCityName = styled.div`
@@ -373,13 +371,13 @@ function DeptCard(props, number) {
   );
 }
 
-function DebugConsole(name) {
+/* function DebugConsole(name) {
   return console.log(name);
 }
 
 function Debug(name) {
   return { name };
-}
+} */
 
 function Footer(props) {
   return (

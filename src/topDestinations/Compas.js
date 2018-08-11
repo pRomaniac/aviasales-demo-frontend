@@ -20,8 +20,6 @@ const CompasImg = styled.img`
   margin-right: auto;
 `;
 
-const co = { compas };
-
 function CompasDiv(props) {
   return (
     <Compas props={props}>
