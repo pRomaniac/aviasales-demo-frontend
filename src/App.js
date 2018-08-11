@@ -9,6 +9,8 @@ import Header from "./Header/header";
 import TopDestinations from "./topDestinations/TopDestinations";
 import Reklam from "./Reklam/AllReklam";
 import Blogs from "./MiniBlogs/Blogs";
+import PhonesReklam from "./MiniBlogs/MobileReklam";
+import SiteMap from "./MiniBlogs/Listings";
 const props = {
   title: {
     size: "mobile",
@@ -74,6 +76,8 @@ class App extends React.Component {
         <TopDestinations size={this.state.sizing} />
         <Reklam size={this.state.sizing} />
         <Blogs size={this.state.sizing} />
+        <PhonesReklam size={this.state.sizing} />
+        <SiteMap size={this.state.sizing} />
       </Container>
     );
   }

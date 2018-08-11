@@ -319,7 +319,7 @@ function Reklam(props) {
               </ReklamLogos>
               {/* <NavDotDiv>{DotCheckedRender(props, 3, 1)}</NavDotDiv> */}
               <NavDotDiv>
-                <NavDot size={props.size} navdotchecked={false} onClick />
+                <NavDot size={props.size} navdotchecked={false} />
                 <NavDot size={props.size} navdotchecked={true} />
                 <NavDot size={props.size} navdotchecked={true} />
               </NavDotDiv>{" "}
