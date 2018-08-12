@@ -129,6 +129,7 @@ const StoresImg = styled.img`
   ${props =>
     props.size === "mobile" &&
     css`
+      display: block;
       margin-right: auto;
       margin-left: auto;
     `};

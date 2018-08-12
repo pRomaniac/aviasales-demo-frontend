@@ -107,7 +107,7 @@ const SearchFields = [
 
 function SearchField(props) {
   return (
-    <SearchFieldContainer size={props.size}>
+    <SearchFieldContainer size={props.size} action="/Search">
       <SearchFieldRow size={props.size}>
         {SearchFields.map(number => (
           <SearchFieldInputDiv
@@ -130,7 +130,7 @@ function SearchField(props) {
         ))}
       </SearchFieldRow>
       <SearchButtonDiv size={props.size}>
-        <SearchButton size={props.size}>
+        <SearchButton size={props.size} onClick="location.href='/Search'">
           Найти билеты <AeroImg src={aero} size={props.size} />
         </SearchButton>
       </SearchButtonDiv>

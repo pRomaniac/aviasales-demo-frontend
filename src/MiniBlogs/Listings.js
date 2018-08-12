@@ -156,7 +156,7 @@ const Link = styled.a`
 
 function ContentRender(props, text) {
   return (
-    <ContentDiv size={props.size}>
+    <ContentDiv size={props.size} key={Object.keys(text).toString()}>
       {TitleRender(props, Object.keys(text).toString())}
       <ContentText size={props.size}>
         {text[Object.keys(text)].map(obj => TextRender(props, obj))}
@@ -180,7 +180,11 @@ function LinkRender(props, text) {
 }
 
 function TextRender(props, text) {
-  return <Text size={props.size}>{text.toString()}</Text>;
+  return (
+    <Text size={props.size} key={text.toString()}>
+      {text.toString()}
+    </Text>
+  );
 }
 
 function TitleRender(props, text) {
@@ -191,25 +195,12 @@ function TitleRender(props, text) {
   );
 }
 
-function Enum(Cont) {
-  return Cont[Object.keys(Cont)].map(obj => console.log(obj.toString()));
-}
-
 function mmap(props) {
-  Content.map(cont => console.log(Object.keys(cont).toString()));
-  console.log("_______________");
-  Content.map(cont => console.log(Enum(cont)));
   return (
     <WrapperDiv size={props.size}>
       {Content.map(cont => ContentRender(props, cont))}
     </WrapperDiv>
   );
-
-  {
-    /* <WrapperDiv>
-    {Content.map()}
-   </WrapperDiv>; */
-  }
 }
 
 export default mmap;

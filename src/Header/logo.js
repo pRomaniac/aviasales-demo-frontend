@@ -22,6 +22,8 @@ const LogoWrapper = styled.div`
     `};
 `;
 
+const HeaderA = styled.a``;
+
 const Img = styled.img`
   display: inline-block;
   vertical-align: middle;
@@ -61,19 +63,25 @@ function Logo(props) {
   if (props.size !== "mobile") {
     return (
       <LogoWrapper size={props.size}>
-        <Img
-          src={props.src}
-          alt={props.alt}
-          className={props.className}
-          size={props.size}
-        />
-        <ImgTitle>{props.imgtitle}</ImgTitle>
+        <HeaderA size={props.size} href="/">
+          <Img
+            src={props.src}
+            alt={props.alt}
+            className={props.className}
+            size={props.size}
+          />
+
+          <ImgTitle>{props.imgtitle}</ImgTitle>
+        </HeaderA>
       </LogoWrapper>
     );
   } else {
     return (
       <LogoWrapper size={props.size}>
-        <Img src={props.src} alt={props.alt} className={props.className} />
+        {" "}
+        <HeaderA size={props.size} href="/">
+          <Img src={props.src} alt={props.alt} className={props.className} />
+        </HeaderA>
       </LogoWrapper>
     );
   }
