@@ -1,5 +1,6 @@
-/* import React from "react";
+import React from "react";
 import styled, { css } from "styled-components";
+import Filters from "./Filters";
 
 import small_russia from "../img/rossia_small_icon.png";
 import small_fly from "../img/fly_small_icon.png";
@@ -22,21 +23,33 @@ import clock from "../img/clock.svg";
 import mainbagaja from "../img/mainbagaje.svg";
 import handbagaja from "../img/handbagaje.svg";
 
-import CardContent from "./CardsContent"; */
-import CardMobile from "./CardMobile";
+import CardContent from "./CardsContent";
+import CardsTablet from "./CardTablet";
 
-import CardTablet from "./CardTablet";
-import CardDesktop from "./CardDesktop";
+const Wrapper = styled.div`
+  background: #eaeaea;
+  display: flex;
+  padding-top: 56px;
+`;
+const FilterVertDiv = styled.div``;
+const Cards = styled.div`
+  margin-right: auto;
+`;
 
 function SearchCards(props) {
-  console.log(props.size);
   const size = props.size;
-  if (size === "mobile") {
-    return CardMobile(props);
-  } else if (size === "tablet") {
-    return CardTablet(props);
-  } else if (size === "desktop") {
-    return CardDesktop(props);
+  if (size === "desktop") {
+    return (
+      <Wrapper size={size}>
+        {/*         {CardContent.map(CardOne => CardDesktopEnum(props, CardOne))} */}
+        <FilterVertDiv>
+          <Filters />
+        </FilterVertDiv>
+        <Cards>
+          <CardsTablet props={props} />
+        </Cards>
+      </Wrapper>
+    );
   }
 }
 

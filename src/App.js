@@ -46,10 +46,33 @@ const Container = styled.div`
 function FirstPage(props) {
   return (
     <Container>
+      <Header
+        size={props.props.size}
+        src={props.props.props.title.src}
+        imgtitle={props.props.props.title.imgtitle}
+        alt={props.props.props.title.alt}
+        className={props.props.props.title.className}
+      />
       <TopDestinations size={props.props.size} />
       <Reklam size={props.props.size} />
       <Blogs size={props.props.size} />
       <PhonesReklam size={props.props.size} />
+    </Container>
+  );
+}
+
+function SearchPage(props) {
+  console.log(props.props.size);
+  return (
+    <Container>
+      <Header
+        size={props.props.size}
+        src={props.props.props.title.src}
+        imgtitle={props.props.props.title.imgtitle}
+        alt={props.props.props.title.alt}
+        className={props.props.props.title.className}
+      />
+      <SearchCards size={props.props.size} />
     </Container>
   );
 }
@@ -59,7 +82,7 @@ function AppRouter(props) {
     <Router>
       <Container>
         <Route exact path="/" render={() => <FirstPage props={props} />} />
-        <Route path="/Search" render={() => <SearchCards props={props} />} />
+        <Route path="/Search" render={() => <SearchPage props={props} />} />
       </Container>
     </Router>
   );
@@ -67,7 +90,7 @@ function AppRouter(props) {
 
 class App extends React.Component {
   state = {
-    sizing: "mobile"
+    sizing: "desktop"
   };
 
   ContainerResize() {
@@ -104,10 +127,10 @@ class App extends React.Component {
         </p>
       </div>
     ); */
-    console.log(props.title);
-    return (
-      <Container className={"Contaner"}>
-        {/* <Header
+    if (this.state.sizing) {
+      return (
+        <Container className={"Contaner"}>
+          {/* <Header
           size={this.state.sizing}
           src={props.title.src}
           imgtitle={props.title.imgtitle}
@@ -118,18 +141,13 @@ class App extends React.Component {
         {AppRouter}
         <SiteMap size={this.state.sizing} />
         <Footer size={this.state.sizing} /> */}
-        <Header
-          size={this.state.sizing}
-          src={props.title.src}
-          imgtitle={props.title.imgtitle}
-          alt={props.title.alt}
-          className={props.title.className}
-        />
-        <AppRouter props={props} size={this.state.sizing} />
-        <SiteMap size={this.state.sizing} />
-        <Footer size={this.state.sizing} />
-      </Container>
-    );
+
+          <AppRouter props={props} size={this.state.sizing} />
+          <SiteMap size={this.state.sizing} />
+          <Footer size={this.state.sizing} />
+        </Container>
+      );
+    } else return "";
   }
 }
 

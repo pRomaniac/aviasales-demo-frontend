@@ -67,8 +67,8 @@ const WrapperDiv = styled.div`
     css`
       margin-left: 6px;
       margin-right: 6px;
-      padding-bottom: 24px;
-      padding-top: 20px;
+      ${"" /*       padding-bottom: 24px;
+      padding-top: 20px; */};
     `};
   ${props =>
     props.size === "tablet" &&

@@ -1,14 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import aero from "../img/aero.svg";
-
-import SearchFieldInputDiv from "./SearchFieldInputDiv";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
+import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
 import SearchInput from "./SearchInput";
 import SearchFieldDecorations from "./SearchFieldDecorations";
 
 const SearchFieldContainer = styled.form`
-  margin-left: auto;
-  margin-right: auto;
+  ${"" /*   margin-left: auto;
+  margin-right: auto; */};
 `;
 
 const SearchFieldRow = styled.div`
@@ -27,8 +28,15 @@ const SearchFieldRow = styled.div`
     `};
   ${props =>
     props.size === "desktop" &&
+    !props.search &&
     css`
       margin: 96px;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    props.search &&
+    css`
+      margin: 8px;
     `};
 `;
 
@@ -40,16 +48,32 @@ const SearchInputWrapper = styled.div`
 `;
 
 const SearchButtonDiv = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  width: 308px;
+  ${props =>
+    !props.search &&
+    css`
+      margin-left: auto;
+      margin-right: auto;
+      width: 308px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    props.search &&
+    css`
+      flex-basis: 24%;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    props.search &&
+    css`
+      flex-basis: 16%;
+    `};
 `;
 
 const SearchButton = styled.button`
   box-sizing: border-box;
-  width: 308px;
+
   background: #ff9241;
-  border-radius: 4px;
+
   border: 0;
   font-family: Roboto;
   font-style: normal;
@@ -75,6 +99,30 @@ const SearchButton = styled.button`
     css`
       margin-top: 48px;
       height: 64px;
+    `};
+  ${props =>
+    !props.search &&
+    css`
+      width: 308px;
+      border-radius: 4px;
+    `};
+
+  ${props =>
+    props.search &&
+    css`
+      margin-top: auto;
+      box-sizing: border-box;
+      border: 0;
+      margin: 2px;
+      padding: 0;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      font-size: 20px;
+      width: 98%;
+      height: 58px;
+      color: #ffffff;
     `};
 `;
 
@@ -105,12 +153,12 @@ const SearchFields = [
   "Quantity"
 ];
 
-function SearchField(props) {
+function SearchFieldStart(props) {
   return (
     <SearchFieldContainer size={props.size} action="/Search">
       <SearchFieldRow size={props.size}>
         {SearchFields.map(number => (
-          <SearchFieldInputDiv
+          <SearchFieldInputDivStart
             className={number.toString() + " " + props.size}
             key={number.toString()}
             size={props.size}
@@ -126,7 +174,7 @@ function SearchField(props) {
               />
               <SearchFieldDecorations size={props.size} typ={number} />
             </SearchInputWrapper>
-          </SearchFieldInputDiv>
+          </SearchFieldInputDivStart>
         ))}
       </SearchFieldRow>
       <SearchButtonDiv size={props.size}>
@@ -138,4 +186,53 @@ function SearchField(props) {
   );
 }
 
-export default SearchField;
+function SearchFieldSearch(props) {
+  return (
+    <SearchFieldContainer size={props.size} action="/Search">
+      <SearchFieldRow size={props.size} search={true}>
+        {SearchFields.map(number => (
+          <SearchFieldInputDivSearch
+            className={number.toString() + " " + props.size}
+            key={number.toString()}
+            size={props.size}
+            searchtype={number.toString()}
+          >
+            <SearchInputWrapper
+              className={number.toString() + " " + props.size}
+            >
+              <SearchInput
+                className={number.toString() + " " + props.size}
+                size={props.size}
+                searchtype={number.toString()}
+                search={true}
+              />
+              <SearchFieldDecorations size={props.size} typ={number} />
+            </SearchInputWrapper>
+          </SearchFieldInputDivSearch>
+        ))}{" "}
+        <SearchButtonDiv size={props.size} search={true}>
+          <SearchButton
+            size={props.size}
+            onClick="location.href='/Search'"
+            search={true}
+          >
+            Найти билеты
+          </SearchButton>
+        </SearchButtonDiv>
+      </SearchFieldRow>
+    </SearchFieldContainer>
+  );
+}
+const Conteiner = styled.div``;
+function HeaderRouter(props) {
+  return (
+    <Router>
+      <Conteiner>
+        <Route exact path="/" render={() => SearchFieldStart(props)} />
+        <Route path="/Search" render={() => SearchFieldSearch(props)} />
+      </Conteiner>
+    </Router>
+  );
+}
+
+export default HeaderRouter;

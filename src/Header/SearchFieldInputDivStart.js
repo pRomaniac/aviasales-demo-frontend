@@ -1,7 +1,8 @@
-/* import React from "react"; */
+import React from "react";
 import styled, { css } from "styled-components";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const SearchFieldInputDiv = styled.div`
+const SearchFieldInputDivStart = styled.div`
   box-sizing: border-box;
   border: 0;
   margin: 0px;
@@ -118,4 +119,4 @@ const SearchFieldInputDiv = styled.div`
     `};
 `;
 
-export default SearchFieldInputDiv;
+export default SearchFieldInputDivStart;

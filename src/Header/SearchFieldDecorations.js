@@ -23,7 +23,10 @@ const SearchFieldInputDivDecorText = styled.div`
   margin-left: 16px;
   /* text-align: center; */
   color: #a0b0b9;
-
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 90px;
   ${props =>
     props.choosen === "yes" &&
     css`
@@ -143,7 +146,8 @@ function SearchFieldDecorText(props) {
         className={props.props.typ + " " + props.size}
         choosen="yes"
       >
-        1 пассажир<SearchFiledDecorClass>, эконом </SearchFiledDecorClass>
+        1 пассажир
+        <SearchFiledDecorClass>, эконом </SearchFiledDecorClass>
       </SearchFieldInputDivDecorText>
     );
   } else return "";

@@ -1,8 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Title from "./title";
 import Logo from "./logo";
 import SearchField from "./search";
+
+const Container = styled.div``;
 
 const HeaderDiv = styled.div`
   margin-left: auto;
@@ -17,25 +20,57 @@ const HeaderDiv = styled.div`
     #02abdb 33.81%,
     #196ebd 122.26%
   );
-
   ${props =>
     props.size === "mobile" &&
+    !props.search &&
     css`
       padding-bottom: 88px;
     `};
   ${props =>
     props.size === "tablet" &&
+    !props.search &&
     css`
       padding-bottom: 122px;
     `};
   ${props =>
     props.size === "desktop" &&
+    !props.search &&
     css`
       padding-bottom: 254px;
     `};
+  ${props =>
+    (props.size === "mobile") & props.search &&
+    css`
+      padding-left: 6px;
+      padding-right: 6px;
+      padding-bottom: 10px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    props.search &&
+    css`
+      padding-bottom: 8px;
+    `};
+  ${props =>
+    props.size === "desktop" &&
+    props.search &&
+    css`
+      padding-bottom: 8px;
+    `};
 `;
+function HeaderRouter(props) {
+  return (
+    <Router>
+      <Container>
+        <Route exact path="/" render={() => <FirstPage props={props} />} />
+        <Route path="/Search" render={() => <SearchPage props={props} />} />
+      </Container>
+    </Router>
+  );
+}
 
-function Header(props) {
+function FirstPage(props) {
+  props = props.props;
   return (
     <HeaderDiv size={props.size}>
       <Logo
@@ -50,4 +85,27 @@ function Header(props) {
     </HeaderDiv>
   );
 }
-export default Header;
+
+function SearchFieldSizing(props) {
+  if (props.size === "mobile") {
+    return "";
+  } else return <SearchField size={props.size} />;
+}
+
+function SearchPage(props) {
+  props = props.props;
+  return (
+    <HeaderDiv size={props.size} search={true}>
+      <Logo
+        size={props.size}
+        src={props.src}
+        alt={props.alt}
+        imgtitle={props.imgtitle}
+        className={props.className}
+      />
+      {SearchFieldSizing(props)}
+    </HeaderDiv>
+  );
+}
+
+export default HeaderRouter;
