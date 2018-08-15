@@ -11,15 +11,12 @@ import big_redwings from "../img/redwings_big_icon.png";
 import nordwind1 from "../img/nordwind1_big_icon.png";
 import nordwind2 from "../img/nordwind2_big_icon.png";
 
-import flightto from "../img/small_aeroplane.svg";
-import flightfrom from "../img/small_aeroplane_from.svg";
-import clock from "../img/clock.svg";
-
 import take_off from "../img/plane-taking-off.svg";
 import link_img from "../img/search_link.svg";
 import pin from "../img/pin.svg";
-import FlightLine from "../img/FlightLine.svg";
+//import FlightLine from "../img/FlightLine.svg";
 import filter from "../img/TabletFilterForButton.png";
+import Polzunok from "./Polzun";
 /* ((((
 import mainbagaja_svg from "../img/mainbagaje.svg";
 import handbagaja_svg from "../img/handbagaje.svg";
@@ -30,6 +27,8 @@ import handbagaja from "../img/hand.png";
 import handbagaja_red from "../img/main_red.png";
 
 import CardContent from "./CardsContent";
+
+import openticket from "../img/OpenTicket.svg";
 
 function pricevalue(val) {
   return val.toString().replace(/(\d)(?=(\d{3})+(\D|$))/g, "$1 ");
@@ -56,9 +55,10 @@ function Times(h, m) {
   }
 }
 
-function TimesFlights(card) {
+/* function TimesFlights(card) {
   return card.TimeFrom + " - " + card.TimeTo;
-}
+} */
+
 const Wrapper = styled.div`
   background: #eaeaea;
   ${props =>
@@ -69,17 +69,26 @@ const Wrapper = styled.div`
 `;
 const CardDiv = styled.div`
   background: #ffffff;
-  ${"" /*   margin-top: 10px; */} margin-bottom: 10px;
+  ${"" /*   margin-top: 10px; */} margin-bottom: 20px;
   margin-right: 8px;
   margin-left: 8px;
   flex-basis: 100%;
   display: flex;
+  min-width: 713px;
+  border-radius: 4px;
 `;
 
+const OpenDiv = styled.div`
+  background: #edf5f7;
+  width: 20px;
+  display: flex;
+  align-items: center;
+`;
 const TitleDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 16px;
 `;
 const BodyDiv = styled.div``;
 
@@ -153,16 +162,12 @@ const FromDiv = styled.div`
 
   padding-bottom: 12px;
 `;
-const TimesDiv = styled.div``;
 
 const FlightTimeDiv = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
 `;
-
-const FlightTypeDiv = styled.div``;
-
-const TextDecoration = styled.img``;
 
 const BagajesDiv = styled.div`
   display: flex;
@@ -351,6 +356,10 @@ const AddProvDivOther = styled.div`
 const LinkImgDiv = styled.div`
   margin-right: 8px;
   display: inherit;
+`;
+const OpenImg = styled.img`
+  margin-left: 4px;
+  margin-right: 4px;
 `;
 
 const LinkImg = styled.img`
@@ -673,8 +682,9 @@ function TicketNumbers(number) {
 }
 
 const Time = styled.div`
-  display: inline;
-  align-items: center;
+  display: flex;
+  align-items: left;
+  flex-wrap: nowrap;
 `;
 
 const TimeDiv = styled.div`
@@ -715,7 +725,6 @@ const Airport = styled.div`
 
   color: #4a4a4a;
 `;
-const Timing = styled.div``;
 
 const ToD = styled.div`
   margin-left: 16px;
@@ -723,25 +732,16 @@ const ToD = styled.div`
   display: inline;
 `;
 const Flight = styled.div`
-  width: auto;
+  width: 40%;
   margin-left: 8px;
 `;
-const FromD = styled.div``;
+const FromD = styled.div`
+  display: inline;
+`;
 const SFrom = "Москва";
 const STo = "Барселона";
 const AirPortFrom = "VKO";
 const AirPortTo = "BCN";
-const CircleDiv = styled.div`
-  width: 11px;
-  height: 11px;
-  background: #ffffff;
-  border: 1px solid #a0b0b9;
-  box-sizing: border-box;
-  border-radius: 50px;
-  flex-basis: 33%;
-`;
-const FlightFromDiv = styled.div``;
-const FlightToDiv = styled.div``;
 
 const TimeText = styled.div`
   font-family: Roboto;
@@ -752,7 +752,13 @@ const TimeText = styled.div`
   text-align: center;
 
   color: #a0b0b9;
-  flex-basis: 33%;
+`;
+
+const FlightTime = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  margin-top: 7px;
 `;
 
 function CardTabletEnum(props, Card) {
@@ -792,22 +798,18 @@ function CardTabletEnum(props, Card) {
             </FromD>
             <Flight>
               <FlightTimeDiv>
-                <FlightFromDiv>
+                <FlightTime>
                   <LinkImg src={take_off} order={45} />
-                  <CircleDiv />
-                  <Airport>{AirPortFrom}</Airport>
-                </FlightFromDiv>
-                <Timing>
                   <TimeText>
                     {"Всего " + Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
                   </TimeText>
-                  <LinkImg src={FlightLine} />
-                </Timing>
-                <FlightToDiv>
                   <LinkImg src={take_off} />
-                  <CircleDiv />
+                </FlightTime>
+                <Polzunok inCard={true} />
+                <FlightTime>
+                  <Airport>{AirPortFrom}</Airport>
                   <Airport>{AirPortTo}</Airport>
-                </FlightToDiv>
+                </FlightTime>
               </FlightTimeDiv>
             </Flight>
             <ToD>
@@ -844,22 +846,18 @@ function CardTabletEnum(props, Card) {
             </FromD>
             <Flight>
               <FlightTimeDiv>
-                <FlightFromDiv>
+                <FlightTime>
                   <LinkImg src={take_off} order={45} />
-                  <CircleDiv />
-                  <Airport>{AirPortTo}</Airport>
-                </FlightFromDiv>
-                <Timing>
                   <TimeText>
                     {"Всего " + Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
                   </TimeText>
-                  <LinkImg src={FlightLine} />
-                </Timing>
-                <FlightToDiv>
                   <LinkImg src={take_off} />
-                  <CircleDiv />
+                </FlightTime>
+                <Polzunok inCard={true} />
+                <FlightTime>
                   <Airport>{AirPortFrom}</Airport>
-                </FlightToDiv>
+                  <Airport>{AirPortTo}</Airport>
+                </FlightTime>
               </FlightTimeDiv>
             </Flight>
             <ToD>
@@ -872,6 +870,9 @@ function CardTabletEnum(props, Card) {
           </ToDiv>
         </BodyDiv>
       </RightCardDiv>
+      <OpenDiv>
+        <OpenImg src={openticket} />
+      </OpenDiv>
     </CardDiv>
   );
 }

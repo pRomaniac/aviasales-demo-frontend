@@ -74,7 +74,7 @@ function TopDestCardStringComments(val) {
 }
 
 function TopDestCardStringPrice(val) {
-  return val.replace(/(\d)(?=(\d{3})+(\D|$))/g, "$1 ");
+  return val.replace(/(\d)(?=(\d{3})+(\D|$))/g, "$1 "); //честно спиздил из инета по хорошому надо цикл по массиву стринга организовывать, с конца, и после каждой третьего символа вставлять пробел.
 }
 
 function TopDestCardStringDate(val) {

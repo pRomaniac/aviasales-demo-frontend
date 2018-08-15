@@ -28,10 +28,6 @@ const LimitDiv = styled.div`
     `};
 `;
 
-const BigWrapper = styled.div`
-  display: flex;
-`;
-
 const Wrapper = styled.div`
   background: linear-gradient(132.6deg, #00b0de 0%, #196ebd 100%);
   display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import back from "../img/back_arrow.svg";
 const SFrom = "Москва";

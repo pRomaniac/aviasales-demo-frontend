@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import aero from "../img/aero.svg";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
 import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
 import SearchInput from "./SearchInput";
@@ -178,7 +178,7 @@ function SearchFieldStart(props) {
         ))}
       </SearchFieldRow>
       <SearchButtonDiv size={props.size}>
-        <SearchButton size={props.size} onClick="location.href='/Search'">
+        <SearchButton size={props.size}>
           Найти билеты <AeroImg src={aero} size={props.size} />
         </SearchButton>
       </SearchButtonDiv>

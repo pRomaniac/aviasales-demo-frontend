@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import logo from "./img/logo.svg";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 //import { Route, Router } from "react-router";
 import "normalize.css";
 
