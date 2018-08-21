@@ -22,8 +22,8 @@ const CompasImg = styled.img`
 
 function CompasDiv(props) {
   return (
-    <Compas props={props}>
-      <CompasImg props={props} src={compas} />
+    <Compas props={props} className="Compas">
+      <CompasImg props={props} src={compas} className="CompasImg" />
     </Compas>
   );
 }

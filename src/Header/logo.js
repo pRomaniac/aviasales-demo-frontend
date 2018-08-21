@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import back from "../img/back_arrow.svg";
 const SFrom = "Москва";
 const STo = "Барселона";
@@ -87,7 +87,7 @@ function FromTo(props) {
   return SFrom + " " + STo;
 }
 
-const HeaderA = styled.a``;
+const HeaderA = styled.div``;
 
 const Img = styled.img`
   display: inline-block;
@@ -126,10 +126,19 @@ const ImgTitle = styled.div`
 
 function LogoRouter(props) {
   return (
-    <Router>
-      <Container>
-        <Route exact path="/" render={() => <Logo props={props} />} />
-        <Route path="/Search" render={() => <LogoSearch props={props} />} />
+    <Router className="LogoRouter">
+      <Container className="LogoFirstPageContainer">
+        <Route
+          exact
+          path="/"
+          render={() => <Logo props={props} className="Logo" />}
+          className="LogoFirstPageRoute"
+        />
+        <Route
+          path="/Search"
+          render={() => <LogoSearch props={props} className="LogoSearch" />}
+          className="LogoSearchPageRoute"
+        />
       </Container>
     </Router>
   );
@@ -139,25 +148,29 @@ function Logo(props) {
   props = props.props;
   if (props.size !== "mobile") {
     return (
-      <LogoWrapper size={props.size}>
-        <HeaderA size={props.size} href="/">
-          <Img
-            src={props.src}
-            alt={props.alt}
-            className={props.className}
-            size={props.size}
-          />
+      <LogoWrapper size={props.size} className="LogoWrapper">
+        <Link to={{ pathname: "/" }} className="LogoLink">
+          <HeaderA size={props.size} className="HeaderA">
+            <Img
+              src={props.src}
+              alt={props.alt}
+              className={props.className}
+              size={props.size}
+            />
 
-          <ImgTitle>{props.imgtitle}</ImgTitle>
-        </HeaderA>
+            <ImgTitle className="HeaderImgTitle">{props.imgtitle}</ImgTitle>
+          </HeaderA>
+        </Link>
       </LogoWrapper>
     );
   } else {
     return (
-      <LogoWrapper size={props.size}>
-        <HeaderA size={props.size} href="/">
-          <Img src={props.src} alt={props.alt} className={props.className} />
-        </HeaderA>
+      <LogoWrapper size={props.size} className="LogoWrapper">
+        <Link to={{ pathname: "/" }} className="LogoLink">
+          <HeaderA size={props.size} href="/" className="HeaderA">
+            <Img src={props.src} alt={props.alt} className={props.className} />
+          </HeaderA>
+        </Link>
       </LogoWrapper>
     );
   }
@@ -167,35 +180,45 @@ function LogoSearch(props) {
   props = props.props;
   if (props.size !== "mobile") {
     return (
-      <LogoWrapper size={props.size} search={true}>
-        <HeaderA size={props.size} href="/">
-          <Img
-            src={props.src}
-            alt={props.alt}
-            className={props.className}
-            size={props.size}
-          />
+      <LogoWrapper size={props.size} search={true} className="LogoWrapper">
+        {" "}
+        <Link to={{ pathname: "/" }}>
+          <HeaderA size={props.size} href="/">
+            <Img
+              src={props.src}
+              alt={props.alt}
+              className={props.className}
+              size={props.size}
+            />
 
-          <ImgTitle>{props.imgtitle}</ImgTitle>
-        </HeaderA>{" "}
-        <CurrencyDiv>
-          <CurrencyDivText>{Currensy}</CurrencyDivText>
+            <ImgTitle>{props.imgtitle}</ImgTitle>
+          </HeaderA>{" "}
+        </Link>
+        <CurrencyDiv className="HeaderCurrencyDiv">
+          <CurrencyDivText className="HeaderCurrencyDivText">
+            {Currensy}
+          </CurrencyDivText>
         </CurrencyDiv>
       </LogoWrapper>
     );
   } else {
     return (
-      <LogoWrapper size={props.size}>
-        {" "}
-        <HeaderA size={props.size} type="search" href="/">
-          <Img src={back} alt={props.alt} className={props.className} />{" "}
-        </HeaderA>
-        <SearchParamDiv size={props.size}>
-          <FromTODiv size={props.size}>{FromTo(props)}</FromTODiv>
-          <QtyDiv>{DateQty}</QtyDiv>
+      <LogoWrapper size={props.size} className="LogoWrapper">
+        <Link to={{ pathname: "/" }}>
+          <HeaderA size={props.size} type="search" href="/" className="HeaderA">
+            <Img src={back} alt={props.alt} className={props.className} />{" "}
+          </HeaderA>{" "}
+        </Link>
+        <SearchParamDiv size={props.size} className="SearchParam">
+          <FromTODiv size={props.size} className="FromToDiv">
+            {FromTo(props)}
+          </FromTODiv>
+          <QtyDiv className="QtyDiv">{DateQty}</QtyDiv>
         </SearchParamDiv>
-        <CurrencyDiv>
-          <CurrencyDivText>{Currensy}</CurrencyDivText>
+        <CurrencyDiv className="HeaderCurrencyDiv">
+          <CurrencyDivText className="HeaderCurrencyDiv">
+            {Currensy}
+          </CurrencyDivText>
         </CurrencyDiv>
       </LogoWrapper>
     );

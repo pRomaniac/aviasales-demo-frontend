@@ -280,7 +280,14 @@ function CountryFlag(props) {
 
   if (icon === "") {
     return "";
-  } else return <IconImg src={icon} size={props.size} />;
+  } else
+    return (
+      <IconImg
+        src={icon}
+        size={props.size}
+        className={"IconImg" + icon.toString()}
+      />
+    );
 }
 
 const DepartWrapper = styled.div`
@@ -326,15 +333,17 @@ function BestPricesCardEnum(props, number) {
       size={props.size}
       islast={islast}
     >
-      <DepartWrapper size={props.size}>
-        <CountryFlag country={number.Country} />
-        <DepartCityDiv>
-          <DepartCityTextDiv>
+      <DepartWrapper size={props.size} className="DepartWrapper">
+        <CountryFlag country={number.Country} className="CountryFlag" />
+        <DepartCityDiv className="DepartCityDiv">
+          <DepartCityTextDiv className="DepartCityTextDiv">
             {WithoutNull(number.Destination) +
               "  " +
               WithoutNullComments(number.Comment)}
           </DepartCityTextDiv>
-          <DepartCountryDiv>{WithoutNull(number.Country)}</DepartCountryDiv>
+          <DepartCountryDiv className="DepartCountryDiv">
+            {WithoutNull(number.Country)}
+          </DepartCountryDiv>
         </DepartCityDiv>
       </DepartWrapper>
       {number.Prices.map(Depart => DeptCard(props, Depart))}
@@ -361,10 +370,16 @@ const DepartCityPrice = styled.div`
 function DeptCard(props, number) {
   return (
     <DepartCity className="DepartCity" key={number.Departure} size={props.size}>
-      <DepartCityName size={props.size}>
+      <DepartCityName
+        size={props.size}
+        className={"DeptCard" + "DepartCityName"}
+      >
         {WithoutNull(number.Departure)}
       </DepartCityName>
-      <DepartCityPrice size={props.size}>
+      <DepartCityPrice
+        size={props.size}
+        className={"DeptCard" + "DepartCityPrice"}
+      >
         {TopDestCardStringPrice(WithoutNull(number.MinPrice)) + " ₽"}
       </DepartCityPrice>
     </DepartCity>
@@ -381,9 +396,11 @@ function Debug(name) {
 
 function Footer(props) {
   return (
-    <BestPricesDiv size={props.size}>
-      <CalendDiv size={props.size} />
-      <CalendHeader size={props.size}>{HeaderText}</CalendHeader>
+    <BestPricesDiv size={props.size} className={"BestPrices" + "BestPricesDiv"}>
+      <CalendDiv size={props.size} className={"BestPrices" + "CalendDiv"} />
+      <CalendHeader size={props.size} className={"BestPrices" + "CalendHeader"}>
+        {HeaderText}
+      </CalendHeader>
       {BestPricesCardDeptEnum(props)}
     </BestPricesDiv>
   );

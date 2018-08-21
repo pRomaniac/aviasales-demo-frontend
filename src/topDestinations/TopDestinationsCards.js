@@ -300,20 +300,26 @@ const TextsLeftRight = styled.div`
 function FlagIconImg(number, props) {
   if (props.size === "tablet" || props.size === "desktop") {
     if (number.Country === "Испания") {
-      return <FlagIcon src={EsFlag} />;
+      return <FlagIcon className="FlagIcon" src={EsFlag} />;
     } else {
-      return <FlagIcon src={RuFlag} />;
+      return <FlagIcon className="FlagIcon" src={RuFlag} />;
     }
   } else return "";
 }
 
 function CityImg(number, props) {
-  return <CardImg src={Object.values(number.src)} size={props.size} />;
+  return (
+    <CardImg
+      className="CardImg"
+      src={Object.values(number.src)}
+      size={props.size}
+    />
+  );
 }
 
 function CityName(number, props) {
   return (
-    <CityNameDiv size={props.size}>
+    <CityNameDiv className="CityNameDiv" size={props.size}>
       {TopDestCardString(number.City) +
         " " +
         TopDestCardStringComments(number.Comments)}
@@ -323,7 +329,7 @@ function CityName(number, props) {
 
 function CityPrice(number, props) {
   return (
-    <CityPriceDiv key={number.City} size={props.size}>
+    <CityPriceDiv className="CityPriceDiv" key={number.City} size={props.size}>
       {"Найти от " +
         TopDestCardStringPrice(TopDestCardString(number.price)) +
         " ₽"}
@@ -333,16 +339,16 @@ function CityPrice(number, props) {
 
 function CityTextsDiv(number, props) {
   return (
-    <CityNameTexts size={props.size}>
-      <TextsLeftRight className="NameCountry">
+    <CityNameTexts className="CityNameTexts" size={props.size}>
+      <TextsLeftRight className="TextsLeftRight">
         {CityName(number, props)}
-        <CityCountryDiv size={props.size}>
+        <CityCountryDiv className="CityCountryDiv" size={props.size}>
           {TopDestCardString(number.Country)}
         </CityCountryDiv>
       </TextsLeftRight>
-      <TextsLeftRight className="PriceDate">
+      <TextsLeftRight className="TextsLeftRight">
         {CityPrice(number, props)}
-        <SearchDateDiv size={props.size}>
+        <SearchDateDiv className="SearchDateDiv" size={props.size}>
           {TopDestCardStringDate(number.date)}
         </SearchDateDiv>
       </TextsLeftRight>
@@ -353,7 +359,7 @@ function CityTextsDiv(number, props) {
 function IconTextsDiv(number, props) {
   if (props.size === "tablet" || props.size === "desktop") {
     return (
-      <ForIconDiv>
+      <ForIconDiv className="ForIconDiv">
         {FlagIconImg(number, props)}
         {CityTextsDiv(number, props)}
       </ForIconDiv>
@@ -363,7 +369,7 @@ function IconTextsDiv(number, props) {
 
 function CityDiv(number, props) {
   return (
-    <CardDiv key={number.City} size={props.size}>
+    <CardDiv className="CardDiv" key={number.City} size={props.size}>
       {CityImg(number, props)}
       {IconTextsDiv(number, props)}
     </CardDiv>
@@ -372,8 +378,8 @@ function CityDiv(number, props) {
 
 function TopDestCards(props) {
   return (
-    <CardContainer size={props.size}>
-      <CardRow size={props.size}>
+    <CardContainer className="CardContainer" size={props.size}>
+      <CardRow className="CardRow" size={props.size}>
         {DestCards.map(number => CityDiv(number, props))}
       </CardRow>
     </CardContainer>

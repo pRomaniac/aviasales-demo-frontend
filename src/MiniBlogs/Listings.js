@@ -156,9 +156,13 @@ const Link = styled.a`
 
 function ContentRender(props, text) {
   return (
-    <ContentDiv size={props.size} key={Object.keys(text).toString()}>
+    <ContentDiv
+      size={props.size}
+      key={Object.keys(text).toString()}
+      className="ContentRender"
+    >
       {TitleRender(props, Object.keys(text).toString())}
-      <ContentText size={props.size}>
+      <ContentText size={props.size} className="ContentText">
         {text[Object.keys(text)].map(obj => TextRender(props, obj))}
       </ContentText>
       {LinkRender(props, Object.keys(text).toString())}
@@ -171,8 +175,8 @@ function LinkRender(props, text) {
     return "";
   } else
     return (
-      <ContentLink size={props.size}>
-        <Link size={props.size} href={text}>
+      <ContentLink size={props.size} className="LinkRenderContentLink">
+        <Link size={props.size} href={text} className="LinkRenderLink">
           Все {text} →
         </Link>
       </ContentLink>
@@ -181,7 +185,7 @@ function LinkRender(props, text) {
 
 function TextRender(props, text) {
   return (
-    <Text size={props.size} key={text.toString()}>
+    <Text size={props.size} key={text.toString()} className="TextRender">
       {text.toString()}
     </Text>
   );
@@ -189,15 +193,17 @@ function TextRender(props, text) {
 
 function TitleRender(props, text) {
   return (
-    <ContentTitle size={props.size}>
-      <Title size={props.size}>{text.toString()}</Title>
+    <ContentTitle size={props.size} className="TitleRenderContentTitle">
+      <Title size={props.size} className="TitleRenderTitle">
+        {text.toString()}
+      </Title>
     </ContentTitle>
   );
 }
 
 function mmap(props) {
   return (
-    <WrapperDiv size={props.size}>
+    <WrapperDiv size={props.size} className="mmapWrapperDiv">
       {Content.map(cont => ContentRender(props, cont))}
     </WrapperDiv>
   );

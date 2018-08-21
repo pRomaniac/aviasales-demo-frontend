@@ -118,14 +118,29 @@ const ArticleWholeText = styled.div``;
 
 function Articles(props, Article) {
   return (
-    <ArticleWrapper size={props.size} key={Article.mark}>
-      <ArticleWholeTile size={props.size}>
-        <ArticleImg src={Article.icon[Object.keys(Article.icon).toString()]} />
-        <ArticleTitle size={props.size}>{Article.Title}</ArticleTitle>
+    <ArticleWrapper
+      size={props.size}
+      key={Article.mark}
+      className="ArticleWrapper"
+    >
+      <ArticleWholeTile size={props.size} className="ArticleWholeTile">
+        <ArticleImg
+          src={Article.icon[Object.keys(Article.icon).toString()]}
+          className="ArticleImg"
+        />
+        <ArticleTitle size={props.size} className="ArticleTitle">
+          {Article.Title}
+        </ArticleTitle>
       </ArticleWholeTile>
-      <ArticleWholeText size={props.size}>
-        <ArticleText size={props.size}>{Article.Text}</ArticleText>{" "}
-        <ArticleLink size={props.size} href={Article.mark}>
+      <ArticleWholeText size={props.size} className="ArticleWholeText">
+        <ArticleText size={props.size} className="ArticleText">
+          {Article.Text}
+        </ArticleText>{" "}
+        <ArticleLink
+          size={props.size}
+          href={Article.mark}
+          className="ArticleLink"
+        >
           Подробнее
         </ArticleLink>
       </ArticleWholeText>
@@ -134,7 +149,7 @@ function Articles(props, Article) {
 }
 function Blogs(props) {
   return (
-    <Wrapper size={props.size}>
+    <Wrapper size={props.size} className="BlogsWrapper">
       {Content.map(Article => Articles(props, Article))}
     </Wrapper>
   );

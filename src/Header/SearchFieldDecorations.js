@@ -171,14 +171,29 @@ function SearchFieldInputDivDecorAirport(props) {
 
 function SearchFieldDecorations(props) {
   return (
-    <SearchFieldDecor className={props.typ + " " + props.size}>
-      <SearchFieldDecorText props={props} />
+    <SearchFieldDecor
+      className={"SearchFieldDecor_" + props.typ + "_" + props.size}
+    >
+      <SearchFieldDecorText
+        props={props}
+        className={"SearchFieldDecorText" + props.typ + "_" + props.size}
+      />
       <SearchFieldInputDivDecor
         props={props}
-        className={props.typ + " " + props.size}
+        className={"SearchFieldInputDivDecor" + props.typ + "_" + props.size}
       >
-        <SearchFieldInputDivDecorAirport props={props} />
-        <SearchFieldInputDivDecorImg props={props} />
+        <SearchFieldInputDivDecorAirport
+          props={props}
+          className={
+            "SearchFieldInputDivDecorAirport" + props.typ + "_" + props.size
+          }
+        />
+        <SearchFieldInputDivDecorImg
+          props={props}
+          className={
+            "SearchFieldInputDivDecorImg" + props.typ + "_" + props.size
+          }
+        />
       </SearchFieldInputDivDecor>
     </SearchFieldDecor>
   );

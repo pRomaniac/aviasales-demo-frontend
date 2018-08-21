@@ -261,19 +261,20 @@ const RightArrow = styled.img`
 
 function SocialButtons(props) {
   return (
-    <SocialButtonsDiv size={props.size}>
-      <SocialButton src={Twitter} />
-      <SocialButton src={Facebook} />
-      <SocialButton src={VKontakte} />
-      <SocialButton src={Rss} />
+    <SocialButtonsDiv size={props.size} className={"SocialButtonsDiv"}>
+      <SocialButton src={Twitter} className={"SocialButtonTwitter"} />
+      <SocialButton src={Facebook} className={"SocialButtonFacebook"} />
+      <SocialButton src={VKontakte} className={"SocialButtonVKontakte"} />
+      <SocialButton src={Rss} className={"SocialButtonRss"} />
     </SocialButtonsDiv>
   );
 }
 
 function ReklamLogo(props, logo) {
   return (
-    <ReklamLogoDiv size={props.size} key={logo.id}>
+    <ReklamLogoDiv size={props.size} key={logo.id} className={"ReklamLogoDiv"}>
       <ReklamLogoImg
+        className={"ReklamLogoImg"}
         size={props.size}
         src={logo.scr[Object.keys(logo.scr).toString()]}
       />
@@ -306,51 +307,76 @@ function Reklam(props) {
     return "";
   } else {
     return (
-      <Wrapper>
-        <MainWrapper>
-          <ReklamDiv>
-            <LeftArrow src={Arrow} />
-            <ReklamDivWrapper size={props.size}>
-              <ReklamTitle>
+      <Wrapper className={"Wrapper"}>
+        <MainWrapper className={"MainWrapper"}>
+          <ReklamDiv className={"ReklamDiv"}>
+            <LeftArrow src={Arrow} className={"LeftArrow"} />
+            <ReklamDivWrapper size={props.size} className={"ReklamDivWrapper"}>
+              <ReklamTitle className={"ReklamTitle"}>
                 Дешевые авиабилеты от крупнейших авиакомпаний и агентств
               </ReklamTitle>
-              <ReklamLogos size={props.size}>
+              <ReklamLogos size={props.size} className={"ReklamLogos"}>
                 {LogoArr.map(Logo => ReklamLogo(props, Logo))}
               </ReklamLogos>
               {/* <NavDotDiv>{DotCheckedRender(props, 3, 1)}</NavDotDiv> */}
-              <NavDotDiv>
-                <NavDot size={props.size} navdotchecked={false} />
-                <NavDot size={props.size} navdotchecked={true} />
-                <NavDot size={props.size} navdotchecked={true} />
-              </NavDotDiv>{" "}
+              <NavDotDiv className={"NavDotDiv"}>
+                <NavDot
+                  className={"NavDot"}
+                  size={props.size}
+                  navdotchecked={false}
+                />
+                <NavDot
+                  className={"NavDot"}
+                  size={props.size}
+                  navdotchecked={true}
+                />
+                <NavDot
+                  className={"NavDot"}
+                  size={props.size}
+                  navdotchecked={true}
+                />
+              </NavDotDiv>
             </ReklamDivWrapper>
             <RightArrow src={Arrow} />
           </ReklamDiv>
           <LineDiv />
 
-          <AutoDiscountDiv size={props.size}>
-            <LeftAuto size={props.size}>
-              <AutoDiscountTextDiv size={props.size}>
-                <AutoDiscountTextHeader size={props.size} notheader={false}>
+          <AutoDiscountDiv size={props.size} className={"AutoDiscountDiv"}>
+            <LeftAuto className={"LeftAuto"} size={props.size}>
+              <AutoDiscountTextDiv
+                className={"AutoDiscountTextDiv"}
+                size={props.size}
+              >
+                <AutoDiscountTextHeader
+                  className={"AutoDiscountTextHeader"}
+                  size={props.size}
+                  notheader={false}
+                >
                   Хотите знать всё о скидках на авиабилеты?
                 </AutoDiscountTextHeader>
-                <AutoDiscountTextHeader size={props.size} notheader={true}>
+                <AutoDiscountTextHeader
+                  className={"AutoDiscountTextHeader"}
+                  size={props.size}
+                  notheader={true}
+                >
                   Вы можете подписаться на нашу рассылку через соцсети или по
                   электронной почте.
                 </AutoDiscountTextHeader>
               </AutoDiscountTextDiv>
             </LeftAuto>
-            <RightAuto size={props.size}>
+            <RightAuto className={"RightAuto"} size={props.size}>
               {SocialButtons(props)}
-              <InputEmailDiv>
-                <InputEmailMainDiv>
-                  <InputEmailText />
-                  <InputEmailTextDecorDiv>
-                    <InputEmailTextDecor>Ваш Email</InputEmailTextDecor>
+              <InputEmailDiv className={"InputEmailDiv"}>
+                <InputEmailMainDiv className={"InputEmailMainDiv"}>
+                  <InputEmailText className={"InputEmailText"} />
+                  <InputEmailTextDecorDiv className={"InputEmailTextDecorDiv"}>
+                    <InputEmailTextDecor className={"InputEmailTextDecor"}>
+                      Ваш Email
+                    </InputEmailTextDecor>
                   </InputEmailTextDecorDiv>
                 </InputEmailMainDiv>
-                <ButtonDiv>
-                  <Button>Подписаться</Button>
+                <ButtonDiv className={"ButtonDiv"}>
+                  <Button className={"Button"}>Подписаться</Button>
                 </ButtonDiv>
               </InputEmailDiv>
             </RightAuto>

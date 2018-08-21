@@ -102,9 +102,11 @@ const NonOfferta = styled.div`
 
 function Primises(props) {
   return (
-    <DepartPromisWrapper size={props.size}>
-      <Promis size={props.size}>{text}</Promis>
-      <NonOfferta size={props.size}>
+    <DepartPromisWrapper size={props.size} className="DepartPromisWrapper">
+      <Promis size={props.size} className="Promis">
+        {text}
+      </Promis>
+      <NonOfferta className="NonOfferta" size={props.size}>
         Цены, найденные пользователями за последние 48 часов, не являются
         офертой.
       </NonOfferta>

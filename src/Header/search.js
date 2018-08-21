@@ -155,8 +155,12 @@ const SearchFields = [
 
 function SearchFieldStart(props) {
   return (
-    <SearchFieldContainer size={props.size} action="/Search">
-      <SearchFieldRow size={props.size}>
+    <SearchFieldContainer
+      className="SearchFieldContainer"
+      size={props.size}
+      action="/Search"
+    >
+      <SearchFieldRow size={props.size} className="SearchFieldRow">
         {SearchFields.map(number => (
           <SearchFieldInputDivStart
             className={number.toString() + " " + props.size}
@@ -177,9 +181,10 @@ function SearchFieldStart(props) {
           </SearchFieldInputDivStart>
         ))}
       </SearchFieldRow>
-      <SearchButtonDiv size={props.size}>
-        <SearchButton size={props.size}>
-          Найти билеты <AeroImg src={aero} size={props.size} />
+      <SearchButtonDiv size={props.size} className="SearchButtonDiv">
+        <SearchButton size={props.size} className="SearchButton">
+          Найти билеты
+          <AeroImg className="AeroImg" src={aero} size={props.size} />
         </SearchButton>
       </SearchButtonDiv>
     </SearchFieldContainer>
@@ -188,8 +193,16 @@ function SearchFieldStart(props) {
 
 function SearchFieldSearch(props) {
   return (
-    <SearchFieldContainer size={props.size} action="/Search">
-      <SearchFieldRow size={props.size} search={true}>
+    <SearchFieldContainer
+      size={props.size}
+      action="/Search"
+      className="SearchFieldContainer"
+    >
+      <SearchFieldRow
+        size={props.size}
+        search={true}
+        className="SearchFieldRow"
+      >
         {SearchFields.map(number => (
           <SearchFieldInputDivSearch
             className={number.toString() + " " + props.size}
@@ -210,11 +223,16 @@ function SearchFieldSearch(props) {
             </SearchInputWrapper>
           </SearchFieldInputDivSearch>
         ))}{" "}
-        <SearchButtonDiv size={props.size} search={true}>
+        <SearchButtonDiv
+          size={props.size}
+          search={true}
+          className="SearchButtonDiv"
+        >
           <SearchButton
             size={props.size}
             onClick="location.href='/Search'"
             search={true}
+            className="SearchButton"
           >
             Найти билеты
           </SearchButton>
@@ -226,10 +244,19 @@ function SearchFieldSearch(props) {
 const Conteiner = styled.div``;
 function HeaderRouter(props) {
   return (
-    <Router>
-      <Conteiner>
-        <Route exact path="/" render={() => SearchFieldStart(props)} />
-        <Route path="/Search" render={() => SearchFieldSearch(props)} />
+    <Router className="SearchRouter">
+      <Conteiner className="SearchConteiner">
+        <Route
+          className="SearchFieldStart"
+          exact
+          path="/"
+          render={() => SearchFieldStart(props)}
+        />
+        <Route
+          className="SearchFieldSearch"
+          path="/Search"
+          render={() => SearchFieldSearch(props)}
+        />
       </Conteiner>
     </Router>
   );

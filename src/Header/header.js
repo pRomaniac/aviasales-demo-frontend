@@ -60,10 +60,23 @@ const HeaderDiv = styled.div`
 `;
 function HeaderRouter(props) {
   return (
-    <Router>
-      <Container>
-        <Route exact path="/" render={() => <FirstPage props={props} />} />
-        <Route path="/Search" render={() => <SearchPage props={props} />} />
+    <Router className={"HeaderRouter"}>
+      <Container className={"HeaderContainer"}>
+        <Route
+          className={"HeaderRouter"}
+          exact
+          path="/"
+          render={() => (
+            <FirstPage props={props} className={"HeaderFirstPage"} />
+          )}
+        />
+        <Route
+          className={"SearchRouter"}
+          path="/Search"
+          render={() => (
+            <SearchPage props={props} className={"HeaderSearchPage"} />
+          )}
+        />
       </Container>
     </Router>
   );
@@ -72,7 +85,7 @@ function HeaderRouter(props) {
 function FirstPage(props) {
   props = props.props;
   return (
-    <HeaderDiv size={props.size}>
+    <HeaderDiv size={props.size} className="HeaderDiv">
       <Logo
         size={props.size}
         src={props.src}
@@ -80,8 +93,8 @@ function FirstPage(props) {
         imgtitle={props.imgtitle}
         className={props.className}
       />
-      <Title size={props.size} />
-      <SearchField size={props.size} />
+      <Title size={props.size} className="Title" />
+      <SearchField size={props.size} classname="SearchField" />
     </HeaderDiv>
   );
 }
@@ -89,13 +102,13 @@ function FirstPage(props) {
 function SearchFieldSizing(props) {
   if (props.size === "mobile") {
     return "";
-  } else return <SearchField size={props.size} />;
+  } else return <SearchField size={props.size} className={"SearchField"} />;
 }
 
 function SearchPage(props) {
   props = props.props;
   return (
-    <HeaderDiv size={props.size} search={true}>
+    <HeaderDiv size={props.size} search={true} className={"HeaderDiv"}>
       <Logo
         size={props.size}
         src={props.src}

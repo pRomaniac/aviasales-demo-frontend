@@ -59,22 +59,26 @@ const TitleH2 = styled.h2`
       text-align: center;
     `};
 `;
-
+const Titul = styled.div``;
 function Title(props) {
   if (props.size === "mobile") {
     return (
       <div>
-        <TitleH1 size={props.size}>Поиск дешевых авиабилетов</TitleH1>
+        <TitleH1 className={"TitleH1" + props.size} size={props.size}>
+          Поиск дешевых авиабилетов
+        </TitleH1>
       </div>
     );
   } else {
     return (
-      <div>
-        <TitleH1 size={props.size}>Поиск дешевых авиабилетов</TitleH1>
-        <TitleH2 size={props.size}>
+      <Titul className={"Titul" + props.size} size={props.size}>
+        <TitleH1 className={"TitleH1" + props.size} size={props.size}>
+          Поиск дешевых авиабилетов
+        </TitleH1>
+        <TitleH2 className={"TitleH2" + props.size} size={props.size}>
           Лучший способ купить авиабилеты дешево
         </TitleH2>
-      </div>
+      </Titul>
     );
   }
 }

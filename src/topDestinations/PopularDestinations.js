@@ -42,10 +42,15 @@ const DepartureCityDiv = styled.a`
 const DeparturePen = styled.img``;
 function PopDestinations(props) {
   return (
-    <PopDest size={props.size}>
+    <PopDest size={props.size} className="PopDest">
       Популярные направления перелетов из города{" "}
-      <DepartureCityDiv size={props.size} href="#">
-        {DepartureCity} <DeparturePen src={DeptPen} size={props.size} />
+      <DepartureCityDiv className="DepartureCityDiv" size={props.size} href="#">
+        {DepartureCity}{" "}
+        <DeparturePen
+          className="DeparturePen"
+          src={DeptPen}
+          size={props.size}
+        />
       </DepartureCityDiv>
     </PopDest>
   );

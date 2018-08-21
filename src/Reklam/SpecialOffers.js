@@ -402,33 +402,49 @@ function GetTimeOutRus(timeout) {
 function Card(props, Off) {
   return (
     <BestPriceCard className="BestPriceCard" size={props.size} key={Off.id}>
-      <Title size={props.size}>
+      <Title size={props.size} className="Title">
         {" "}
-        <TitleIcon src={Off.titleicon} />
-        <TitleTextDIv size={props.size}>
-          <TitleText size={props.size}>
+        <TitleIcon src={Off.titleicon} className="TitleIcon" />
+        <TitleTextDIv size={props.size} className="TitleTextDIv">
+          <TitleText size={props.size} className="TitleText">
             {Off.title + " " + ForPrice(Off.minprice) + " ₽"}
           </TitleText>
         </TitleTextDIv>
       </Title>
-      <OfferBody size={props.size}>
-        <OfferBodyHeader>
-          <CompanyImgDiv size={props.size}>
-            <CompanyImg src={Off.src} size={props.size} />
+      <OfferBody size={props.size} className="OfferBody">
+        <OfferBodyHeader className="OfferBodyHeader">
+          <CompanyImgDiv className="CompanyImgDiv" size={props.size}>
+            <CompanyImg
+              className="CompanyImg"
+              src={Off.src}
+              size={props.size}
+            />
           </CompanyImgDiv>
         </OfferBodyHeader>
-        <PriceTimout size={props.size}>
-          <Price size={props.size}>{ForPrice(Off.minprice) + " ₽"}</Price>
-          <Timeout size={props.size}>
+        <PriceTimout className="PriceTimout" size={props.size}>
+          <Price className="Price" size={props.size}>
+            {ForPrice(Off.minprice) + " ₽"}
+          </Price>
+          <Timeout className="Timeout" size={props.size}>
             {"Осталось " + Off.timeout + GetTimeOutRus(Off.timeout)}
           </Timeout>
         </PriceTimout>
-        <TextsDiv size={props.size}>
-          <Texts size={props.size}>{Off.text1}</Texts>
-          <Texts size={props.size}>{Off.text2}</Texts>
+        <TextsDiv className="TextsDiv" size={props.size}>
+          <Texts className="Texts" size={props.size}>
+            {Off.text1}
+          </Texts>
+          <Texts className="Texts" size={props.size}>
+            {Off.text2}
+          </Texts>
         </TextsDiv>
-        <OfferDetailsLink size={props.size} href={Off.company}>
-          <OfferDetails size={props.size}>Узнать подробности</OfferDetails>
+        <OfferDetailsLink
+          className="OfferDetailsLink"
+          size={props.size}
+          href={Off.company}
+        >
+          <OfferDetails className="OfferDetails" size={props.size}>
+            Узнать подробности
+          </OfferDetails>
         </OfferDetailsLink>
       </OfferBody>
     </BestPriceCard>
@@ -437,16 +453,20 @@ function Card(props, Off) {
 
 function Ofers(props) {
   return (
-    <BestPriceContainer size={props.size}>
-      <TopTitle size={props.size}>Спецпредложения на авиабилеты</TopTitle>
-      <BestPriceRow size={props.size}>
-        <BestPriceCards size={props.size} />
+    <BestPriceContainer size={props.size} className="BestPriceContainer">
+      <TopTitle className="TopTitle" size={props.size}>
+        Спецпредложения на авиабилеты
+      </TopTitle>
+      <BestPriceRow className="BestPriceRow" size={props.size}>
+        <BestPriceCards className="OfferDetailsLink" size={props.size} />
       </BestPriceRow>
-      <RemarksDiv size={props.size}>
-        <LinkToAll href="#">
-          <Link href="#">Смотреть все спецпредложения</Link>
+      <RemarksDiv className="RemarksDiv" size={props.size}>
+        <LinkToAll className="LinkToAll" href="#">
+          <Link className="Link" href="#">
+            Смотреть все спецпредложения
+          </Link>
         </LinkToAll>
-        <Remark>* средняя цена по направлению </Remark>
+        <Remark className="Remark">* средняя цена по направлению </Remark>
       </RemarksDiv>
     </BestPriceContainer>
   );

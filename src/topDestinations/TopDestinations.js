@@ -12,11 +12,17 @@ const TopDestinationsDiv = styled.div`
 
 function TopDestinations(props) {
   return (
-    <TopDestinationsDiv>
-      <Compas size={props.size} />
-      <PopDestinations size={props.size} />
-      <CategoriesDestinations size={props.size} />
-      <TopDestinationsCards size={props.size} />
+    <TopDestinationsDiv className="TopDestinationsDiv">
+      <Compas size={props.size} className="Compas" />
+      <PopDestinations size={props.size} className="PopDestinations" />
+      <CategoriesDestinations
+        size={props.size}
+        className="CategoriesDestinations"
+      />
+      <TopDestinationsCards
+        size={props.size}
+        className="TopDestinationsCards"
+      />
     </TopDestinationsDiv>
   );
 }

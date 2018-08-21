@@ -179,7 +179,12 @@ const RightDiv = styled.div`
 
 function Link(props, links) {
   return (
-    <LinkA size={props.size} href={links.url} key={links.name}>
+    <LinkA
+      size={props.size}
+      href={links.url}
+      key={links.name}
+      className={"LinkA"}
+    >
       {links.name}
     </LinkA>
   );
@@ -187,10 +192,16 @@ function Link(props, links) {
 
 function SocialRender(props, socials) {
   return (
-    <SocialDiv size={props.size} href={socials.url} key={socials.name}>
+    <SocialDiv
+      size={props.size}
+      href={socials.url}
+      key={socials.name}
+      className="SocialDiv"
+    >
       <SocialIcon
         src={socials.icon[Object.keys(socials.icon).toString()]}
         size={props.size}
+        className="SocialIcon"
       />
       {socials.name}
     </SocialDiv>
@@ -200,26 +211,41 @@ function SocialRender(props, socials) {
 function Footer(props) {
   if (props.size === "desktop") {
     return (
-      <Wrapper size={props.size}>
-        <LeftDiv>
-          <LinksDiv size={props.size}>
-            {Links.map(link => Link(props, link))}
+      <Wrapper size={props.size} className="FooterWrapper">
+        <LeftDiv className="FooterLeftDiv">
+          <LinksDiv size={props.size} className="FooterLinksDiv">
+            >{Links.map(link => Link(props, link))}
           </LinksDiv>
-          <SocialsDiv size={props.size}>
+          <SocialsDiv size={props.size} className="FooterSocialsDiv">
             {Social.map(social => SocialRender(props, social))}
           </SocialsDiv>
-          <AddServiceDiv size={props.size}>
+          <AddServiceDiv size={props.size} className="FooterAddServiceDiv">
             Поиск и бронирование отелей
           </AddServiceDiv>
         </LeftDiv>
-        <RightDiv>
-          <Stores size={props.size}>
-            <StoresImg size={props.size} src={AppStore} />
-            <StoresImg size={props.size} src={GooglePlay} />
-            <StoresImg size={props.size} src={WindowMarket} />
+        <RightDiv className={"Footer" + "RightDiv"}>
+          <Stores size={props.size} className={"Footer" + "Stores"}>
+            <StoresImg
+              size={props.size}
+              src={AppStore}
+              className={"Footer" + "StoresImg" + "AppStore"}
+            />
+            />
+            <StoresImg
+              size={props.size}
+              src={GooglePlay}
+              className={"Footer" + "StoresImg" + "GooglePlay"}
+            />
+            />
+            <StoresImg
+              size={props.size}
+              src={WindowMarket}
+              className={"Footer" + "StoresImg" + "WindowMarket"}
+            />
+            />
           </Stores>
-          <FooterLink size={props.size}>
-            <FooterLinkA size={props.size} href="">
+          <FooterLink size={props.size} className="FooterLink">
+            <FooterLinkA size={props.size} href="" className="FooterLinkA">
               © 2007–2018, Aviasales — дешевые авиабилеты
             </FooterLinkA>
           </FooterLink>
@@ -228,23 +254,42 @@ function Footer(props) {
     );
   } else {
     return (
-      <Wrapper size={props.size}>
-        <LinksDiv size={props.size}>
+      <Wrapper size={props.size} className={"Footer" + "Wrapper" + ""}>
+        <LinksDiv size={props.size} className={"Footer" + "LinksDiv" + ""}>
           {Links.map(link => Link(props, link))}
         </LinksDiv>
-        <SocialsDiv size={props.size}>
+        <SocialsDiv size={props.size} className={"Footer" + "SocialsDiv" + ""}>
           {Social.map(social => SocialRender(props, social))}
         </SocialsDiv>
-        <AddServiceDiv size={props.size}>
+        <AddServiceDiv
+          size={props.size}
+          className={"Footer" + "AddServiceDiv" + ""}
+        >
           Поиск и бронирование отелей
         </AddServiceDiv>
-        <Stores size={props.size}>
-          <StoresImg size={props.size} src={AppStore} />
-          <StoresImg size={props.size} src={GooglePlay} />
-          <StoresImg size={props.size} src={WindowMarket} />
+        <Stores size={props.size} className={"Footer" + "Stores" + ""}>
+          <StoresImg
+            size={props.size}
+            src={AppStore}
+            className={"Footer" + "StoresImg" + "AppStore"}
+          />
+          <StoresImg
+            size={props.size}
+            src={GooglePlay}
+            className={"Footer" + "StoresImg" + "GooglePlay"}
+          />
+          <StoresImg
+            size={props.size}
+            src={WindowMarket}
+            className={"Footer" + "StoresImg" + "WindowMarket"}
+          />
         </Stores>
-        <FooterLink size={props.size}>
-          <FooterLinkA size={props.size} href="">
+        <FooterLink size={props.size} className={"Footer" + "FooterLink" + ""}>
+          <FooterLinkA
+            size={props.size}
+            href=""
+            className={"Footer" + "FooterLinkA" + ""}
+          >
             © 2007–2018, Aviasales — дешевые авиабилеты
           </FooterLinkA>
         </FooterLink>

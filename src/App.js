@@ -45,7 +45,7 @@ const Container = styled.div`
 
 function FirstPage(props) {
   return (
-    <Container>
+    <Container className="FirstPageContainer">
       <Header
         size={props.props.size}
         src={props.props.props.title.src}
@@ -53,18 +53,17 @@ function FirstPage(props) {
         alt={props.props.props.title.alt}
         className={props.props.props.title.className}
       />
-      <TopDestinations size={props.props.size} />
-      <Reklam size={props.props.size} />
-      <Blogs size={props.props.size} />
-      <PhonesReklam size={props.props.size} />
+      <TopDestinations size={props.props.size} className={"TopDestinations"} />
+      <Reklam size={props.props.size} className={"Reklam"} />
+      <Blogs size={props.props.size} className={"Blogs"} />
+      <PhonesReklam size={props.props.size} className={"PhonesReklam"} />
     </Container>
   );
 }
 
 function SearchPage(props) {
-  console.log(props.props.size);
   return (
-    <Container>
+    <Container className={"SearchContainer"}>
       <Header
         size={props.props.size}
         src={props.props.props.title.src}
@@ -72,17 +71,26 @@ function SearchPage(props) {
         alt={props.props.props.title.alt}
         className={props.props.props.title.className}
       />
-      <SearchCards size={props.props.size} />
+      <SearchCards size={props.props.size} className={"SearchCards"} />
     </Container>
   );
 }
 
 function AppRouter(props) {
   return (
-    <Router>
-      <Container>
-        <Route exact path="/" render={() => <FirstPage props={props} />} />
-        <Route path="/Search" render={() => <SearchPage props={props} />} />
+    <Router className="AppRouter">
+      <Container className="AppRouterContainer">
+        <Route
+          exact
+          path="/"
+          render={() => <FirstPage props={props} className={"FirstPage"} />}
+          className="FirstPageRouter"
+        />
+        <Route
+          path="/Search"
+          render={() => <SearchPage props={props} className={"SearchPage"} />}
+          className="SearchPageRouter"
+        />
       </Container>
     </Router>
   );
@@ -142,9 +150,13 @@ class App extends React.Component {
         <SiteMap size={this.state.sizing} />
         <Footer size={this.state.sizing} /> */}
 
-          <AppRouter props={props} size={this.state.sizing} />
-          <SiteMap size={this.state.sizing} />
-          <Footer size={this.state.sizing} />
+          <AppRouter
+            props={props}
+            size={this.state.sizing}
+            className="AppRouter"
+          />
+          <SiteMap size={this.state.sizing} className={"SiteMap"} />
+          <Footer size={this.state.sizing} className={"Footer"} />
         </Container>
       );
     } else return "";
