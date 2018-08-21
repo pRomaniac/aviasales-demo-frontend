@@ -29,7 +29,6 @@ import CardTablet from "./CardTablet";
 import CardDesktop from "./CardDesktop";
 
 function SearchCards(props) {
-  console.log(props.size);
   const size = props.size;
   if (size === "mobile") {
     return CardMobile(props);

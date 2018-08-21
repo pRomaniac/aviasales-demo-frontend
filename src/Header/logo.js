@@ -181,7 +181,7 @@ function LogoSearch(props) {
   if (props.size !== "mobile") {
     return (
       <LogoWrapper size={props.size} search={true} className="LogoWrapper">
-        {" "}
+        
         <Link to={{ pathname: "/" }}>
           <HeaderA size={props.size} href="/">
             <Img
@@ -192,7 +192,7 @@ function LogoSearch(props) {
             />
 
             <ImgTitle>{props.imgtitle}</ImgTitle>
-          </HeaderA>{" "}
+          </HeaderA>
         </Link>
         <CurrencyDiv className="HeaderCurrencyDiv">
           <CurrencyDivText className="HeaderCurrencyDivText">
@@ -206,8 +206,8 @@ function LogoSearch(props) {
       <LogoWrapper size={props.size} className="LogoWrapper">
         <Link to={{ pathname: "/" }}>
           <HeaderA size={props.size} type="search" href="/" className="HeaderA">
-            <Img src={back} alt={props.alt} className={props.className} />{" "}
-          </HeaderA>{" "}
+            <Img src={back} alt={props.alt} className={props.className} />
+          </HeaderA>
         </Link>
         <SearchParamDiv size={props.size} className="SearchParam">
           <FromTODiv size={props.size} className="FromToDiv">

@@ -43,9 +43,9 @@ const DeparturePen = styled.img``;
 function PopDestinations(props) {
   return (
     <PopDest size={props.size} className="PopDest">
-      Популярные направления перелетов из города{" "}
+      Популярные направления перелетов из города
       <DepartureCityDiv className="DepartureCityDiv" size={props.size} href="#">
-        {DepartureCity}{" "}
+        {DepartureCity}
         <DeparturePen
           className="DeparturePen"
           src={DeptPen}

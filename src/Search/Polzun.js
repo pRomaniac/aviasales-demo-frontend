@@ -43,13 +43,25 @@ const PolzunokLine = styled.div`
 
 function PolzunokHtml(props) {
   return (
-    <PolzunokDiv inCard={props.inCard}>
-      <PolzunokDivCircle inCard={props.inCard} />
-      <PolzunokLine inCard={props.inCard}>
-        <PolzunokLineTop inCard={props.inCard} />
-        <PolzunokLineBottom inCard={props.inCard} />
+    <PolzunokDiv className={"SearchPolzunokDiv"} inCard={props.inCard}>
+      <PolzunokDivCircle
+        className={"SearchPolzunokDivCircle"}
+        inCard={props.inCard}
+      />
+      <PolzunokLine className={"SearchPolzunokLine"} inCard={props.inCard}>
+        <PolzunokLineTop
+          className={"SearchPolzunokLineTop"}
+          inCard={props.inCard}
+        />
+        <PolzunokLineBottom
+          className={"SearchPolzunokLineBottom"}
+          inCard={props.inCard}
+        />
       </PolzunokLine>
-      <PolzunokDivCircle inCard={props.inCard} />
+      <PolzunokDivCircle
+        className={"SearchPolzunokDivCircle"}
+        inCard={props.inCard}
+      />
     </PolzunokDiv>
   );
 }

@@ -18,13 +18,13 @@ function SearchCards(props) {
   const size = props.size;
   if (size === "desktop") {
     return (
-      <Wrapper size={size}>
+      <Wrapper size={size} className = "SearchCardsWrapper">
         {/*         {CardContent.map(CardOne => CardDesktopEnum(props, CardOne))} */}
-        <FilterVertDiv>
-          <Filters />
+        <FilterVertDiv className = "SearchCardsFilterVertDiv">
+          <Filters className = "SearchCardsFilters"/>
         </FilterVertDiv>
-        <Cards>
-          <CardsTablet props={props} />
+        <Cards className = "SearchCardsCards">
+          <CardsTablet props={props} className = "SearchCardsCardsTablet"/>
         </Cards>
       </Wrapper>
     );

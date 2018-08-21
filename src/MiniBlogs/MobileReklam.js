@@ -219,102 +219,102 @@ const OsPhoneText = styled.div`
 function Reklama(props) {
   if (props.size === "mobile") {
     return (
-      <Wrapper size={props.size} className={"Reklama" + "Wrapper" + props.size}>
-        <Row size={props.size} className={"Reklama" + "Row" + props.size}>
-          <Title size={props.size} className={"Reklama" + "Title" + props.size}>
+      <Wrapper size={props.size} className={"ReklamaWrapper" + props.size}>
+        <Row size={props.size} className={"ReklamaRow" + props.size}>
+          <Title size={props.size} className={"ReklamaTitle" + props.size}>
             Скачай мобильное приложение Aviasales.ru
           </Title>
           <Rating
             size={props.size}
-            className={"Reklama" + "Rating" + props.size}
+            className={"ReklamaRating" + props.size}
           >
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={nofullstar}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingText
               size={props.size}
-              className={"Reklama" + "RatingText" + props.size}
+              className={"ReklamaRatingText" + props.size}
             >
               Более 103 000 оценок
             </RatingText>
           </Rating>
           <ReklamBlock
             size={props.size}
-            className={"Reklama" + "ReklamBlock" + props.size}
+            className={"ReklamaReklamBlock" + props.size}
           >
             <PhoneImgWrap
               size={props.size}
-              className={"Reklama" + "PhoneImgWrap" + props.size}
+              className={"ReklamaPhoneImgWrap" + props.size}
             >
               <PhoneImg
                 size={props.size}
                 src={Phone}
-                className={"Reklama" + "PhoneImg" + props.size}
+                className={"ReklamaPhoneImg" + props.size}
               />
             </PhoneImgWrap>
             <OsPhonesWrap
               size={props.size}
-              className={"Reklama" + "OsPhonesWrap" + props.size}
+              className={"ReklamaOsPhonesWrap" + props.size}
             >
               <OsPhoneWrap
                 size={props.size}
-                className={"Reklama" + "OsPhoneWrap" + props.size}
+                className={"ReklamaOsPhoneWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Ios}
                   size={props.size}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
                 <OsPhoneText
                   size={props.size}
-                  className={"Reklama" + "OsPhoneText" + props.size}
+                  className={"ReklamaOsPhoneText" + props.size}
                 >
                   iPhone или iPad
                 </OsPhoneText>
               </OsPhoneWrap>
               <OsPhoneWrap
                 size={props.size}
-                className={"Reklama" + "OsPhoneWrap" + props.size}
+                className={"ReklamaOsPhoneWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Android_ikon}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
-                <OsPhoneText className={"Reklama" + "OsPhoneText" + props.size}>
+                <OsPhoneText className={"ReklamaOsPhoneText" + props.size}>
                   Android
                 </OsPhoneText>
               </OsPhoneWrap>
               <OsPhoneWrap
                 size={props.size}
-                className={"Reklama" + "OsPhoneWrap" + props.size}
+                className={"ReklamaOsPhoneWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Wp}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
-                <OsPhoneText className={"Reklama" + "Wrapper" + props.size}>
+                <OsPhoneText className={"ReklamaWrapper" + props.size}>
                   Windows Phone
                 </OsPhoneText>
               </OsPhoneWrap>
@@ -325,82 +325,82 @@ function Reklama(props) {
     );
   } else if (props.size === "tablet") {
     return (
-      <Wrapper size={props.size} className={"Reklama" + "Wrapper" + props.size}>
+      <Wrapper size={props.size} className={"ReklamaWrapper" + props.size}>
         <PhoneImgWrap
           size={props.size}
-          className={"Reklama" + "PhoneImgWrap" + props.size}
+          className={"ReklamaPhoneImgWrap" + props.size}
         >
           <PhoneImg
             size={props.size}
             src={Laptop_Phone}
-            className={"Reklama" + "PhoneImg" + props.size}
+            className={"ReklamaPhoneImg" + props.size}
           />
         </PhoneImgWrap>
-        <Row size={props.size} className={"Reklama" + "Row" + props.size}>
-          <Title size={props.size} className={"Reklama" + "Title" + props.size}>
+        <Row size={props.size} className={"ReklamaRow" + props.size}>
+          <Title size={props.size} className={"ReklamaTitle" + props.size}>
             Скачай мобильное приложение Aviasales.ru
           </Title>
           <Rating
             size={props.size}
-            className={"Reklama" + "Rating" + props.size}
+            className={"ReklamaRating" + props.size}
           >
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={nofullstar}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingText
               size={props.size}
-              className={"Reklama" + "RatingText" + props.size}
+              className={"ReklamaRatingText" + props.size}
             >
               Более 103 000 оценок
             </RatingText>
           </Rating>
           <ReklamBlock
             size={props.size}
-            className={"Reklama" + "ReklamBlock" + props.size}
+            className={"ReklamaReklamBlock" + props.size}
           >
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Ios}
                   size={props.size}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneText
                   size={props.size}
-                  className={"Reklama" + "OsPhoneText" + props.size}
+                  className={"ReklamaOsPhoneText" + props.size}
                 >
                   iPhone или iPad
                 </OsPhoneText>
@@ -408,52 +408,52 @@ function Reklama(props) {
             </OsPhoneWrap>
             <LimitDiv
               size={props.size}
-              className={"Reklama" + "LimitDiv" + props.size}
+              className={"ReklamaLimitDiv" + props.size}
             />
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Android_ikon}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
-                <OsPhoneText className={"Reklama" + "OsPhoneText" + props.size}>
+                <OsPhoneText className={"ReklamaOsPhoneText" + props.size}>
                   Android
                 </OsPhoneText>
               </Wrap>
             </OsPhoneWrap>
             <LimitDiv
               size={props.size}
-              className={"Reklama" + "LimitDiv" + props.size}
+              className={"ReklamaLimitDiv" + props.size}
             />
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Wp}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
-                <OsPhoneText className={"Reklama" + "OsPhoneText" + props.size}>
+                <OsPhoneText className={"ReklamaOsPhoneText" + props.size}>
                   Windows Phone
                 </OsPhoneText>
               </Wrap>
@@ -464,82 +464,82 @@ function Reklama(props) {
     );
   } else if (props.size === "desktop") {
     return (
-      <Wrapper size={props.size} className={"Reklama" + "Wrapper" + props.size}>
+      <Wrapper size={props.size} className={"ReklamaWrapper" + props.size}>
         <PhoneImgWrap
           size={props.size}
-          className={"Reklama" + "PhoneImgWrap" + props.size}
+          className={"ReklamaPhoneImgWrap" + props.size}
         >
           <PhoneImg
             size={props.size}
             src={Laptop_Phone}
-            className={"Reklama" + "PhoneImg" + props.size}
+            className={"ReklamaPhoneImg" + props.size}
           />
         </PhoneImgWrap>
-        <Row size={props.size} className={"Reklama" + "Row" + props.size}>
-          <Title size={props.size} className={"Reklama" + "Title" + props.size}>
+        <Row size={props.size} className={"ReklamaRow" + props.size}>
+          <Title size={props.size} className={"ReklamaTitle" + props.size}>
             Скачай мобильное приложение Aviasales.ru
           </Title>
           <Rating
             size={props.size}
-            className={"Reklama" + "Rating" + props.size}
+            className={"ReklamaRating" + props.size}
           >
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={star}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingStars
               src={nofullstar}
               size={props.size}
-              className={"Reklama" + "RatingStars" + props.size}
+              className={"ReklamaRatingStars" + props.size}
             />
             <RatingText
               size={props.size}
-              className={"Reklama" + "RatingText" + props.size}
+              className={"ReklamaRatingText" + props.size}
             >
               Более 103 000 оценок
             </RatingText>
           </Rating>
           <ReklamBlock
             size={props.size}
-            className={"Reklama" + "Wrapper" + props.size}
+            className={"ReklamaWrapper" + props.size}
           >
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Ios}
                   size={props.size}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneText
                   size={props.size}
-                  className={"Reklama" + "OsPhoneText" + props.size}
+                  className={"ReklamaOsPhoneText" + props.size}
                 >
                   iPhone или iPad
                 </OsPhoneText>
@@ -547,52 +547,52 @@ function Reklama(props) {
             </OsPhoneWrap>
             <LimitDiv
               size={props.size}
-              className={"Reklama" + "LimitDiv" + props.size}
+              className={"ReklamaLimitDiv" + props.size}
             />
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Android_ikon}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
-                <OsPhoneText className={"Reklama" + "OsPhoneText" + props.size}>
+                <OsPhoneText className={"ReklamaOsPhoneText" + props.size}>
                   Android
                 </OsPhoneText>
               </Wrap>
             </OsPhoneWrap>
             <LimitDiv
               size={props.size}
-              className={"Reklama" + "LimitDiv" + props.size}
+              className={"ReklamaLimitDiv" + props.size}
             />
             <OsPhoneWrap
               size={props.size}
-              className={"Reklama" + "OsPhoneWrap" + props.size}
+              className={"ReklamaOsPhoneWrap" + props.size}
             >
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
                 <OsPhoneImg
                   src={Wp}
-                  className={"Reklama" + "OsPhoneImg" + props.size}
+                  className={"ReklamaOsPhoneImg" + props.size}
                 />
               </Wrap>
               <Wrap
                 size={props.size}
-                className={"Reklama" + "Wrap" + props.size}
+                className={"ReklamaWrap" + props.size}
               >
-                <OsPhoneText className={"Reklama" + "OsPhoneText" + props.size}>
+                <OsPhoneText className={"ReklamaOsPhoneText" + props.size}>
                   Windows Phone
                 </OsPhoneText>
               </Wrap>

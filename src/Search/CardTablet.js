@@ -38,10 +38,13 @@ const Pricing = styled.div`
 `;
 function Price(val) {
   return (
-    <PriceDiv>
-      <Pricet1>Купить </Pricet1>
-      <Pricing>
-        <Pricet2>за</Pricet2> <Pricet3>{pricevalue(val)} ₽</Pricet3>
+    <PriceDiv className={"SearchPriceDiv"}>
+      <Pricet1 className={"SearchPricet1"}>Купить </Pricet1>
+      <Pricing className={"SearchPricing"}>
+        <Pricet2 className={"SearchPricet2"}>за</Pricet2>
+        <Pricet3 className={"SearchPricet3"}>
+          {" " + pricevalue(val) + " ₽"}
+        </Pricet3>
       </Pricing>
     </PriceDiv>
   );
@@ -418,8 +421,10 @@ const CharterDiv = styled.div`
 function Charter(charter) {
   if (charter) {
     return (
-      <CharterDiv>
-        <ChapterDivText>{charter}</ChapterDivText>{" "}
+      <CharterDiv className={"SearchCharterDiv"}>
+        <ChapterDivText className={"SearchChapterDivText"}>
+          {charter}
+        </ChapterDivText>
       </CharterDiv>
     );
   } else {
@@ -471,24 +476,38 @@ function Icons(props, c1, c2) {
   const size = props.size;
   if (c1 === c2) {
     return (
-      <IconsDiv size={size} key={c1}>
-        <IconsImg src={BigIcon(c1)} size={size} />
+      <IconsDiv size={size} key={c1} className={"SearchIconsDiv"}>
+        <IconsImg src={BigIcon(c1)} size={size} className={"SearchIconsImg"} />
       </IconsDiv>
     );
   } else
     return (
-      <IconsDiv size={size} key={c1}>
-        <IconsImg src={SmallIcon(c1)} size={size} key={c1} />
-        <IconsImg src={SmallIcon(c2)} size={size} key={c2} />
+      <IconsDiv size={size} key={c1} className={"SearchIconsDiv"}>
+        <IconsImg
+          src={SmallIcon(c1)}
+          className={"SearchIconsImg"}
+          size={size}
+          key={c1}
+        />
+        <IconsImg
+          src={SmallIcon(c2)}
+          className={"SearchIconsImg"}
+          size={size}
+          key={c2}
+        />
       </IconsDiv>
     );
 }
 
 function BagajeComment(comment) {
   if (!comment) {
-    return <BagajeCommentDiv> </BagajeCommentDiv>;
+    return <BagajeCommentDiv className={"SearchBagajeCommentDiv"} />;
   } else {
-    return <BagajeCommentDiv>{comment}</BagajeCommentDiv>;
+    return (
+      <BagajeCommentDiv className={"SearchBagajeCommentDiv"}>
+        {comment}
+      </BagajeCommentDiv>
+    );
   }
 }
 
@@ -501,7 +520,6 @@ function bagajtext(bagaj, comment) {
 }
 
 function main_red_bagaja(qty, comment) {
-  console.log(comment === undefined);
   if ((qty === "x") & (comment === undefined)) {
     return handbagaja_red;
   } else {
@@ -514,67 +532,86 @@ function Bagaj(props) {
   const Bagaj = props.bagaj.bagaj;
   const BagajAdd = props.bagaj.bagaj.add;
   const comment = props.bagaj.bagajcomment;
-  console.log(props.bagaj.bagajcomment);
   if (BagajAdd) {
     return (
-      <BagajesDiv size={size}>
-        <BagajeDiv size={size} green={1}>
-          <HandBagajDiv size={size}>
-            <HandBagajImgDiv>
+      <BagajesDiv size={size} className={"SearchBagajesDiv"}>
+        <BagajeDiv size={size} green={1} className={"SearchBagajeDiv"}>
+          <HandBagajDiv size={size} className={"SearchHandBagajDiv"}>
+            <HandBagajImgDiv className={"SearchHandBagajImgDiv"}>
               <HandBagajImg
                 size={size}
                 qty={bagajtext(Bagaj.hand)}
                 src={handbagaja}
                 comment={1}
+                className={"SearchHandBagajImg"}
               />
             </HandBagajImgDiv>
-            <HandBagajImgtext qty={bagajtext(Bagaj.hand)} comment={1}>
+            <HandBagajImgtext
+              qty={bagajtext(Bagaj.hand)}
+              comment={1}
+              className={"SearchHandBagajImgtext"}
+            >
               {bagajtext(Bagaj.hand)}
             </HandBagajImgtext>
           </HandBagajDiv>
-          <MainBagajDiv size={size}>
+          <MainBagajDiv size={size} className={"SearchMainBagajDiv"}>
             <MainBagajImgDiv>
               <MainBagajImg
                 size={size}
                 qty={bagajtext(Bagaj.main)}
                 src={main_red_bagaja(bagajtext(Bagaj.main), comment)}
                 comment={comment}
+                className={"SearchMainBagajImg"}
               />
             </MainBagajImgDiv>
-            <MainBagajImgtext qty={bagajtext(Bagaj.main)} comment={comment}>
+            <MainBagajImgtext
+              qty={bagajtext(Bagaj.main)}
+              comment={comment}
+              className={"SearchMainBagajImgtext"}
+            >
               {bagajtext(Bagaj.main)}
             </MainBagajImgtext>
           </MainBagajDiv>
           {BagajeComment(comment)}
         </BagajeDiv>
-        <BagajeDiv size={props.size}>
-          <HandBagajDiv size={size}>
-            <HandBagajImgDiv>
+        <BagajeDiv size={props.size} className={"SearchBagajeDiv"}>
+          <HandBagajDiv size={size} className={"SearchHandBagajDiv"}>
+            <HandBagajImgDiv className={"SearchHandBagajImgDiv"}>
               <HandBagajImg
+                className={"SearchHandBagajImg"}
                 size={size}
                 qty={bagajtext(BagajAdd.hand)}
                 src={handbagaja}
                 comment={1}
               />
             </HandBagajImgDiv>
-            <HandBagajImgtext qty={bagajtext(BagajAdd.hand)} comment={1}>
+            <HandBagajImgtext
+              qty={bagajtext(BagajAdd.hand)}
+              comment={1}
+              className={"SearchHandBagajImgtext"}
+            >
               {bagajtext(BagajAdd.hand)}
             </HandBagajImgtext>
           </HandBagajDiv>
-          <MainBagajDiv size={size}>
-            <MainBagajImgDiv>
+          <MainBagajDiv size={size} className={"SearchMainBagajDiv"}>
+            <MainBagajImgDiv className={"SearchMainBagajImgDiv"}>
               <MainBagajImg
                 size={size}
                 qty={bagajtext(BagajAdd.main)}
                 src={main_red_bagaja(bagajtext(Bagaj.main), 1)}
                 comment={1}
+                className={"SearchMainBagajImg"}
               />
             </MainBagajImgDiv>
-            <MainBagajImgtext qty={bagajtext(BagajAdd.main)} comment={1}>
+            <MainBagajImgtext
+              qty={bagajtext(BagajAdd.main)}
+              comment={1}
+              className={"SearchMainBagajImgtext"}
+            >
               {bagajtext(BagajAdd.main)}
             </MainBagajImgtext>
           </MainBagajDiv>
-          <BagajeDivAddPrice>
+          <BagajeDivAddPrice className={"SearchBagajeDivAddPrice"}>
             {"- " + pricevalue(BagajAdd.price.toString()) + " ₽"}
           </BagajeDivAddPrice>
         </BagajeDiv>
@@ -582,34 +619,44 @@ function Bagaj(props) {
     );
   } else
     return (
-      <BagajesDiv size={size}>
-        <BagajeDiv>
-          <HandBagajDiv size={size}>
-            <HandBagajImgDiv>
+      <BagajesDiv size={size} className={"SearchBagajesDiv"}>
+        <BagajeDiv className={"SearchBagajeDiv"}>
+          <HandBagajDiv size={size} className={"SearchHandBagajDiv"}>
+            <HandBagajImgDiv className={"SearchHandBagajImgDiv"}>
               <HandBagajImg
+                className={"SearchHandBagajImg"}
                 size={size}
                 qty={bagajtext(Bagaj.hand)}
                 src={handbagaja}
                 comment={1}
               />
             </HandBagajImgDiv>
-            <HandBagajImgtext qty={bagajtext(Bagaj.hand)} comment={1}>
+            <HandBagajImgtext
+              qty={bagajtext(Bagaj.hand)}
+              comment={1}
+              className={"SearchHandBagajImgtext"}
+            >
               {bagajtext(Bagaj.hand)}
             </HandBagajImgtext>
           </HandBagajDiv>
-          <MainBagajDiv size={size}>
-            <MainBagajImgDiv>
+          <MainBagajDiv size={size} className={"SearchMainBagajDiv"}>
+            <MainBagajImgDiv className={"SearchMainBagajImgDiv"}>
               <MainBagajImg
                 size={size}
+                className={"SearchMainBagajImg"}
                 qty={bagajtext(Bagaj.main)}
                 src={main_red_bagaja(bagajtext(Bagaj.main), comment)}
                 comment={comment}
               />
             </MainBagajImgDiv>
-            <MainBagajImgtext qty={bagajtext(Bagaj.main)} comment={comment}>
+            <MainBagajImgtext
+              qty={bagajtext(Bagaj.main)}
+              comment={comment}
+              className={"SearchMainBagajImgtext"}
+            >
               {bagajtext(Bagaj.main)}
             </MainBagajImgtext>
-          </MainBagajDiv>{" "}
+          </MainBagajDiv>
           {BagajeComment(comment)}
         </BagajeDiv>
       </BagajesDiv>
@@ -622,16 +669,20 @@ function Providers(props) {
   const provaddnum = props.providers.provaddnum;
   if (provadds) {
     return (
-      <ProvDiv size={props.size}>
-        <MainProvDiv size={props.size}>{provmain}</MainProvDiv>
+      <ProvDiv size={props.size} className={"SearchProvDiv"}>
+        <MainProvDiv size={props.size} className={"SearchMainProvDiv"}>
+          {provmain}
+        </MainProvDiv>
         {provadds.map(provadd => Provadds(props, provadd))}
         {Provaddsnum(props, provaddnum)}
       </ProvDiv>
     );
   } else {
     return (
-      <ProvDiv size={props.size}>
-        <MainProvDiv size={props.size}>{provmain}</MainProvDiv>
+      <ProvDiv size={props.size} className={"SearchProvDiv"}>
+        <MainProvDiv size={props.size} className={"SearchMainProvDiv"}>
+          {provmain}
+        </MainProvDiv>
       </ProvDiv>
     );
   }
@@ -639,9 +690,15 @@ function Providers(props) {
 
 function Provadds(props, provadd) {
   return (
-    <AddProvDiv size={props.size}>
-      <AddProvDivText>{provadd.name}</AddProvDivText>
-      <AddProvDivPrice>
+    <AddProvDiv
+      size={props.size}
+      className={"SearchAddProvDiv"}
+      key={provadd.name}
+    >
+      <AddProvDivText className={"SearchAddProvDivText"}>
+        {provadd.name}
+      </AddProvDivText>
+      <AddProvDivPrice className={"SearchAddProvDivPrice"}>
         {pricevalue(provadd.price.toString()) + " ₽"}
       </AddProvDivPrice>
     </AddProvDiv>
@@ -651,7 +708,7 @@ function Provadds(props, provadd) {
 function Provaddsnum(props, provaddnum) {
   if (provaddnum) {
     return (
-      <AddProvDivOther>
+      <AddProvDivOther className={"SearchAddProvDivOther"} key={provaddnum}>
         {"+ Еще " + provaddnum + " предложения"}
       </AddProvDivOther>
     );
@@ -671,11 +728,15 @@ function TicketNumbers(number) {
   if (number) {
     if (number.toString().substr(-1) === 1) {
       return (
-        <TicketNumberDiv>Остался {number.toString()} билет</TicketNumberDiv>
+        <TicketNumberDiv className={"SearchTicketNumberDiv"}>
+          Остался {number.toString()} билет
+        </TicketNumberDiv>
       );
     } else {
       return (
-        <TicketNumberDiv>Осталось {number.toString()} билета</TicketNumberDiv>
+        <TicketNumberDiv className={"SearchTicketNumberDiv"}>
+          Осталось {number.toString()} билета
+        </TicketNumberDiv>
       );
     }
   } else return "";
@@ -763,115 +824,120 @@ const FlightTime = styled.div`
 
 function CardTabletEnum(props, Card) {
   const size = props.size;
-  console.log(Card.to.TimeFrom);
   return (
-    <CardDiv size={size} key={Card.id}>
-      <LeftCardDiv>
-        <Bagaj props={props} bagaj={Card} />
+    <CardDiv size={size} key={Card.id} className={"SearchCardDiv"}>
+      <LeftCardDiv className={"SearchLeftCardDiv"}>
+        <Bagaj props={props} bagaj={Card} className={"SearchBagaj"} />
         {TicketNumbers(Card.ticketsnum)}
-        {Price(Card.price.toString())}{" "}
+        {Price(Card.price.toString())}
         {/* <PriceDiv size={size} val=/>
           {"Купить за " + Price(Card.price.toString()) + " ₽"}
         </PriceDiv> */}
-        <Providers size={size} providers={Card} />
+        <Providers
+          size={size}
+          providers={Card}
+          className={"SearchProviders"}
+          key={Card.id}
+        />
       </LeftCardDiv>
-      <RightCardDiv>
-        <TitleDiv size={size}>
-          <RightTitleDiv>
+      <RightCardDiv className={"SearchRightCardDiv"}>
+        <TitleDiv size={size} className={"SearchTitleDiv"}>
+          <RightTitleDiv className={"SearchRightTitleDiv"}>
             {Icons(props, Card.from.company, Card.to.company)}
           </RightTitleDiv>
-          <LeftTitleDiv>
+          <LeftTitleDiv className={"SearchLeftTitleDiv"}>
             {Charter(Card.flighttype)} <LinkImg src={link_img} />
           </LeftTitleDiv>
         </TitleDiv>
-        <BodyDiv>
-          <FromDiv>
-            <FromD>
-              <Time>
-                <LinkImgDiv>
-                  <LinkImg src={pin} pin={1} />
+        <BodyDiv className={"SearchBodyDiv"}>
+          <FromDiv className={"SearchFromDiv"}>
+            <FromD className={"SearchFromD"}>
+              <Time className={"SearchTime"}>
+                <LinkImgDiv className={"SearchLinkImgDiv"}>
+                  <LinkImg className={"SearchLinkImg"} src={pin} pin={1} />
                 </LinkImgDiv>
-                <TimeDiv>{Card.to.TimeFrom}</TimeDiv>
+                <TimeDiv className={"SearchTimeDiv"}>
+                  {Card.to.TimeFrom}
+                </TimeDiv>
               </Time>
-              <City>{SFrom}</City>
-              <Date>{Card.to.DateFrom}</Date>
+              <City className={"SearchCity"}>{SFrom}</City>
+              <Date className={"SearchDate"}>{Card.to.DateFrom}</Date>
             </FromD>
-            <Flight>
-              <FlightTimeDiv>
-                <FlightTime>
-                  <LinkImg src={take_off} order={45} />
-                  <TimeText>
+            <Flight className={"SearchFlight"}>
+              <FlightTimeDiv className={"SearchFlightTimeDiv"}>
+                <FlightTime className={"SearchFlightTime"}>
+                  <LinkImg
+                    className={"SearchLinkImg"}
+                    src={take_off}
+                    order={45}
+                  />
+                  <TimeText className={"SearchTimeText"}>
                     {"Всего " + Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
                   </TimeText>
-                  <LinkImg src={take_off} />
+                  <LinkImg src={take_off} className={"SearchLinkImg"} />
                 </FlightTime>
-                <Polzunok inCard={true} />
+                <Polzunok inCard={true} className={"SearchPolzunok"} />
                 <FlightTime>
-                  <Airport>{AirPortFrom}</Airport>
-                  <Airport>{AirPortTo}</Airport>
+                  <Airport className={"SearchAirport"}>{AirPortFrom}</Airport>
+                  <Airport className={"SearchAirport"}>{AirPortTo}</Airport>
                 </FlightTime>
               </FlightTimeDiv>
             </Flight>
-            <ToD>
-              <Time>
-                <TimeDiv>{Card.to.TimeTo}</TimeDiv>
+            <ToD className={"SearchToD"}>
+              <Time className={"SearchTime"}>
+                <TimeDiv className={"SearchTimeDiv"}>{Card.to.TimeTo}</TimeDiv>
               </Time>
-              <City>{STo}</City>
-              <Date>{Card.to.DateTo}</Date>
+              <City className={"SearchCity"}>{STo}</City>
+              <Date className={"SearchDate"}>{Card.to.DateTo}</Date>
             </ToD>
-            {/*
-            <LinkImg src={take_off} take_off={true} />
-            <TimeText>
-              {"Всего " + Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
-            </TimeText>
-            <LinkImg src={take_off} take_off={true} order={45} />
-
-            <CircleDiv />
-            <LinkImg src={FlightLine} />
-            <CircleDiv />
-            <City>{SFrom}</City>
-            <City>{STo}</City>
-            */}
           </FromDiv>
-          <ToDiv>
-            <FromD>
-              <Time>
-                <LinkImgDiv>
-                  <LinkImg src={pin} />
+          <ToDiv className={"SearchToDiv"}>
+            <FromD className={"SearchFromD"}>
+              <Time className={"SearchTime"}>
+                <LinkImgDiv className={"SearchLinkImgDiv"}>
+                  <LinkImg className={"SearchLinkImg"} src={pin} />
                 </LinkImgDiv>
-                <TimeDiv>{Card.from.TimeFrom}</TimeDiv>
+                <TimeDiv className={"SearchTimeDiv"}>
+                  {Card.from.TimeFrom}
+                </TimeDiv>
               </Time>
-              <City>{STo}</City>
-              <Date>{Card.from.DateFrom}</Date>
+              <City className={"SearchCity"}>{STo}</City>
+              <Date className={"SearchDate"}>{Card.from.DateFrom}</Date>
             </FromD>
-            <Flight>
-              <FlightTimeDiv>
-                <FlightTime>
-                  <LinkImg src={take_off} order={45} />
-                  <TimeText>
+            <Flight className={"SearchFlight"}>
+              <FlightTimeDiv className={"SearchFlightTimeDiv"}>
+                <FlightTime className={"SearchFlightTime"}>
+                  <LinkImg
+                    className={"SearchLinkImg"}
+                    src={take_off}
+                    order={45}
+                  />
+                  <TimeText className={"SearchTimeText"}>
                     {"Всего " + Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
                   </TimeText>
-                  <LinkImg src={take_off} />
+                  <LinkImg className={"SearchLinkImg"} src={take_off} />
                 </FlightTime>
-                <Polzunok inCard={true} />
-                <FlightTime>
-                  <Airport>{AirPortFrom}</Airport>
-                  <Airport>{AirPortTo}</Airport>
+                <Polzunok className={"SearchPolzunok"} inCard={true} />
+                <FlightTime className={"SearchFlightTime"}>
+                  <Airport className={"SearchAirport"}>{AirPortFrom}</Airport>
+                  <Airport className={"SearchAirport"}>{AirPortTo}</Airport>
                 </FlightTime>
               </FlightTimeDiv>
             </Flight>
-            <ToD>
-              <Time>
-                <TimeDiv>{Card.from.TimeTo}</TimeDiv>
+            <ToD className={"SearchToD"}>
+              <Time className={"SearchTime"}>
+                <TimeDiv className={"SearchTimeDiv"}>
+                  {Card.from.TimeTo}
+                </TimeDiv>
               </Time>
-              <City>{SFrom}</City>
-              <Date>{Card.from.DateTo}</Date>
+              <City className={"SearchCity"}>{SFrom}</City>
+              <Date className={"SearchDate"}>{Card.from.DateTo}</Date>
             </ToD>
           </ToDiv>
         </BodyDiv>
       </RightCardDiv>
-      <OpenDiv>
-        <OpenImg src={openticket} />
+      <OpenDiv className={"SearchOpenDiv"}>
+        <OpenImg className={"SearchOpenImg"} src={openticket} />
       </OpenDiv>
     </CardDiv>
   );
@@ -980,33 +1046,35 @@ function SearchCards(props) {
   sortbyprice(CardContent);
   if (size === "tablet") {
     return (
-      <Wrapper size={size}>
-        <ButtonDiv size={size} styl="Up">
-          <Button size={size} styl="Up">
-            <LinkImg src={filter} />
+      <Wrapper size={size} className={"SearchWrapper"}>
+        <ButtonDiv classNam className={"SearchButtonDiv"} size={size} styl="Up">
+          <Button className={"SearchButton"} size={size} styl="Up">
+            <LinkImg className={"SearchLinkImg"} src={filter} />
           </Button>
         </ButtonDiv>
         {CardContent.map(CardOne => CardTabletEnum(props, CardOne))}
-        <ButtonDiv size={size} styl="Filter">
+        <ButtonDiv className={"SearchButtonDiv"} size={size} styl="Filter">
           <Button
+            className={"SearchButton"}
             size={size}
             styl="Filter"
             children="ПОКАЗАТЬ ЕЩЕ 10 БИЛЕТОВ!"
           />
-        </ButtonDiv>{" "}
+        </ButtonDiv>
       </Wrapper>
     );
   } else {
     return (
-      <Wrapper size={size}>
+      <Wrapper size={size} className={"SearchWrapper"}>
         {CardContent.map(CardOne => CardTabletEnum(props, CardOne))}
-        <ButtonDiv size={size} styl="Filter">
+        <ButtonDiv className={"SearchButtonDiv"} size={size} styl="Filter">
           <Button
+            className={"SearchButton"}
             size={size}
             styl="Filter"
             children="ПОКАЗАТЬ ЕЩЕ 10 БИЛЕТОВ!"
           />
-        </ButtonDiv>{" "}
+        </ButtonDiv>
       </Wrapper>
     );
   }

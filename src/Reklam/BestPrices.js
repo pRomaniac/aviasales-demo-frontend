@@ -372,13 +372,13 @@ function DeptCard(props, number) {
     <DepartCity className="DepartCity" key={number.Departure} size={props.size}>
       <DepartCityName
         size={props.size}
-        className={"DeptCard" + "DepartCityName"}
+        className={"DeptCardDepartCityName"}
       >
         {WithoutNull(number.Departure)}
       </DepartCityName>
       <DepartCityPrice
         size={props.size}
-        className={"DeptCard" + "DepartCityPrice"}
+        className={"DeptCardDepartCityPrice"}
       >
         {TopDestCardStringPrice(WithoutNull(number.MinPrice)) + " ₽"}
       </DepartCityPrice>
@@ -396,9 +396,9 @@ function Debug(name) {
 
 function Footer(props) {
   return (
-    <BestPricesDiv size={props.size} className={"BestPrices" + "BestPricesDiv"}>
-      <CalendDiv size={props.size} className={"BestPrices" + "CalendDiv"} />
-      <CalendHeader size={props.size} className={"BestPrices" + "CalendHeader"}>
+    <BestPricesDiv size={props.size} className={"BestPricesBestPricesDiv"}>
+      <CalendDiv size={props.size} className={"BestPricesCalendDiv"} />
+      <CalendHeader size={props.size} className={"BestPricesCalendHeader"}>
         {HeaderText}
       </CalendHeader>
       {BestPricesCardDeptEnum(props)}

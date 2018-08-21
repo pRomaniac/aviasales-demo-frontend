@@ -222,7 +222,7 @@ function SearchFieldSearch(props) {
               <SearchFieldDecorations size={props.size} typ={number} />
             </SearchInputWrapper>
           </SearchFieldInputDivSearch>
-        ))}{" "}
+        ))}
         <SearchButtonDiv
           size={props.size}
           search={true}

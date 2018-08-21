@@ -135,7 +135,7 @@ function Articles(props, Article) {
       <ArticleWholeText size={props.size} className="ArticleWholeText">
         <ArticleText size={props.size} className="ArticleText">
           {Article.Text}
-        </ArticleText>{" "}
+        </ArticleText>
         <ArticleLink
           size={props.size}
           href={Article.mark}

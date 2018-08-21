@@ -11,11 +11,11 @@ const FooterDiv = styled.div`
 
 function Footer(props) {
   return (
-    <FooterDiv size={props.size} className={"AllReklam" + "FooterDiv"}>
-      <BestPrices size={props.size} className={"AllReklam" + "BestPrices"} />
-      <Promis size={props.size} className={"AllReklam" + "Promis"} />
-      <Reklam size={props.size} className={"AllReklam" + "Reklam"} />
-      <SpecOffers size={props.size} className={"AllReklam" + "SpecOffers"} />
+    <FooterDiv size={props.size} className={"AllReklamFooterDiv"}>
+      <BestPrices size={props.size} className={"AllReklamBestPrices"} />
+      <Promis size={props.size} className={"AllReklamPromis"} />
+      <Reklam size={props.size} className={"AllReklamReklam"} />
+      <SpecOffers size={props.size} className={"AllReklamSpecOffers"} />
     </FooterDiv>
   );
 }

@@ -403,7 +403,7 @@ function Card(props, Off) {
   return (
     <BestPriceCard className="BestPriceCard" size={props.size} key={Off.id}>
       <Title size={props.size} className="Title">
-        {" "}
+        
         <TitleIcon src={Off.titleicon} className="TitleIcon" />
         <TitleTextDIv size={props.size} className="TitleTextDIv">
           <TitleText size={props.size} className="TitleText">

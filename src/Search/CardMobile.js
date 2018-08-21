@@ -333,15 +333,29 @@ function Icons(props, c1, c2) {
   const size = props.size;
   if (c1 === c2) {
     return (
-      <IconsDiv size={size} key={c1}>
-        <IconsImg src={BigIcon(c1)} size={size} />
+      <IconsDiv size={size} key={c1} className={"SearchIconsDiv"}>
+        <IconsImg
+          src={BigIcon(c1)}
+          size={size}
+          className={"SearchIconsImg"}
+        />
       </IconsDiv>
     );
   } else
     return (
-      <IconsDiv size={size} key={c1}>
-        <IconsImg src={SmallIcon(c1)} size={size} key={c1} />
-        <IconsImg src={SmallIcon(c2)} size={size} key={c2} />
+      <IconsDiv size={size} key={c1} className={"SearchIconsDiv"}>
+        <IconsImg
+          src={SmallIcon(c1)}
+          size={size}
+          key={c1}
+          className={"SearchIconsImg" + c1}
+        />
+        <IconsImg
+          src={SmallIcon(c2)}
+          size={size}
+          key={c2}
+          className={"SearchIconsImg" + c2}
+        />
       </IconsDiv>
     );
 }
@@ -372,10 +386,19 @@ function Types(props, category) {
     return "";
   } else if (size === "mobile") {
     return (
-      <TypeDiv size={size} categ={category}>
-        <TypeText size={size} categ={category}>
+      <TypeDiv size={size} categ={category} className={"SearchTypeDiv"}>
+        <TypeText
+          size={size}
+          categ={category}
+          className={"SearchTypeText"}
+        >
           {text}
-          <TypeImg size={size} src={icon} categ={category} />
+          <TypeImg
+            size={size}
+            src={icon}
+            categ={category}
+            className={"SearchTypeImg"}
+          />
         </TypeText>
       </TypeDiv>
     );
@@ -385,35 +408,61 @@ function Types(props, category) {
 function CardMobile(props, Card) {
   const size = props.size;
   return (
-    <CardDiv size={size} key={Card.id}>
-      <Types props={props} category={Card.category} />
+    <CardDiv size={size} key={Card.id} className={"SearchCardDiv"}>
+      <Types
+        props={props}
+        category={Card.category}
+        className={"SearchTypes"}
+      />
 
-      <TitleDiv size={size}>
-        <PriceDiv size={size}>{Price(Card.price.toString()) + " ₽"}</PriceDiv>
+      <TitleDiv size={size} className={"SearchTitleDiv"}>
+        <PriceDiv size={size} className={"SearchPriceDiv"}>
+          {Price(Card.price.toString()) + " ₽"}
+        </PriceDiv>
         {Icons(props, Card.from.company, Card.to.company)}
       </TitleDiv>
-      <BodyDiv size={size}>
-        <FromDiv size={size}>
-          <TimesDiv size={size}>
-            <TextDecoration src={flightfrom} size={size} />
+      <BodyDiv size={size} className={"SearchBodyDiv"}>
+        <FromDiv size={size} className={"SearchFromDiv"}>
+          <TimesDiv size={size} className={"SearchTimesDiv"}>
+            <TextDecoration
+              src={flightfrom}
+              size={size}
+              className={"SearchTextDecoration"}
+            />
             {TimesFlights(Card.from)}
           </TimesDiv>
-          <FlightTimeDiv size={size}>
-            <TextDecoration src={clock} size={size} />
+          <FlightTimeDiv size={size} className={"SearchFlightTimeDiv"}>
+            <TextDecoration
+              src={clock}
+              size={size}
+              className={"SearchTextDecoration"}
+            />
             {Times(Card.from.FlightTimeH, Card.from.FlightTimeM)}
           </FlightTimeDiv>
-          <FlightTypeDiv size={size}>{Card.from.FlightType}</FlightTypeDiv>
+          <FlightTypeDiv size={size} className={"SearchFlightTimeDiv"}>
+            {Card.from.FlightType}
+          </FlightTypeDiv>
         </FromDiv>
-        <ToDiv size={size}>
-          <TimesDiv size={size}>
-            <TextDecoration src={flightto} size={size} />
+        <ToDiv size={size} className={"SearchToDiv"}>
+          <TimesDiv size={size} className={"SearchTimesDiv"}>
+            <TextDecoration
+              src={flightto}
+              size={size}
+              className={"SearchTextDecoration"}
+            />
             {TimesFlights(Card.to)}
           </TimesDiv>
-          <FlightTimeDiv size={size}>
-            <TextDecoration src={clock} size={size} />
+          <FlightTimeDiv size={size} className={"SearchFlightTimeDiv"}>
+            <TextDecoration
+              src={clock}
+              size={size}
+              className={"SearchTextDecoration"}
+            />
             {Times(Card.to.FlightTimeH, Card.to.FlightTimeM)}
           </FlightTimeDiv>
-          <FlightTypeDiv size={size}>{Card.to.FlightType}</FlightTypeDiv>
+          <FlightTypeDiv size={size} className={"SearchFlightTypeDiv"}>
+            {Card.to.FlightType}
+          </FlightTypeDiv>
         </ToDiv>
       </BodyDiv>
     </CardDiv>
@@ -423,7 +472,12 @@ function CardMobile(props, Card) {
 function Buttons(props) {
   if (props.size === "mobile") {
     return (
-      <Button size={props.size} styl={props.styl} children={props.children} />
+      <Button
+        size={props.size}
+        styl={props.styl}
+        children={props.children}
+        className={"SearchButton"}
+      />
     );
   } else {
     return "";
@@ -445,13 +499,23 @@ function SearchCards(props) {
   const size = props.size;
   if (size === "mobile") {
     return (
-      <Wrapper size={size}>
-        <ButtonDiv size={size} styl="Up">
-          <Buttons size={size} styl="Up" children="Вверх" />
+      <Wrapper size={size} className={"SearchWrapper"}>
+        <ButtonDiv size={size} styl="Up" className={"SearchButtonDiv"}>
+          <Buttons
+            size={size}
+            styl="Up"
+            children="Вверх"
+            className={"SearchButtons"}
+          />
         </ButtonDiv>
         {CardsMobile.map(CardOne => CardMobile(props, CardOne))}
-        <ButtonDiv size={size} styl="Filter">
-          <Buttons size={size} styl="Filter" children="Фильтровать" />
+        <ButtonDiv size={size} styl="Filter" className={"SearchButtonDiv"}>
+          <Buttons
+            size={size}
+            styl="Filter"
+            children="Фильтровать"
+            className={"SearchButtons"}
+          />
         </ButtonDiv>
       </Wrapper>
     );

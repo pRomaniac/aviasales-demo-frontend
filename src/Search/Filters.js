@@ -143,13 +143,13 @@ const PolzunokLine = styled.div`
 
 function PolzunokHtml() {
   return (
-    <PolzunokDiv>
-      <PolzunokDivCircle />
-      <PolzunokLine>
-        <PolzunokLineTop />
-        <PolzunokLineBottom />
+    <PolzunokDiv className={"SearchPolzunokDiv"}>
+      <PolzunokDivCircle className={"SearchPolzunokDivCircle"} />
+      <PolzunokLine className={"SearchPolzunokLine"}>
+        <PolzunokLineTop className={"SearchPolzunokLineTop"} />
+        <PolzunokLineBottom className={"SearchPolzunokLineBottom"} />
       </PolzunokLine>
-      <PolzunokDivCircle />
+      <PolzunokDivCircle className={"SearchPolzunokDivCircle"} />
     </PolzunokDiv>
   );
 }
@@ -274,11 +274,15 @@ function Items(props, items, all) {
     checked = true;
   }
   return (
-    <List props={props}>
-      <CheckingDiv checked={checked} />
-      <ListTextDiv>
-        <ListText>{items.name.toString()}</ListText>
-        <ListPrice>{pricevalue(items.price)}</ListPrice>
+    <List props={props} className={"SearchList"} key={Items.name + items.price}>
+      <CheckingDiv checked={checked} className={"SearchCheckingDiv"} />
+      <ListTextDiv className={"SearchListTextDiv"}>
+        <ListText className={"SearchListText"}>
+          {items.name.toString()}
+        </ListText>
+        <ListPrice className={"SearchListPrice"}>
+          {pricevalue(items.price)}
+        </ListPrice>
       </ListTextDiv>
     </List>
   );
@@ -288,19 +292,22 @@ const FirstHeaderTxt = styled.div``;
 
 function Peresadki(props) {
   const all = false;
-  console.log(Filtres.peresadki.objects.map(obj => console.log(obj)));
   return (
-    <MainBlock open={true}>
-      <Block>
-        <BlockHeader first={true}>
-          <FirstHeaderTxt>
-            <BlockHeaderImg src={open} />
-            <BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"} open={true}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"} first={true}>
+          <FirstHeaderTxt className={"SearchFirstHeaderTxt"}>
+            <BlockHeaderImg className={"SearchBlockHeaderImg"} src={open} />
+            <BlockHeaderText className={"SearchBlockHeaderText"}>
               {Filtres.peresadki.name.toString()}
             </BlockHeaderText>
           </FirstHeaderTxt>
-          <FirstHeaderTxt />
-          <BlockHeaderImg src={clear} clear />
+          <FirstHeaderTxt className={"SearchFirstHeaderTxt"} />
+          <BlockHeaderImg
+            className={"SearchBlockHeaderImg"}
+            src={clear}
+            clear
+          />
         </BlockHeader>
         {Filtres.peresadki.objects.map(obj => Items(props, obj, all))}
       </Block>
@@ -310,32 +317,41 @@ function Peresadki(props) {
 
 function AirCompanies(props) {
   const all = true;
-  console.log(Filtres.peresadki.objects.map(obj => console.log(obj)));
   return (
-    <MainBlock open={true}>
-      <BlockHeader>
-        <BlockHeaderImg src={open} />
-        <BlockHeaderText>Авиакомпании</BlockHeaderText>
-        <BlockCount>43</BlockCount>
+    <MainBlock open={true} className={"SearchMainBlock"}>
+      <BlockHeader className={"SearchBlockHeader"}>
+        <BlockHeaderImg className={"SearchBlockHeaderImg"} src={open} />
+        <BlockHeaderText className={"SearchBlockHeaderText"}>
+          Авиакомпании
+        </BlockHeaderText>
+        <BlockCount className={"SearchBlockCount"}>43</BlockCount>
       </BlockHeader>
-      <AirCompaniesInfoBlock>
-        <List props={props}>
-          <CheckingDiv checked={false} />
-          <ListTextDiv>
-            <ListText>Несколько авиакомпаний</ListText>
+      <AirCompaniesInfoBlock className={"SearchAirCompaniesInfoBlock"}>
+        <List className={"SearchList"} props={props}>
+          <CheckingDiv className={"SearchCheckingDiv"} checked={false} />
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>
+              Несколько авиакомпаний
+            </ListText>
           </ListTextDiv>
         </List>
-        <InfoText>
+        <InfoText className={"SearchInfoText"}>
+          className=
+          {"SearchListText"}
           Показывать билеты с перелетами, выполняемыми несколькими
           авиакомпаниями,включая выбранную
         </InfoText>
       </AirCompaniesInfoBlock>
-      <Block>
-        <SubBlockText>{Filtres.aliancies.name.toString()}</SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
+          {Filtres.aliancies.name.toString()}
+        </SubBlockText>
         {Filtres.aliancies.objects.map(obj => Items(props, obj, all))}
       </Block>
-      <Block>
-        <SubBlockText>{Filtres.companies.name.toString()}</SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
+          {Filtres.companies.name.toString()}
+        </SubBlockText>
         {Filtres.companies.objects.map(obj => Items(props, obj, all))}
       </Block>
     </MainBlock>
@@ -344,43 +360,47 @@ function AirCompanies(props) {
 
 function DateTimeFlight(props) {
   return (
-    <MainBlock open={true}>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>ВРЕМЯ ВЫЛЕТА И ПРИБЫТИЯ</BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"} open={true}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchSubBlBlockHeaderockText"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Время вылета и прибытия
+          </BlockHeaderText>
         </BlockHeader>
       </Block>
-      <Block>
-        <SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
           Москва
-          <PlaneImg src={Plane} />
+          <PlaneImg className={"SearchPlaneImg"} src={Plane} />
           Барселона
         </SubBlockText>
-        <SubBlockText list_header>Вылет из Москвы:</SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>c 00:05, 24 фев</ListText>
-            <ListText>до 23:45, 24 фев</ListText>
+        <SubBlockText className={"SearchSubBlockText"} list_header>
+          Вылет из Москвы:
+        </SubBlockText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>до 23:45, 24 фев</ListText>
+            <ListText className={"SearchListText"}>c 00:05, 24 фев</ListText>
           </ListTextDiv>
         </List>
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
           </ListTextDiv>
         </List>
-        <SubBlockText list_header>Прибытие в Барселону:</SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>c 00:05, 24 фев</ListText>
-            <ListText>до 23:45, 24 фев</ListText>
+        <SubBlockText className={"SearchSubBlockText"} list_header>
+          Прибытие в Барселону:
+        </SubBlockText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>c 00:05, 24 фев</ListText>
+            <ListText className={"SearchListText"}>до 23:45, 24 фев</ListText>
           </ListTextDiv>
-        </List>{" "}
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        </List>
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
             {/*             <ListText>
               <SliderImg src={polzunok} />
 
@@ -388,36 +408,38 @@ function DateTimeFlight(props) {
           </ListTextDiv>
         </List>
       </Block>
-      <Block>
-        <SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
           Барселона
-          <PlaneImg src={Plane} />
+          <PlaneImg className={"SearchPlaneImg"} src={Plane} />
           Москва
         </SubBlockText>
-        <SubBlockText list_header>Вылет из Барселоны:</SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>c 06:00, 3 мар</ListText>
-            <ListText>до 23:45, 3 мар</ListText>
-          </ListTextDiv>
-        </List>{" "}
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        <SubBlockText className={"SearchSubBlockText"} list_header>
+          Вылет из Барселоны:
+        </SubBlockText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>c 06:00, 3 мар</ListText>
+            <ListText className={"SearchListText"}>до 23:45, 3 мар</ListText>
           </ListTextDiv>
         </List>
-        <SubBlockText list_header>Прибытие в Москву::</SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>c 15:00, 3 мар</ListText>
-            <ListText>до 09:55, 5 мар</ListText>
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
           </ListTextDiv>
-        </List>{" "}
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        </List>
+        <SubBlockText className={"SearchSubBlockText"} list_header>
+          Прибытие в Москву::
+        </SubBlockText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>c 15:00, 3 мар</ListText>
+            <ListText className={"SearchListText"}>до 09:55, 5 мар</ListText>
+          </ListTextDiv>
+        </List>
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
           </ListTextDiv>
         </List>
       </Block>
@@ -427,11 +449,13 @@ function DateTimeFlight(props) {
 
 function Bagaj(props) {
   return (
-    <MainBlock>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>БАГАЖ</BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            багаж
+          </BlockHeaderText>
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -440,11 +464,13 @@ function Bagaj(props) {
 
 function TransferTime(props) {
   return (
-    <MainBlock>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>Длительность пересадки</BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Длительность пересадки
+          </BlockHeaderText>
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -453,11 +479,13 @@ function TransferTime(props) {
 
 function AirPorts(props) {
   return (
-    <MainBlock>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>Аэропорты</BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Аэропорты
+          </BlockHeaderText>
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -466,12 +494,14 @@ function AirPorts(props) {
 
 function TransferAirports(props) {
   return (
-    <MainBlock>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>Аэропорты пересадки</BlockHeaderText>
-          <BlockCount>71</BlockCount>
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Аэропорты пересадки
+          </BlockHeaderText>
+          <BlockCount className={"SearchBlockCount"}>71</BlockCount>
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -480,12 +510,14 @@ function TransferAirports(props) {
 
 function Agencies(props) {
   return (
-    <MainBlock>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={close} />
-          <BlockHeaderText>Агенства</BlockHeaderText>
-          <BlockCount>26</BlockCount>
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={close} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Агенства
+          </BlockHeaderText>
+          <BlockCount className={"SearchBlockCount"}>26</BlockCount>
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -494,11 +526,17 @@ function Agencies(props) {
 
 function Reset(props) {
   return (
-    <MainBlock>
-      <Block reset={true}>
-        <BlockHeader reset={true}>
-          <BlockHeaderText reset={true}>СБРОСИТЬ ВСЕ ФИЛЬТРЫ</BlockHeaderText>
-          <BlockHeaderImg src={clear} clear />
+    <MainBlock className={"SearchMainBlock"}>
+      <Block className={"SearchBlock"} reset={true}>
+        <BlockHeader className={"SearchBlockHeader"} reset={true}>
+          <BlockHeaderText className={"SearchBlockHeaderText"} reset={true}>
+            сбросить все фильтры
+          </BlockHeaderText>
+          <BlockHeaderImg
+            className={"SearchBlockHeaderImg"}
+            src={clear}
+            clear
+          />
         </BlockHeader>
       </Block>
     </MainBlock>
@@ -507,48 +545,48 @@ function Reset(props) {
 
 function FlightTime(props) {
   return (
-    <MainBlock open={true}>
-      <Block>
-        <BlockHeader>
-          <BlockHeaderImg src={open} />
-          <BlockHeaderText>Время в пути</BlockHeaderText>
+    <MainBlock className={"SearchMainBlock"} open={true}>
+      <Block className={"SearchBlock"}>
+        <BlockHeader className={"SearchBlockHeader"}>
+          <BlockHeaderImg className={"SearchBlockHeaderImg"} src={open} />
+          <BlockHeaderText className={"SearchBlockHeaderText"}>
+            Время в пути
+          </BlockHeaderText>
         </BlockHeader>
       </Block>
-      <Block>
-        <SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
           Москва
-          <PlaneImg src={Plane} />
+          <PlaneImg className={"SearchPlaneImg"} src={Plane} />
           Барселона
         </SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>от 04ч 20м</ListText>
-            <ListText>до 48ч 50м</ListText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>от 04ч 20м</ListText>
+            <ListText className={"SearchListText"}>до 48ч 50м</ListText>
           </ListTextDiv>
         </List>
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
           </ListTextDiv>
         </List>
       </Block>
-      <Block>
-        <SubBlockText>
+      <Block className={"SearchBlock"}>
+        <SubBlockText className={"SearchSubBlockText"}>
           Барселона
-          <PlaneImg src={Plane} />
+          <PlaneImg src={Plane} className={"SearchPlaneImg"} />
           Москва
         </SubBlockText>
-        <List props={props}>
-          <ListTextDiv>
-            <ListText>от 04ч 10м</ListText>
-            <ListText>до 41ч 20м</ListText>
+        <List className={"SearchList"} props={props}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <ListText className={"SearchListText"}>от 04ч 10м</ListText>
+            <ListText className={"SearchListText"}>до 41ч 20м</ListText>
           </ListTextDiv>
-        </List>{" "}
-        <List>
-          {" "}
-          <ListTextDiv>
-            <PolzunokHtml />
+        </List>
+        <List className={"SearchList"}>
+          <ListTextDiv className={"SearchListTextDiv"}>
+            <PolzunokHtml className={"SearchPolzunokHtml"} />
           </ListTextDiv>
         </List>
       </Block>
@@ -558,17 +596,17 @@ function FlightTime(props) {
 
 function Filter(props) {
   return (
-    <Wrapper size={props.size}>
-      <Peresadki />
-      <DateTimeFlight />
-      <Bagaj> </Bagaj>
-      <TransferTime />
-      <FlightTime />
-      <AirCompanies />
-      <AirPorts />
-      <TransferAirports />
-      <Agencies />
-      <Reset />
+    <Wrapper className={"SearchWrapper"} size={props.size}>
+      <Peresadki className={"SearchPeresadki"} />
+      <DateTimeFlight className={"SearchDateTimeFlight"} />
+      <Bagaj className={"SearchBagaj"}> </Bagaj>
+      <TransferTime className={"SearchTransferTime"} />
+      <FlightTime className={"SearchFlightTime"} />
+      <AirCompanies className={"SearchAirCompanies"} />
+      <AirPorts className={"SearchAirPorts"} />
+      <TransferAirports className={"SearchTransferAirports"} />
+      <Agencies className={"SearchAgencies"} />
+      <Reset className={"SearchReset"} />
     </Wrapper>
   );
 }
