@@ -302,7 +302,7 @@ function Peresadki(props) {
               {Filtres.peresadki.name.toString()}
             </BlockHeaderText>
           </FirstHeaderTxt>
-          <FirstHeaderTxt className={"SearchFirstHeaderTxt"} />
+          {/*           <FirstHeaderTxt className={"SearchFirstHeaderTxt"} /> */}
           <BlockHeaderImg
             className={"SearchBlockHeaderImg"}
             src={clear}

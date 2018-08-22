@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import aero from "../img/aero.svg";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
 import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
 import SearchInput from "./SearchInput";
@@ -241,25 +241,14 @@ function SearchFieldSearch(props) {
     </SearchFieldContainer>
   );
 }
-const Conteiner = styled.div``;
+
 function HeaderRouter(props) {
-  return (
-    <Router className="SearchRouter">
-      <Conteiner className="SearchConteiner">
-        <Route
-          className="SearchFieldStart"
-          exact
-          path="/"
-          render={() => SearchFieldStart(props)}
-        />
-        <Route
-          className="SearchFieldSearch"
-          path="/Search"
-          render={() => SearchFieldSearch(props)}
-        />
-      </Conteiner>
-    </Router>
-  );
+  console.log(props);
+  if (props.search) {
+    return SearchFieldSearch(props);
+  } else {
+    return SearchFieldStart(props);
+  }
 }
 
 export default HeaderRouter;

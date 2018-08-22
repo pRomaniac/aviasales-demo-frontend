@@ -44,6 +44,7 @@ const Container = styled.div`
 } */
 
 function FirstPage(props) {
+  console.log(props);
   return (
     <Container className="FirstPageContainer">
       <Header
@@ -52,6 +53,7 @@ function FirstPage(props) {
         imgtitle={props.props.props.title.imgtitle}
         alt={props.props.props.title.alt}
         className={props.props.props.title.className}
+        search={props.search}
       />
       <TopDestinations size={props.props.size} className={"TopDestinations"} />
       <Reklam size={props.props.size} className={"Reklam"} />
@@ -70,6 +72,7 @@ function SearchPage(props) {
         imgtitle={props.props.props.title.imgtitle}
         alt={props.props.props.title.alt}
         className={props.props.props.title.className}
+        search={props.search}
       />
       <SearchCards size={props.props.size} className={"SearchCards"} />
     </Container>
@@ -83,12 +86,16 @@ function AppRouter(props) {
         <Route
           exact
           path="/"
-          render={() => <FirstPage props={props} className={"FirstPage"} />}
+          render={() => (
+            <FirstPage props={props} className={"FirstPage"} search={false} />
+          )}
           className="FirstPageRouter"
         />
         <Route
           path="/Search"
-          render={() => <SearchPage props={props} className={"SearchPage"} />}
+          render={() => (
+            <SearchPage props={props} className={"SearchPage"} search={true} />
+          )}
           className="SearchPageRouter"
         />
       </Container>

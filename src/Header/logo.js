@@ -1,13 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import back from "../img/back_arrow.svg";
 const SFrom = "Москва";
 const STo = "Барселона";
 const DateQty = "24 фев — 3 март, 1 пассажир";
 const Currensy = "RUB";
-const Container = styled.div``;
 
 const SearchParamDiv = styled.div``;
 const QtyDiv = styled.div`
@@ -125,7 +124,13 @@ const ImgTitle = styled.div`
 `;
 
 function LogoRouter(props) {
-  return (
+  console.log(props.search);
+  if (props.search) {
+    return <LogoSearch props={props} className="LogoSearch" />;
+  } else {
+    return <Logo props={props} className="Logo" />;
+  }
+  /* return (
     <Router className="LogoRouter">
       <Container className="LogoFirstPageContainer">
         <Route
@@ -136,12 +141,11 @@ function LogoRouter(props) {
         />
         <Route
           path="/Search"
-          render={() => <LogoSearch props={props} className="LogoSearch" />}
+          render={() => }
           className="LogoSearchPageRoute"
         />
       </Container>
-    </Router>
-  );
+    </Router> */
 }
 
 function Logo(props) {
@@ -181,7 +185,6 @@ function LogoSearch(props) {
   if (props.size !== "mobile") {
     return (
       <LogoWrapper size={props.size} search={true} className="LogoWrapper">
-        
         <Link to={{ pathname: "/" }}>
           <HeaderA size={props.size} href="/">
             <Img
