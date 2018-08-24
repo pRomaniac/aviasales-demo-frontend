@@ -13,41 +13,41 @@ const SearchFieldInputDivSearch = styled.div`
     props.size === "tablet" &&
     props.searchtype === "Departure" &&
     css`
-      flex-basis: 48%;
+      flex-basis: 50%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "Destination" &&
     css`
-      flex-basis: 48%;
+      flex-basis: 50%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "DateFrom" &&
     css`
-      flex-basis: 24%;
+      flex-basis: 25%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "DateTo" &&
     css`
-      flex-basis: 24%;
+      flex-basis: 25%;
     `};
 
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "Quantity" &&
     css`
-      flex-basis: 24%;
+      flex-basis: 25%;
     `};
   ${props =>
     props.size === "tablet" &&
     props.searchtype === "button" &&
     css`
-      flex-basis: 24%;
+      flex-basis: 25%;
     `};
   ${(
     props //desktop state

@@ -44,7 +44,6 @@ const Container = styled.div`
 } */
 
 function FirstPage(props) {
-  console.log(props);
   return (
     <Container className="FirstPageContainer">
       <Header

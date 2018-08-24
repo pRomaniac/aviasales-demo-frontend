@@ -24,7 +24,8 @@ const SearchFieldRow = styled.div`
   ${props =>
     props.size === "tablet" &&
     css`
-      margin: 8px;
+      margin-top: 8px;
+      margin-bottom: 8px;
     `};
   ${props =>
     props.size === "desktop" &&
@@ -36,7 +37,8 @@ const SearchFieldRow = styled.div`
     props.size === "desktop" &&
     props.search &&
     css`
-      margin: 8px;
+      margin-bottom: 8px;
+      margin-top: 8px;
     `};
 `;
 
@@ -163,16 +165,16 @@ function SearchFieldStart(props) {
       <SearchFieldRow size={props.size} className="SearchFieldRow">
         {SearchFields.map(number => (
           <SearchFieldInputDivStart
-            className={number.toString() + " " + props.size}
+            className={number.toString() + "_" + props.size}
             key={number.toString()}
             size={props.size}
             searchtype={number.toString()}
           >
             <SearchInputWrapper
-              className={number.toString() + " " + props.size}
+              className={number.toString() + "_" + props.size}
             >
               <SearchInput
-                className={number.toString() + " " + props.size}
+                className={number.toString() + "Input " + props.size}
                 size={props.size}
                 searchtype={number.toString()}
               />
@@ -207,16 +209,16 @@ function SearchFieldSearch(props) {
       >
         {SearchFields.map(number => (
           <SearchFieldInputDivSearch
-            className={number.toString() + " " + props.size}
+            className={number.toString() + "_" + props.size}
             key={number.toString()}
             size={props.size}
             searchtype={number.toString()}
           >
             <SearchInputWrapper
-              className={number.toString() + " " + props.size}
+              className={number.toString() + "_" + props.size}
             >
               <SearchInput
-                className={number.toString() + " " + props.size}
+                className={number.toString() + "Input " + props.size}
                 size={props.size}
                 searchtype={number.toString()}
                 search={true}
@@ -246,7 +248,6 @@ function SearchFieldSearch(props) {
 }
 
 function HeaderRouter(props) {
-  console.log(props);
   if (props.search) {
     return SearchFieldSearch(props);
   } else {

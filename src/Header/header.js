@@ -48,16 +48,19 @@ const HeaderDiv = styled.div`
     props.search &&
     css`
       padding-bottom: 8px;
+      padding-left: 8px;
+      padding-right: 8px;
     `};
   ${props =>
     props.size === "desktop" &&
     props.search &&
     css`
       padding-bottom: 8px;
+      padding-left: 98px;
+      padding-right: 98px;
     `};
 `;
 function HeaderRouter(props) {
-  console.log(props.search);
   if (props.search) {
     return (
       <SearchPage

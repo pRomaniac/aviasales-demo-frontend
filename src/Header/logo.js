@@ -124,7 +124,6 @@ const ImgTitle = styled.div`
 `;
 
 function LogoRouter(props) {
-  console.log(props.search);
   if (props.search) {
     return <LogoSearch props={props} className="LogoSearch" />;
   } else {

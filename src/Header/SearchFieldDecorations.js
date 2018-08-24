@@ -26,12 +26,13 @@ const SearchFieldInputDivDecorText = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 90px;
+
   ${props =>
     props.choosen === "yes" &&
     css`
       color: #4a4a4a;
     `};
+  width: ${props => props.width};
 `;
 
 const SearchFieldInputDivDecor = styled.div`
@@ -71,98 +72,144 @@ function SearchFieldInputDivDecorImg(props) {
   if (props.props.typ === "Departure") {
     return (
       <SearchFieldInputImg
-        className={props.props.typ + " " + props.size}
+        className={props.props.typ + " " + props.props.size}
         src={arrows}
       />
     );
   } else if (props.props.typ === "Destination") {
     return (
       <SearchFieldInputImg
-        className={props.props.typ + " " + props.size}
+        className={props.props.typ + " " + props.props.size}
         src={arrows}
       />
     );
   } else if (props.props.typ === "DateFrom") {
     return (
       <SearchFieldInputImg
-        className={props.props.typ + " " + props.size}
+        className={props.props.typ + " " + props.props.size}
         src={calendar_icon}
       />
     );
   } else if (props.props.typ === "DateTo") {
     return (
       <SearchFieldInputImg
-        className={props.props.typ + " " + props.size}
+        className={props.props.typ + " " + props.props.size}
         src={calendar_icon}
       />
     );
   } else if (props.props.typ === "Quantity") {
     return (
       <SearchFieldInputImg
-        className={props.props.typ + " " + props.size}
+        className={props.props.typ + " " + props.props.size}
         src={dropdownarrow}
       />
     );
   } else return "";
 }
 
-function SearchFieldDecorText(props) {
-  if (props.props.typ === "Departure") {
-    return (
-      <SearchFieldInputDivDecorText
-        className={props.props.typ + " " + props.size}
-        choosen="yes"
-      >
-        {DepartureCity}
-      </SearchFieldInputDivDecorText>
+class SearchFieldDecorText extends React.Component {
+  state = {
+    mywidth: ""
+  };
+
+  width_search() {
+    console.log(
+      document.getElementsByClassName("QuantityInput")[0].clientWidth -
+        (21 + 16 + 16 + 7)
     );
-  } else if (props.props.typ === "Destination") {
-    return (
-      <SearchFieldInputDivDecorText
-        className={props.props.typ + " " + props.size}
-      >
-        Город прибытия
-      </SearchFieldInputDivDecorText>
-    );
-  } else if (props.props.typ === "DateFrom") {
-    return (
-      <SearchFieldInputDivDecorText
-        className={props.props.typ + " " + props.size}
-      >
-        Туда
-      </SearchFieldInputDivDecorText>
-    );
-  } else if (props.props.typ === "DateTo") {
-    return (
-      <SearchFieldInputDivDecorText
-        className={props.props.typ + " " + props.size}
-      >
-        Обратно
-      </SearchFieldInputDivDecorText>
-    );
-  } else if (props.props.typ === "Quantity") {
-    return (
-      <SearchFieldInputDivDecorText
-        className={props.props.typ + " " + props.size}
-        choosen="yes"
-      >
-        1 пассажир
-        <SearchFiledDecorClass>, эконом </SearchFiledDecorClass>
-      </SearchFieldInputDivDecorText>
-    );
-  } else return "";
+    try {
+      return this.setState({
+        mywidth:
+          document.getElementsByClassName("QuantityInput")[0].clientWidth -
+          65 +
+          "px"
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  componentDidMount() {
+    /*     console.log(this.state.sizing); */
+    //console.log(document.body.clientWidth);
+    this.width_search(this);
+  }
+  componentWillUnmount() {
+    this.width_search(this);
+  }
+
+  SearchFieldDecorTextFunc(props) {
+    props = this.props;
+    if (props.props.typ === "Departure") {
+      return (
+        <SearchFieldInputDivDecorText
+          className={props.props.typ + " " + props.props.size}
+          choosen="yes"
+          width={this.props.width}
+        >
+          {DepartureCity}
+        </SearchFieldInputDivDecorText>
+      );
+    } else if (props.props.typ === "Destination") {
+      return (
+        <SearchFieldInputDivDecorText
+          className={props.props.typ + " " + props.props.size}
+          width={this.props.width}
+        >
+          Город прибытия
+        </SearchFieldInputDivDecorText>
+      );
+    } else if (props.props.typ === "DateFrom") {
+      return (
+        <SearchFieldInputDivDecorText
+          className={props.props.typ + " " + props.props.size}
+          width={this.props.width}
+        >
+          Туда
+        </SearchFieldInputDivDecorText>
+      );
+    } else if (props.props.typ === "DateTo") {
+      return (
+        <SearchFieldInputDivDecorText
+          className={props.props.typ + " " + props.props.size}
+          width={this.props.width}
+        >
+          Обратно
+        </SearchFieldInputDivDecorText>
+      );
+    } else if (props.props.typ === "Quantity") {
+      console.log(this.state.mywidth);
+      return (
+        <SearchFieldInputDivDecorText
+          className={props.props.typ + " " + props.props.size}
+          width={this.state.mywidth}
+          choosen="yes"
+        >
+          1 пассажир
+          <SearchFiledDecorClass>, эконом </SearchFiledDecorClass>
+        </SearchFieldInputDivDecorText>
+      );
+    } else return "";
+  }
+  render(props) {
+    return this.SearchFieldDecorTextFunc(props);
+  }
 }
 
 function SearchFieldInputDivDecorAirport(props) {
   if (props.props.typ === "Departure") {
     return (
-      <SearchFieldInputAirport className={props.props.typ + " " + props.size}>
+      <SearchFieldInputAirport
+        className={props.props.typ + " " + props.props.size}
+      >
         MOW
       </SearchFieldInputAirport>
     );
   } else if (props.props.typ === "Destination" && props.choosen === "yes") {
     return (
-      <SearchFieldInputAirport className={props.props.typ + " " + props.size}>
+      <SearchFieldInputAirport
+        className={props.props.typ + " " + props.props.size}
+      >
         MOW
       </SearchFieldInputAirport>
     );
@@ -170,28 +217,29 @@ function SearchFieldInputDivDecorAirport(props) {
 }
 
 function SearchFieldDecorations(props) {
+  console.log();
   return (
     <SearchFieldDecor
-      className={"SearchFieldDecor_" + props.typ + "_" + props.size}
+      className={"SearchFieldDecor_" + props.typ + " " + props.size}
     >
       <SearchFieldDecorText
         props={props}
-        className={"SearchFieldDecorText" + props.typ + "_" + props.size}
+        className={"SearchFieldDecorText" + props.typ + " " + props.size}
       />
       <SearchFieldInputDivDecor
         props={props}
-        className={"SearchFieldInputDivDecor" + props.typ + "_" + props.size}
+        className={"SearchFieldInputDivDecor" + props.typ + " " + props.size}
       >
         <SearchFieldInputDivDecorAirport
           props={props}
           className={
-            "SearchFieldInputDivDecorAirport" + props.typ + "_" + props.size
+            "SearchFieldInputDivDecorAirport" + props.typ + " " + props.size
           }
         />
         <SearchFieldInputDivDecorImg
           props={props}
           className={
-            "SearchFieldInputDivDecorImg" + props.typ + "_" + props.size
+            "SearchFieldInputDivDecorImg" + props.typ + " " + props.size
           }
         />
       </SearchFieldInputDivDecor>
