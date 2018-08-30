@@ -109,7 +109,7 @@ class App extends React.Component {
 
   ContainerResize() {
     this.setState({ sizing: "mobile" });
-    if (document.body.clientWidth >= 768) {
+    if (document.body.clientWidth >= 768 && document.body.clientWidth < 1440) {
       this.setState({ sizing: "tablet" });
     }
     if (document.body.clientWidth >= 1440) {

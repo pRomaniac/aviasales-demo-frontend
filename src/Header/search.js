@@ -39,6 +39,7 @@ const SearchFieldRow = styled.div`
     css`
       margin-bottom: 8px;
       margin-top: 8px;
+      flex-wrap: nowrap;
     `};
 `;
 
@@ -61,7 +62,8 @@ const SearchButtonDiv = styled.div`
     props.size === "tablet" &&
     props.search &&
     css`
-      flex-basis: 24%;
+      flex-basis: 25%;
+      box-sizing: border-box;
     `};
   ${props =>
     props.size === "desktop" &&
@@ -112,17 +114,17 @@ const SearchButton = styled.button`
   ${props =>
     props.search &&
     css`
+      display: block;
       margin-top: auto;
       box-sizing: border-box;
       border: 0;
-      margin: 2px;
-      padding: 0;
+      ${"" /*       margin: 2px; */} padding: 0;
       font-family: Roboto;
       font-style: normal;
       font-weight: 900;
       line-height: normal;
       font-size: 20px;
-      width: 98%;
+      width: 100%;
       height: 58px;
       color: #ffffff;
     `};
@@ -145,6 +147,12 @@ const AeroImg = styled.img`
     css`
       margin-left: 24px;
     `};
+`;
+
+const ButtonInLink = styled.div`
+  display: block;
+  margin: 2px;
+  box-sizing: border-box;
 `;
 
 const SearchFields = [
@@ -185,10 +193,12 @@ function SearchFieldStart(props) {
       </SearchFieldRow>
       <SearchButtonDiv size={props.size} className="SearchButtonDiv">
         <Link to="/Search">
-          <SearchButton size={props.size} className="SearchButton">
-            Найти билеты
-            <AeroImg className="AeroImg" src={aero} size={props.size} />
-          </SearchButton>
+          <ButtonInLink>
+            <SearchButton size={props.size} className="SearchButton">
+              Найти билеты
+              <AeroImg className="AeroImg" src={aero} size={props.size} />
+            </SearchButton>
+          </ButtonInLink>
         </Link>
       </SearchButtonDiv>
     </SearchFieldContainer>
@@ -209,7 +219,7 @@ function SearchFieldSearch(props) {
       >
         {SearchFields.map(number => (
           <SearchFieldInputDivSearch
-            className={number.toString() + "_" + props.size}
+            className={number.toString() + "InputDiv " + props.size}
             key={number.toString()}
             size={props.size}
             searchtype={number.toString()}
@@ -233,13 +243,15 @@ function SearchFieldSearch(props) {
           className="SearchButtonDiv"
         >
           <Link to="/Search">
-            <SearchButton
-              size={props.size}
-              search={true}
-              className="SearchButton"
-            >
-              Найти билеты
-            </SearchButton>
+            <ButtonInLink>
+              <SearchButton
+                size={props.size}
+                search={true}
+                className="SearchButton"
+              >
+                Найти билеты
+              </SearchButton>
+            </ButtonInLink>
           </Link>
         </SearchButtonDiv>
       </SearchFieldRow>

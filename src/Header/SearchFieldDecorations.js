@@ -10,7 +10,7 @@ const SearchFieldDecor = styled.div`
   margin-top: -38px;
   z-index: 2;
   margin-bottom: 19px;
-
+  overflow: hidden;
   justify-content: space-between;
 `;
 
@@ -21,11 +21,11 @@ const SearchFieldInputDivDecorText = styled.div`
   line-height: 20px;
   font-size: 16px;
   margin-left: 16px;
+  overflow: hidden;
   /* text-align: center; */
   color: #a0b0b9;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
 
   ${props =>
     props.choosen === "yes" &&
@@ -112,16 +112,26 @@ class SearchFieldDecorText extends React.Component {
     mywidth: ""
   };
 
-  width_search() {
+  width_search(props) {
+    var per = 0;
+
+    if (props.props.props.size === "desktop") {
+      per = 16 / 100;
+    }
+    if (props.props.props.size === "tablet") {
+      per = 24 / 100;
+    }
+    console.log(props.props.props.size);
     console.log(
-      document.getElementsByClassName("QuantityInput")[0].clientWidth -
-        (21 + 16 + 16 + 7)
+      document.getElementsByClassName("SearchFieldRow")[0].clientWidth * per -
+        53
     );
     try {
       return this.setState({
         mywidth:
-          document.getElementsByClassName("QuantityInput")[0].clientWidth -
-          65 +
+          document.getElementsByClassName("SearchFieldRow")[0].clientWidth *
+            per -
+          53 +
           "px"
       });
     } catch (error) {
@@ -134,6 +144,7 @@ class SearchFieldDecorText extends React.Component {
     //console.log(document.body.clientWidth);
     this.width_search(this);
   }
+
   componentWillUnmount() {
     this.width_search(this);
   }
@@ -178,7 +189,7 @@ class SearchFieldDecorText extends React.Component {
         </SearchFieldInputDivDecorText>
       );
     } else if (props.props.typ === "Quantity") {
-      console.log(this.state.mywidth);
+      console.log(props.props.size);
       return (
         <SearchFieldInputDivDecorText
           className={props.props.typ + " " + props.props.size}
