@@ -116,22 +116,22 @@ class SearchFieldDecorText extends React.Component {
     var per = 0;
 
     if (props.props.props.size === "desktop") {
-      per = 16 / 100;
+      per = 18 / 100;
     }
     if (props.props.props.size === "tablet") {
-      per = 24 / 100;
+      per = 25 / 100;
     }
     console.log(props.props.props.size);
     console.log(
       document.getElementsByClassName("SearchFieldRow")[0].clientWidth * per -
-        53
+        57
     );
     try {
       return this.setState({
         mywidth:
           document.getElementsByClassName("SearchFieldRow")[0].clientWidth *
             per -
-          53 +
+          57 +
           "px"
       });
     } catch (error) {

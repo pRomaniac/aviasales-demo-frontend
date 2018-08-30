@@ -1,14 +1,7 @@
 import React from "react";
 
 import aero from "../img/aero.svg";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  NavLink
-} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
 import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
