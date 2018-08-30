@@ -1,7 +1,7 @@
 import React from "react";
 
 import aero from "../img/aero.svg";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
 import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
@@ -47,7 +47,8 @@ const SearchFieldRow = styled.div`
 const SearchInputWrapper = styled.div`
   box-sizing: border-box;
   border: 0;
-  margin: 2px;
+  margin-top: 2px;
+  margin-left: 2px;
   padding: 0;
 `;
 
@@ -57,7 +58,6 @@ const SearchButtonDiv = styled.div`
     css`
       margin-left: auto;
       margin-right: auto;
-      width: 308px;
     `};
   ${props =>
     props.size === "tablet" &&
@@ -71,6 +71,7 @@ const SearchButtonDiv = styled.div`
     props.search &&
     css`
       flex-basis: 16%;
+      margin-left: 8px;
     `};
 `;
 
@@ -80,40 +81,54 @@ const SearchButton = styled.button`
   background: #ff9241;
 
   border: 0;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  font-size: 24px;
-  color: #ffffff;
+
+  padding: 15px 74px 16px 45px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 
   ${props =>
     props.size === "mobile" &&
     css`
       margin-top: 16px;
-      height: 56px;
+      padding: 14px 74px 13px 52px;
     `};
   ${props =>
     props.size === "tablet" &&
     css`
       margin-top: 32px;
-      height: 64px;
     `};
   ${props =>
     props.size === "desktop" &&
     css`
       margin-top: 48px;
-      height: 64px;
     `};
   ${props =>
     !props.search &&
     css`
-      width: 308px;
       border-radius: 4px;
     `};
 
   ${props =>
     props.search &&
+    css`
+      display: block;
+      margin-top: auto;
+      box-sizing: border-box;
+      border: 0;
+
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      font-size: 20px;
+      width: 100%;
+      padding: 17px 29px 17px 29px;
+      color: #ffffff;
+    `};
+  ${props =>
+    props.search &&
+    props.size === "tablet" &&
     css`
       display: block;
       margin-top: auto;
@@ -126,11 +141,14 @@ const SearchButton = styled.button`
       line-height: normal;
       font-size: 20px;
       width: 100%;
-      height: 58.4px;
+      padding: 16px 26px 16px 26px;
+      margin-left: 0px;
       color: #ffffff;
     `};
 `;
-const MyLink = NavLink;
+const MyLink = styled(NavLink)`
+  text-decoration: none;
+`;
 
 /* `
   text-decoration: none;
@@ -138,28 +156,52 @@ const MyLink = NavLink;
  */
 
 const AeroImg = styled.img`
-  vertical-align: middle;
+  position: relative;
+
   ${props =>
     props.size === "mobile" &&
     css`
-      margin-left: 16px;
+      left: 16px;
     `};
   ${props =>
     props.size === "tablet" &&
     css`
-      margin-left: 24px;
+      left: 24px;
     `};
   ${props =>
     props.size === "desktop" &&
     css`
-      margin-left: 24px;
+      left: 24px;
     `};
 `;
 
 const ButtonInLink = styled.div`
   display: block;
-  margin: 2px;
+  margin-top: 2px;
+  margin-left: 2px;
   box-sizing: border-box;
+`;
+
+const SearchButtonText = styled.div`
+  display: inline;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 20px;
+  color: #ffffff;
+
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      font-size: 20px;
+
+      color: #ffffff;
+    `};
 `;
 
 const SearchFields = [
@@ -199,14 +241,18 @@ function SearchFieldStart(props) {
         ))}
       </SearchFieldRow>
       <SearchButtonDiv size={props.size} className="SearchButtonDiv">
-        <Link to="/Search">
-          <ButtonInLink>
-            <SearchButton size={props.size} className="SearchButton">
+        <MyLink
+          to="/Search"
+          activeStyle={{ textDecoration: "none" }}
+          activeClassName="selected"
+        >
+          <SearchButton size={props.size} className="SearchButton">
+            <SearchButtonText size={props.size} className="SearchButton">
               Найти билеты
-              <AeroImg className="AeroImg" src={aero} size={props.size} />
-            </SearchButton>
-          </ButtonInLink>
-        </Link>
+            </SearchButtonText>
+            <AeroImg className="AeroImg" src={aero} size={props.size} />
+          </SearchButton>
+        </MyLink>
       </SearchButtonDiv>
     </SearchFieldContainer>
   );
@@ -249,14 +295,20 @@ function SearchFieldSearch(props) {
           search={true}
           className="SearchButtonDiv"
         >
-          <MyLink to="/Search" activeStyle={{ textDecoration: "none" }}>
+          <MyLink to="/Search">
             <ButtonInLink>
               <SearchButton
                 size={props.size}
                 search={true}
                 className="SearchButton"
               >
-                Найти билеты
+                <SearchButtonText
+                  size={props.size}
+                  search={true}
+                  className="SearchButton"
+                >
+                  Найти билеты
+                </SearchButtonText>
               </SearchButton>
             </ButtonInLink>
           </MyLink>

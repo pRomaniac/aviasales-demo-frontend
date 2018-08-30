@@ -4,6 +4,7 @@ const SearchInput = styled.input`
   box-sizing: border-box;
   border: 0px;
   width: 100%;
+  padding: 0px;
   line-height: 56px;
 
   ${(
