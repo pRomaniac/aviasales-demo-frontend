@@ -1,7 +1,15 @@
 import React from "react";
-import styled, { css } from "styled-components";
+
 import aero from "../img/aero.svg";
-import { Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  NavLink
+} from "react-router-dom";
+import styled, { css } from "styled-components";
 import SearchFieldInputDivStart from "./SearchFieldInputDivStart";
 import SearchFieldInputDivSearch from "./SearchFieldInputDivSearch";
 import SearchInput from "./SearchInput";
@@ -125,10 +133,16 @@ const SearchButton = styled.button`
       line-height: normal;
       font-size: 20px;
       width: 100%;
-      height: 58px;
+      height: 58.4px;
       color: #ffffff;
     `};
 `;
+const MyLink = NavLink;
+
+/* `
+  text-decoration: none;
+`;
+ */
 
 const AeroImg = styled.img`
   vertical-align: middle;
@@ -242,7 +256,7 @@ function SearchFieldSearch(props) {
           search={true}
           className="SearchButtonDiv"
         >
-          <Link to="/Search">
+          <MyLink to="/Search" activeStyle={{ textDecoration: "none" }}>
             <ButtonInLink>
               <SearchButton
                 size={props.size}
@@ -252,7 +266,7 @@ function SearchFieldSearch(props) {
                 Найти билеты
               </SearchButton>
             </ButtonInLink>
-          </Link>
+          </MyLink>
         </SearchButtonDiv>
       </SearchFieldRow>
     </SearchFieldContainer>
