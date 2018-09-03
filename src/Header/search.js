@@ -47,9 +47,9 @@ const SearchFieldRow = styled.div`
 const SearchInputWrapper = styled.div`
   box-sizing: border-box;
   border: 0;
+  padding: 0;
   margin-top: 2px;
   margin-left: 2px;
-  padding: 0;
 `;
 
 const SearchButtonDiv = styled.div`
@@ -122,8 +122,7 @@ const SearchButton = styled.button`
       font-weight: 900;
       line-height: normal;
       font-size: 20px;
-      width: 100%;
-      padding: 17px 29px 17px 29px;
+      padding: 15px 29px 16px 29px;
       color: #ffffff;
     `};
   ${props =>
@@ -141,13 +140,20 @@ const SearchButton = styled.button`
       line-height: normal;
       font-size: 20px;
       width: 100%;
-      padding: 16px 26px 16px 26px;
+      padding: 15px 26px 16px 26px;
       margin-left: 0px;
       color: #ffffff;
     `};
 `;
 const MyLink = styled(NavLink)`
   text-decoration: none;
+  ${props =>
+    props.size === "desktop" &&
+    css`
+      top: 2px;
+      left: 2px;
+      position: relative;
+    `};
 `;
 
 /* `
