@@ -108,6 +108,18 @@ const SearchButton = styled.button`
     css`
       border-radius: 4px;
     `};
+  ${props =>
+    props.size === "desktop" &&
+    props.search &&
+    css`
+      border-radius: 4px;
+    `};
+  ${props =>
+    props.size === "tablet" &&
+    props.search &&
+    css`
+      border-radius: 0 0 4px 0px;
+    `};
 
   ${props =>
     props.search &&

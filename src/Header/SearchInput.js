@@ -13,14 +13,14 @@ const SearchInput = styled.input`
   ) =>
     props.size === "tablet" &&
     props.searchtype === "Departure" &&
-    !props.search &&
+    //!props.search &&
     css`
       border-radius: 4px 0px 0 0;
     `};
 
   ${props =>
     props.size === "tablet" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "Destination" &&
     css`
       border-radius: 0px 4px 0 0;
@@ -28,7 +28,7 @@ const SearchInput = styled.input`
 
   ${props =>
     props.size === "tablet" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "DateFrom" &&
     css`
       border-radius: 0px 0px 0px 4px;
@@ -36,7 +36,7 @@ const SearchInput = styled.input`
 
   ${props =>
     props.size === "tablet" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "DateTo" &&
     css`
       border-radius: 0 0 0px 0px;
@@ -95,7 +95,7 @@ const SearchInput = styled.input`
     props //desktop state
   ) =>
     props.size === "desktop" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "Departure" &&
     css`
       border-radius: 4px 0px 0px 4px;
@@ -103,7 +103,7 @@ const SearchInput = styled.input`
 
   ${props =>
     props.size === "desktop" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "Destination" &&
     css`
       border-radius: 0px 0px 0px 0px;
@@ -111,7 +111,7 @@ const SearchInput = styled.input`
 
   ${props =>
     props.size === "desktop" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "DateFrom" &&
     css`
       border-radius: 0px 0px 0px 0px;
@@ -120,14 +120,14 @@ const SearchInput = styled.input`
   ${props =>
     props.size === "desktop" &&
     props.searchtype === "DateTo" &&
-    !props.search &&
+    //!props.search &&
     css`
       border-radius: 0 0 0px 0px;
     `};
 
   ${props =>
     props.size === "desktop" &&
-    !props.search &&
+    //!props.search &&
     props.searchtype === "Quantity" &&
     css`
       border-radius: 0 4px 4px 0px;
