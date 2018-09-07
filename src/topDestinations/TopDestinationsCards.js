@@ -1,12 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import Krasnodar from "../img/Krasnodar.png";
-import Sochi from "../img/Sochi.png";
-import Spb from "../img/Spb.png";
-import MinVod from "../img/MineralWater.png";
-import Symph from "../img/Sympheropol.png";
-import Barcel from "../img/Barcelona.png";
+import Krasnodar from "../img/Krasnodar.jpg";
+import Sochi from "../img/Sochi.jpg";
+import Spb from "../img/Spb.jpg";
+import MinVod from "../img/MineralWater.jpg";
+import Symph from "../img/Sympheropol.jpg";
+import Barcel from "../img/Barcelona.jpg";
 import RuFlag from "../img/ru_flag.svg";
 import EsFlag from "../img/es_flag.svg";
 
