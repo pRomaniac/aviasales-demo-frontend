@@ -963,7 +963,7 @@ const ButtonDiv = styled.div`
       padding-right: auto;
       padding-top: 8px;
       padding-bottom: 16px;
-      height: 40px;
+
       margin-left: 6px;
       margin-right: 6px;
     `};
@@ -977,8 +977,7 @@ const ButtonDiv = styled.div`
       padding-right: auto;
       padding-top: 12px;
       padding-bottom: 16px;
-      width: 88px;
-      height: 28px;
+      width: auto;
     `};
   ${props =>
     props.styl === "Up" &&
@@ -989,6 +988,7 @@ const ButtonDiv = styled.div`
 `;
 
 const Button = styled.button`
+  display: block;
   border: 0;
   ${props =>
     props.styl === "Filter" &&
@@ -1017,13 +1017,11 @@ const Button = styled.button`
       background: #00ace2;
       mix-blend-mode: normal;
       opacity: 0.5;
-      border-radius: 100px;
-      padding-left: auto;
-      padding-right: auto;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
       padding-top: auto;
       padding-bottom: auto;
-      width: 88px;
-      height: 28px;
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
@@ -1038,6 +1036,18 @@ const Button = styled.button`
     props.size === "desktop" &&
     css`
       display: none;
+    `};
+  ${props =>
+    props.styl === "Up" &&
+    props.size === "tablet" &&
+    css`
+      padding: 17px 24px;
+    `};
+  ${props =>
+    props.styl === "Up" &&
+    props.size === "mobile" &&
+    css`
+      padding: 16px 6px;
     `};
 `;
 

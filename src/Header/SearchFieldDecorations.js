@@ -228,7 +228,6 @@ function SearchFieldInputDivDecorAirport(props) {
 }
 
 function SearchFieldDecorations(props) {
-  console.log();
   return (
     <SearchFieldDecor
       className={"SearchFieldDecor_" + props.typ + " " + props.size}

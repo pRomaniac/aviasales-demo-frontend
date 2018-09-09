@@ -10,6 +10,7 @@ import vb from "../img/viber.svg";
 import AppStore from "../img/AppStore.png";
 import GooglePlay from "../img/GooglePlay.png";
 import WindowMarket from "../img/WindowMarket.png";
+import UpButton from "../img/StickyUp.svg";
 
 const Links = [
   { name: "О компании", url: "About" },
@@ -177,6 +178,26 @@ const RightDiv = styled.div`
   margin-right: 0px;
 `;
 
+const StickyUpDiv = styled.div`
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(74, 74, 74, 0.5);
+  border-radius: 100px;
+  position: fixed;
+  right: 98px;
+  bottom: 29px;
+  display: block;
+
+  box-sizing: border-box;
+
+  width: 48px;
+
+  height: 48px;
+`;
+
+const StickyUpImg = styled.img`
+  margin: 14px;
+`;
+
 function Link(props, links) {
   return (
     <LinkA
@@ -230,18 +251,17 @@ function Footer(props) {
               src={AppStore}
               className={"FooterStoresImgAppStore"}
             />
-            />
+
             <StoresImg
               size={props.size}
               src={GooglePlay}
               className={"FooterStoresImgGooglePlay"}
             />
-            />
+
             <StoresImg
               size={props.size}
               src={WindowMarket}
               className={"FooterStoresImgWindowMarket"}
-            />
             />
           </Stores>
           <FooterLink size={props.size} className="FooterLink">
@@ -250,6 +270,9 @@ function Footer(props) {
             </FooterLinkA>
           </FooterLink>
         </RightDiv>
+        <StickyUpDiv size={props.size} className="StickyUpDiv">
+          <StickyUpImg src={UpButton} className="StickyUpImg" />
+        </StickyUpDiv>
       </Wrapper>
     );
   } else {
@@ -261,10 +284,7 @@ function Footer(props) {
         <SocialsDiv size={props.size} className={"FooterSocialsDiv"}>
           {Social.map(social => SocialRender(props, social))}
         </SocialsDiv>
-        <AddServiceDiv
-          size={props.size}
-          className={"FooterAddServiceDiv"}
-        >
+        <AddServiceDiv size={props.size} className={"FooterAddServiceDiv"}>
           Поиск и бронирование отелей
         </AddServiceDiv>
         <Stores size={props.size} className={"FooterStores"}>
