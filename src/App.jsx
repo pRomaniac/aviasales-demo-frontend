@@ -1,37 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import 'normalize.css';
+import { Helmet } from 'react-helmet';
+import MainPage from './MainPage';
 /*
-class App extends Component {
+const App = () => (
+  <div className="App">
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>AviaSales Demo FrontEnd</title>
+      <link rel="canonical" href="http://mysite.com/example" />
+    </Helmet>
+    <MainPage />
+  </div>
+);
+*/
+class App extends React.Component {
+  constructor(...args) {
+    super(...args);
+    const sizing = '';
+    this.state = { sizing };
+  }
+
+  componentDidMount() {
+    window.addEventListener('load', this.ContainerResize.bind(this));
+    window.addEventListener('resize', this.ContainerResize.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('load', this.updateDimensions.bind(this));
+    window.removeEventListener('resize', this.updateDimensions.bind(this));
+  }
+
+  ContainerResize() {
+    this.setState({ sizing: 'mobile' });
+    if (document.body.clientWidth >= 768 && document.body.clientWidth < 1440) {
+      this.setState({ sizing: 'tablet' });
+    }
+    if (document.body.clientWidth >= 1440) {
+      this.setState({ sizing: 'desktop' });
+    }
+    //  this.props["size"] = this.state["sizing"];
+    // console.log(document.body.clientWidth);
+  }
+
   render() {
+    const sizing = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>AviaSales Demo FrontEnd</title>
+          <link rel="canonical" href="http://localhost:3000" />
+        </Helmet>
+        <MainPage props={sizing.sizing} />
       </div>
     );
   }
 }
-*/
-
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
-    </header>
-    <p className="App-intro">
-      To get started, edit
-      <code>src/App.js</code>
-      and save to reload.
-    </p>
-  </div>
-);
 
 export default App;
