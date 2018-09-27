@@ -1,6 +1,9 @@
 import React from 'react';
-import Header from './Header/index';
+import Header from './Header';
 
-const MainPage = props => <Header props={props} />;
+function MainPage(props) {
+  // console.log(props);
+  return <Header size={props} />;
+}
 
 export default MainPage;

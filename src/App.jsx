@@ -1,7 +1,10 @@
-import React from 'react';
 import 'normalize.css';
+/* import font for offline working */
+// import './fonts.css';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import MainPage from './MainPage';
+
 /*
 const App = () => (
   <div className="App">
@@ -17,8 +20,8 @@ const App = () => (
 class App extends React.Component {
   constructor(...args) {
     super(...args);
-    const sizing = '';
-    this.state = { sizing };
+    const size = 'mobile';
+    this.state = { size };
   }
 
   componentDidMount() {
@@ -32,19 +35,21 @@ class App extends React.Component {
   }
 
   ContainerResize() {
-    this.setState({ sizing: 'mobile' });
+    this.setState({ size: 'mobile' });
     if (document.body.clientWidth >= 768 && document.body.clientWidth < 1440) {
-      this.setState({ sizing: 'tablet' });
+      this.setState({ size: 'tablet' });
     }
     if (document.body.clientWidth >= 1440) {
-      this.setState({ sizing: 'desktop' });
+      this.setState({ size: 'desktop' });
     }
     //  this.props["size"] = this.state["sizing"];
     // console.log(document.body.clientWidth);
   }
 
   render() {
-    const sizing = this.state;
+    const dsize = this.state;
+    const { size } = dsize;
+    console.log('render', size);
     return (
       <div className="App">
         <Helmet>
@@ -52,7 +57,7 @@ class App extends React.Component {
           <title>AviaSales Demo FrontEnd</title>
           <link rel="canonical" href="http://localhost:3000" />
         </Helmet>
-        <MainPage props={sizing.sizing} />
+        <MainPage size={size} />
       </div>
     );
   }
