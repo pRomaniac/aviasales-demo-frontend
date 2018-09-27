@@ -1,6 +1,8 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import Select from 'react-select';
-import DayPicker from 'react-day-picker';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 export const SearchInput = styled(Select)`
   box-sizing: border-box;
@@ -266,12 +268,12 @@ export const SearchFieldInputDivStart = styled.div`
 
 export default SearchInput;
 
-export const SearchDate = styled(DayPicker)`
+export const SearchDate = styled(DayPickerInput)`
   box-sizing: border-box;
   border: 0px;
   padding: 0px;
   width: 100%;
-
+  height: 100%;
   ${props => props.size === 'desktop'
     && css`
       ${''};
@@ -392,4 +394,29 @@ export const SearchDate = styled(DayPicker)`
     `};
 `;
 
-function Inp(props) {}
+export function Inp(props) {
+  const { searchtype, size } = props;
+  console.log('searchtype', searchtype);
+  if (!(searchtype === 'DateFrom' || searchtype === 'DateTo')) {
+    return (
+      <SearchFieldInputDivStart
+        className={`${searchtype.toString()}_${size}`}
+        size={size}
+        searchtype={searchtype.toString()}
+      >
+        {/* ${if (number.toString()==='DateFrom' || number.toString()==='DateTo')} */}
+        <SearchInput size={size} placeholder={searchtype.toString()} />
+      </SearchFieldInputDivStart>
+    );
+  }
+  return (
+    <SearchFieldInputDivStart
+      className={`${searchtype.toString()}_${size}`}
+      size={size}
+      searchtype={searchtype.toString()}
+    >
+      {/* ${if (number.toString()==='DateFrom' || number.toString()==='DateTo')} */}
+      <SearchDate size={size} placeholder={searchtype.toString()} />
+    </SearchFieldInputDivStart>
+  );
+}

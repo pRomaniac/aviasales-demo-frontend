@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import * as UI from '../UI';
 
-const Inp = UI.SearchInput;
+const Inp = UI.Inp;
 const Butt = UI.SearchButton;
 const SearchDiv = UI.SearchFieldInputDivStart;
 
@@ -44,17 +44,12 @@ function SearchFieldStart(props) {
     <SearchWrapper>
       <SearchFieldRow size={size} className="SearchFieldRow">
         {SearchFields.map(number => (
-{/*           <SearchDiv
+          <Inp
             className={`${number.toString()}_${size}`}
             key={number.toString()}
             size={size}
             searchtype={number.toString()}
-          >
-            {/* ${if (number.toString()==='DateFrom' || number.toString()==='DateTo')} */}
-            <Inp size={size} placeholder={number.toString()} />
-          </SearchDiv> */}
-
-          
+          />
         ))}
       </SearchFieldRow>
       <Butt />
