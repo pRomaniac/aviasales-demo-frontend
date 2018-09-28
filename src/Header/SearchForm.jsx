@@ -1,10 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import * as UI from '../UI';
+import { Inp, SearchButton } from '../UI';
 
-const Inp = UI.Inp;
-const Butt = UI.SearchButton;
-const SearchDiv = UI.SearchFieldInputDivStart;
+const Butt = SearchButton;
 
 const SearchWrapper = styled.div``;
 
