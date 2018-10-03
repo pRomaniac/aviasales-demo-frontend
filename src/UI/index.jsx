@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import CustomSelect from './Select';
 import 'react-day-picker/lib/style.css';
+import Data from '../Data';
 
 export const SearchInput = styled(CustomSelect)``;
 
@@ -144,7 +145,9 @@ export const SearchFieldInputDivStart = styled.div`
 
 export default SearchInput;
 
-export const SearchDate = styled(DayPickerInput)``;
+export const SearchDate = styled(DayPickerInput)`
+  height: 100%;
+`;
 
 export function Inp(props) {
   const { searchtype, size } = props;
@@ -156,7 +159,7 @@ export function Inp(props) {
         searchtype={searchtype.toString()}
       >
         {/* ${if (number.toString()==='DateFrom' || number.toString()==='DateTo')} */}
-        <SearchInput size={size} placeholder={searchtype.toString()} />
+        <SearchInput size={size} data={Data} />
       </SearchFieldInputDivStart>
     );
   }
@@ -171,3 +174,8 @@ export function Inp(props) {
     </SearchFieldInputDivStart>
   );
 }
+
+Inp.defaultProps = {
+  searchtype: 'DateTo',
+  size: 'mobile',
+};

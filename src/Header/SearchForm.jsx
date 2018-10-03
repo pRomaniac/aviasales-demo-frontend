@@ -55,4 +55,8 @@ function SearchFieldStart(props) {
   );
 }
 
+SearchFieldStart.defaultProps = {
+  size: 'mobile',
+};
+
 export default SearchFieldStart;

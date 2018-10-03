@@ -16,7 +16,6 @@ const HeaderDiv = styled.div`
     #02abdb 11.7%,
     #196ebd 100%
   );
-
   padding-top: 12px;
   padding-left: 98px;
 
