@@ -4,10 +4,6 @@ import Select, { components } from 'react-select';
 
 import Data from '../Data';
 
-const SelectData = Data.map(() => {
-
-});
-
 const IndicatorDest = styled.div`
   background: green;
 `;
@@ -18,22 +14,16 @@ const DropdownIndicator = props => components.DropdownIndicator && (
 </components.DropdownIndicator>
 );
 
-function Option(props) {
-  console.log(props.data);
-
-  return <components.Option {...props} />;
-}
-
 function CustomSelect() {
-  Data.map(number => SelectData(number.city, number.city));
-
-  return (
-    <Select
-      components={({ DropdownIndicator }, { Option })}
-      defaultValue={Data[0]}
-      options={Data}
-    />
-  );
+  const DataForSelect = new Array();
+  console.log(DataForSelect);
+  Data.map((m) => {
+    console.log(m.city);
+    console.log(m.id, m.city, m.Country, m.AID);
+    DataForSelect.push({ value: m.id, label: m.city });
+    return DataForSelect;
+  });
+  return <Select components={{ DropdownIndicator }} options={DataForSelect} />;
 }
 
 export default CustomSelect;
