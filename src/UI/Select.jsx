@@ -5,7 +5,7 @@ const SelectForm = styled.form``;
 const SelectInput = styled.input``;
 
 const OptionContainer = styled.div`
-  position: fixed;
+  position: absolute;
   z-index: 100;
 `;
 
@@ -71,21 +71,24 @@ const AerportKeyDiv = styled.div`
   display: inline;
 `;
 
+function Option(props, item) {
+  const m = item;
+  return (
+    <OptionWrapper key={m.id} number={m.id}>
+      <RightOptionWrapper>
+        <CityDiv>{`${m.city}, `}</CityDiv>
+        <CountryDiv s>{m.Country}</CountryDiv>
+      </RightOptionWrapper>
+      <LeftOptionWrapper>
+        <AerportKeyDiv>{m.AID}</AerportKeyDiv>
+      </LeftOptionWrapper>
+    </OptionWrapper>
+  );
+}
+
 function Options(props, data, dropDown) {
   if (dropDown) {
-    return data.map(m => (
-      <OptionContainer>
-        <OptionWrapper key={m.id} number={m.id}>
-          <RightOptionWrapper>
-            <CityDiv>{`${m.city}, `}</CityDiv>
-            <CountryDiv s>{m.Country}</CountryDiv>
-          </RightOptionWrapper>
-          <LeftOptionWrapper>
-            <AerportKeyDiv>{m.AID}</AerportKeyDiv>
-          </LeftOptionWrapper>
-        </OptionWrapper>
-      </OptionContainer>
-    ));
+    return <OptionContainer>{data.map(m => Option(props, m))}</OptionContainer>;
   }
   return '';
 }
@@ -114,10 +117,24 @@ class Select extends React.Component {
     }));
   };
 
+  dropDownFalse = () => {
+    this.setState({ showItems: false });
+  };
+
+  dropDownTrue = () => {
+    this.setState({ showItems: true });
+  };
+
   render() {
     return (
-      <SelectForm props={this.props}>
-        <SelectInput props={this.props} onClick={this.dropDown} />
+      <SelectForm
+        props={this.props}
+        onClick={this.dropDown}
+        onMouseLeave={this.dropDownFalse}
+        onFocus={this.dropDownTrue}
+        onMouseOver={this.dropDownTrue}
+      >
+        <SelectInput props={this.props} onInput={this.dropDownTrue} />
         {Options(this.state.props, this.state.data, this.state.showItems)}
       </SelectForm>
     );
